@@ -241,7 +241,7 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #0f1c55 0%, #182e47 100%);
+    background-image: linear-gradient(to right, #310404 0%, #094486 100%);
 }
 
 .text-color {
@@ -379,16 +379,16 @@ header .side-nav .social-link {
     height: 45px;
     line-height: 45px;
     font-size: 1rem;
-    color: #fff;
-    border: 1px solid #fff;
+    color: rgb(233, 240, 245);
+    border: 1px solid rgb(233, 240, 245);
     background-color: transparent;
     border-radius: 30px;
     box-shadow: none;
 }
 
 .cover-btns a:hover {
-    border: 1px solid #f44336;
-    background-color: #f44336;
+    border: 1px solid #00010c;
+    background-color: #00010c;
     box-shadow: 0 14px 26px -12px rgba(233, 30, 99, 0.42),
     0 4px 23px 0 rgba(0, 0, 0, 0.12),
     0 8px 10px -5px rgba(233, 30, 99, 0.2);
