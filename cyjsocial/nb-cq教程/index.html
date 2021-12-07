@@ -265,30 +265,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="ubuntu-20-04"><a href="#ubuntu-20-04" class="headerlink" title="ubuntu 20.04"></a>ubuntu 20.04</h2><h3 id="一-做一些必要准备"><a href="#一-做一些必要准备" class="headerlink" title="一. 做一些必要准备"></a>一. 做一些必要准备</h3><h4 id="1-更新-apt"><a href="#1-更新-apt" class="headerlink" title="1.更新 apt"></a>1.更新 apt</h4><blockquote>
-<p>sudo apt update</p>
-</blockquote>
-<h4 id="2-更新-pip"><a href="#2-更新-pip" class="headerlink" title="2.更新 pip"></a>2.更新 pip</h4><blockquote>
-<p>python3 -m pip install –upgrade pip</p>
-</blockquote>
-<h4 id="3-安装-nb-cli-和-nonebot2"><a href="#3-安装-nb-cli-和-nonebot2" class="headerlink" title="3.安装 nb-cli 和 nonebot2"></a>3.安装 nb-cli 和 nonebot2</h4><blockquote>
-<p>pip install nb-cli</p>
-</blockquote>
-<blockquote>
-<p>pip install nonebot2</p>
-</blockquote>
-<h3 id="二-创建一个nb"><a href="#二-创建一个nb" class="headerlink" title="二. 创建一个nb"></a>二. 创建一个nb</h3><h4 id="1-根据自己需求选择-这里chow替换成自己想要设置的文件名"><a href="#1-根据自己需求选择-这里chow替换成自己想要设置的文件名" class="headerlink" title="1.根据自己需求选择(这里chow替换成自己想要设置的文件名)"></a>1.根据自己需求选择(这里chow替换成自己想要设置的文件名)</h4><blockquote>
-<p>nb create chow </p>
-</blockquote>
-<h4 id="2-进入nb文件夹"><a href="#2-进入nb文件夹" class="headerlink" title="2.进入nb文件夹"></a>2.进入nb文件夹</h4><blockquote>
-<p>cd chow</p>
-</blockquote>
-<h4 id="3-启动bot"><a href="#3-启动bot" class="headerlink" title="3.启动bot"></a>3.启动bot</h4><blockquote>
-<p>nb run 或者 python3 bot.py</p>
-</blockquote>
-<h5 id="默认端口是8080-可以使用vim-env-dev更改-同时可以配置一些环境变量-设置超级用户等-具体见nonebot2文档"><a href="#默认端口是8080-可以使用vim-env-dev更改-同时可以配置一些环境变量-设置超级用户等-具体见nonebot2文档" class="headerlink" title="默认端口是8080,可以使用vim .env.dev更改,同时可以配置一些环境变量,设置超级用户等,具体见nonebot2文档"></a>默认端口是8080,可以使用vim .env.dev更改,同时可以配置一些环境变量,设置超级用户等,具体见<a target="_blank" rel="noopener" href="https://v2.nonebot.dev/">nonebot2文档</a></h5><h4 id="4-安装插件-这里建议使用在bot目录直接使用nb命令-当然用pip也可以-只是需要在bot-py中添加相应插件"><a href="#4-安装插件-这里建议使用在bot目录直接使用nb命令-当然用pip也可以-只是需要在bot-py中添加相应插件" class="headerlink" title="4.安装插件,这里建议使用在bot目录直接使用nb命令,当然用pip也可以,只是需要在bot.py中添加相应插件"></a>4.安装插件,这里建议使用在bot目录直接使用nb命令,当然用pip也可以,只是需要在bot.py中添加相应插件</h4><blockquote>
-<p>nb plugin install 插件名 <a target="_blank" rel="noopener" href="https://v2.nonebot.dev/store.html">nonebot2插件商店</a></p>
-</blockquote>
+                <h1 id="一些注意事项"><a href="#一些注意事项" class="headerlink" title="一些注意事项"></a>一些注意事项</h1><h2 id="首先说下风控问题"><a href="#首先说下风控问题" class="headerlink" title="首先说下风控问题"></a>首先说下风控问题</h2><h3 id="列出了几个解风控的办法-仅供参考-不保证有效"><a href="#列出了几个解风控的办法-仅供参考-不保证有效" class="headerlink" title="列出了几个解风控的办法,仅供参考,不保证有效"></a>列出了几个解风控的办法,仅供参考,不保证有效</h3><ul>
+<li>1.把device.json里的设备信息改成自己的手机信息</li>
+<li>2.手机登陆qq，开关登录保护，在群里發几个消息，最后必须保持登录保护开启状态</li>
+<li>3.删除device.json亲测和2,4同时做，我自己这样搞几次就好了，不知道你们能行不</li>
+<li>4.刚开始服务器可以用win，下一个电脑qq，手机信任ip，和gocq一起挂着</li>
+</ul>
+<h1 id="Linux-部署方法"><a href="#Linux-部署方法" class="headerlink" title="Linux 部署方法"></a>Linux 部署方法</h1><h2 id="这里以buntu-20-04为例子"><a href="#这里以buntu-20-04为例子" class="headerlink" title="这里以buntu 20.04为例子"></a>这里以buntu 20.04为例子</h2><h3 id="一-做一些必要准备"><a href="#一-做一些必要准备" class="headerlink" title="一. 做一些必要准备"></a>一. 做一些必要准备</h3><h3 id="1-设置服务器密码"><a href="#1-设置服务器密码" class="headerlink" title="1.设置服务器密码"></a>1.设置服务器密码</h3><p>先在服务器控制台重置密码,看清账户名称</p>
+<h4 id="2-下载对应对应系统的go-cqhttp压缩包-详细见go-cqhttp文档"><a href="#2-下载对应对应系统的go-cqhttp压缩包-详细见go-cqhttp文档" class="headerlink" title="2.下载对应对应系统的go-cqhttp压缩包,详细见go-cqhttp文档"></a>2.下载对应对应系统的go-cqhttp压缩包,详细见<a target="_blank" rel="noopener" href="https://docs.go-cqhttp.org/guide/quick_start.html#%E4%B8%8B%E8%BD%BD">go-cqhttp文档</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a  linux下输入可以看到你的系统信息</span><br></pre></td></tr></table></figure>
+<p>下载到本地电脑上,可以先把他解压成xxx.tar的形式,然后再另开终端使用以下命令,上传到服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P 22 xxx.tar root@0.0.0.0:/home/admin</span><br></pre></td></tr></table></figure>
+<p>这里0.0.0.0肯定要换成你的服务器公网ip,这里的admin可能需要换成ubuntu,后面的步骤一致,取决于你的服务器账户名称</p>
+<h4 id="2-ssh连接到服务器然后再终端上输入下列命令"><a href="#2-ssh连接到服务器然后再终端上输入下列命令" class="headerlink" title="2.ssh连接到服务器然后再终端上输入下列命令"></a>2.ssh连接到服务器然后再终端上输入下列命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@0.0.0.0 </span><br></pre></td></tr></table></figure>
+<p>然后会提示你输入你设置的密码,输入即可,终端上输入的时候是看到不密码的,这里建议先在别的地方打一遍,ctrl+v过来,成功连接到服务器后,解压刚刚上传的go-cqhttp压缩包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/admin</span><br></pre></td></tr></table></figure>
+<h4 id="3-配置go-cqhttp"><a href="#3-配置go-cqhttp" class="headerlink" title="3.配置go-cqhttp"></a>3.配置go-cqhttp</h4><p>新建一个gocq文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/admin</span><br><span class="line">mkdir gocq</span><br></pre></td></tr></table></figure>
+<p>把上传的压缩包移动到gocq文件夹中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /home/admin/xxx.tar /home/admin/gocq</span><br></pre></td></tr></table></figure>
+<p>进入gocq文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd gocq</span><br></pre></td></tr></table></figure>
+<p>解压</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf xxx.tar</span><br></pre></td></tr></table></figure>
+<p>首次启动go-cqhttp,一般选择3反向websocket通信</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./go-cqhttp</span><br></pre></td></tr></table></figure>
+<p>然后会生成配置文件,需要你修改需要做成机器人的账号密码,还有反向websocket通信端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim config.yml</span><br></pre></td></tr></table></figure>
+<h4 id="2-更新-apt-pip"><a href="#2-更新-apt-pip" class="headerlink" title="2.更新 apt , pip"></a>2.更新 apt , pip</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">python3 -m pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+<h4 id="3-安装-nb-cli-和-nonebot2"><a href="#3-安装-nb-cli-和-nonebot2" class="headerlink" title="3.安装 nb-cli 和 nonebot2"></a>3.安装 nb-cli 和 nonebot2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install nb-cli</span><br><span class="line">pip install nonebot2</span><br></pre></td></tr></table></figure>
+<h3 id="三-创建一个nb"><a href="#三-创建一个nb" class="headerlink" title="三. 创建一个nb"></a>三. 创建一个nb</h3><h4 id="1-根据自己需求选择-这里chow替换成自己想要设置的文件名"><a href="#1-根据自己需求选择-这里chow替换成自己想要设置的文件名" class="headerlink" title="1.根据自己需求选择(这里chow替换成自己想要设置的文件名)"></a>1.根据自己需求选择(这里chow替换成自己想要设置的文件名)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nb create chow </span><br></pre></td></tr></table></figure>
+<h4 id="2-进入nb文件夹"><a href="#2-进入nb文件夹" class="headerlink" title="2.进入nb文件夹"></a>2.进入nb文件夹</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd chow</span><br></pre></td></tr></table></figure>
+<h4 id="3-启动bot"><a href="#3-启动bot" class="headerlink" title="3.启动bot"></a>3.启动bot</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nb run 或者 python3 bot.py</span><br></pre></td></tr></table></figure>
+<p>默认端口是8080,可以更改.env.dev,同时可以配置一些环境变量,设置超级用户等,具体见<a target="_blank" rel="noopener" href="https://v2.nonebot.dev/">nonebot2文档</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .env.dev</span><br></pre></td></tr></table></figure>
+<h4 id="4-安装插件-这里建议使用在bot目录直接使用nb命令-当然用pip也可以-只是需要在bot-py中添加相应插件"><a href="#4-安装插件-这里建议使用在bot目录直接使用nb命令-当然用pip也可以-只是需要在bot-py中添加相应插件" class="headerlink" title="4.安装插件,这里建议使用在bot目录直接使用nb命令,当然用pip也可以,只是需要在bot.py中添加相应插件"></a>4.安装插件,这里建议使用在bot目录直接使用nb命令,当然用pip也可以,只是需要在bot.py中添加相应插件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nb plugin install 插件名</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://v2.nonebot.dev/store.html">nonebot2插件商店</a></p>
 
                 
             </div>
@@ -315,7 +326,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chowyijiu.social/cyjsocial/nb-cq%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/">https://chowyijiu.social/cyjsocial/nb-cq%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/</a>
+                    <a href="https://chowyijiu.social/cyjsocial/nb-cq%E6%95%99%E7%A8%8B/">https://chowyijiu.social/cyjsocial/nb-cq%E6%95%99%E7%A8%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -410,7 +421,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/cyjsocial/nb-cq%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/">
+                <a href="/cyjsocial/nb-cq%E6%95%99%E7%A8%8B/">
                     <div class="card-image">
                         
                         
