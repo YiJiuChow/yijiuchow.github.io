@@ -220,8 +220,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -257,7 +257,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="面向对象编程-Object-Oriented-Programming"><a href="#面向对象编程-Object-Oriented-Programming" class="headerlink" title="面向对象编程 Object Oriented Programming"></a>面向对象编程 Object Oriented Programming</h1>
+                <h1 id="一-面向对象编程-Object-Oriented-Programming"><a href="#一-面向对象编程-Object-Oriented-Programming" class="headerlink" title="一.面向对象编程 Object Oriented Programming"></a>一.面向对象编程 Object Oriented Programming</h1><h2 id="1-简要"><a href="#1-简要" class="headerlink" title="1)简要"></a>1)简要</h2><p>面向工程是一种执行者思维，解决简单问题可以使用面向过程</p>
+<p>面向对象是一种设计者思维，解决复杂，需要协作的问题</p>
+<p>面向对象离不开面向过程</p>
+<p>宏观上：通过面向对象进行整体设计</p>
+<p>微观上：执行和处理数据，任然是面向过程</p>
+<p>c面向过程 c++面向对象 java面向对象</p>
+<h2 id="2）Java虚拟机的内存可以分为三个区域"><a href="#2）Java虚拟机的内存可以分为三个区域" class="headerlink" title="2）Java虚拟机的内存可以分为三个区域"></a>2）Java虚拟机的内存可以分为三个区域</h2><p>虚拟机栈stack  堆heap  方法区method area</p>
+<h3 id="栈的特点"><a href="#栈的特点" class="headerlink" title="栈的特点"></a>栈的特点</h3><p>1.每个方法被调用时都会创建一个栈帧（存储局部变量，操作数，方法出口）</p>
+<p>2.栈帧先进后出，后进先出</p>
+<p>3.JVM为每个线程创建一个栈。用于存放该线程执行方法的信息（实际参数，局部变量）</p>
+<p>4.栈属于线程私有，不能实现线程间共享</p>
+<p>5.栈是由系统自动分配，速度快，栈是一个连续的内存空间</p>
+<h3 id="堆的特点"><a href="#堆的特点" class="headerlink" title="堆的特点"></a>堆的特点</h3><p>1.堆用于存储创建好的对象和数组（数组也是对象）</p>
+<p>2.JVM只有一个堆，被所有线程共享</p>
+<p>3.不连续的内存空间，分配灵活，速度慢</p>
+<p>4.在堆上的区域，会被垃圾回收器做进一步划分，例如新生代和老年代的划分</p>
+<h3 id="方法区（也是堆）的特点"><a href="#方法区（也是堆）的特点" class="headerlink" title="方法区（也是堆）的特点"></a>方法区（也是堆）的特点</h3><p>1.方法区是Java虚拟机规范，可以有不同的实现 JDK8以后是元数据空间和堆结合起来</p>
+<p>2.Jvm只有一个方法区，被所有线程共享</p>
+<p>3.方法区实际也是堆，只是用于存储类，常量相关的信息</p>
+<p>4.用来存放程序中永远是不变或唯一的内容（类信息[class对象，反射机制中会重点讲授],静态变量，字符串常量等）</p>
+<p>5.常量池主要存放常量:如文本字符串，final常量值</p>
+
                 
             </div>
             <hr/>
@@ -321,8 +342,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
