@@ -492,7 +492,26 @@
 <li>import java.util.* //导入该包下所有的类，会降低编译速度，但不会影响运行速度,同名类，必须用包名.类名，才能调用</li>
 <li>静态导入 import static ,用来导入指定类的静态属性和静态方法</li>
 </ol>
-
+<h1 id="二-数组-Array"><a href="#二-数组-Array" class="headerlink" title="二.数组 Array"></a>二.数组 Array</h1><h2 id="1-数组的三种初始化方式"><a href="#1-数组的三种初始化方式" class="headerlink" title="1.数组的三种初始化方式"></a>1.数组的三种初始化方式</h2><blockquote>
+<p>静态初始化 默认初始化 动态初始化<br>数值类初始化为0，布尔类初始化为false，引用类初始化为null</p>
+</blockquote>
+<h2 id="2-数组拷贝-System-arraycopy"><a href="#2-数组拷贝-System-arraycopy" class="headerlink" title="2.数组拷贝 System.arraycopy"></a>2.数组拷贝 System.arraycopy</h2><blockquote>
+<p>System.arraycopy(object src,int srcPos,object dest,int destPos,int length)<br>System.arraycopy(源数组，源数组中的起始位置，目标数组，目标数组的起始位置，要复制的数组元素的数量)</p>
+</blockquote>
+<h2 id="3-java-utils-array"><a href="#3-java-utils-array" class="headerlink" title="3.java.utils.array"></a>3.java.utils.array</h2><ul>
+<li>Arrays.sort(a) 对a数组里的元素排序</li>
+<li>Arrays.toString(a)</li>
+<li>Arrays.deepToString(a) 针对于多维数组</li>
+<li>Arrays.binarySearch(a,100) 寻找a数组中第一个元素100的索引</li>
+<li>Arrays.fill(a,2,4,100) 将2到4的索引（不包括4）的元素填充为100</li>
+</ul>
+<h2 id="4-多维数组-Multidimensional-Array"><a href="#4-多维数组-Multidimensional-Array" class="headerlink" title="4.多维数组 Multidimensional Array"></a>4.多维数组 Multidimensional Array</h2><h2 id="5-比较接口-Comparable-Interface"><a href="#5-比较接口-Comparable-Interface" class="headerlink" title="5.比较接口 Comparable Interface"></a>5.比较接口 Comparable Interface</h2><blockquote>
+<p>排序规则，调用Arrays.sort()时，该类必须实现Comparable接口</p>
+</blockquote>
+<h2 id="6-遍历"><a href="#6-遍历" class="headerlink" title="6.遍历"></a>6.遍历</h2><blockquote>
+<p>for-each增强for循环在遍历数组过程中，不能修改数组中的某元素的值<br>for-each仅仅适用于遍历，不涉及有关索引（下标）的操作<br>遍历指通过循环遍历数组的所有元素，拷贝是指将某个数组的内容拷贝到另一个数组中<br>容器的扩容实际上就是数组的拷贝</p>
+</blockquote>
+<h2 id="7-冒泡排序算法"><a href="#7-冒泡排序算法" class="headerlink" title="7.冒泡排序算法"></a>7.冒泡排序算法</h2><h2 id="8-随机不相等整数数组"><a href="#8-随机不相等整数数组" class="headerlink" title="8.随机不相等整数数组"></a>8.随机不相等整数数组</h2>
                 
             </div>
             <hr/>
