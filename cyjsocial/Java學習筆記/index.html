@@ -362,27 +362,27 @@
 <h2 id="2-Java虚拟机的内存可以分为三个区域"><a href="#2-Java虚拟机的内存可以分为三个区域" class="headerlink" title="2.Java虚拟机的内存可以分为三个区域"></a>2.Java虚拟机的内存可以分为三个区域</h2><blockquote>
 <p>虚拟机栈stack  堆heap  方法区method area</p>
 </blockquote>
-<h3 id="1-栈的特点"><a href="#1-栈的特点" class="headerlink" title="1.栈的特点"></a>1.栈的特点</h3><ol>
+<h3 id="栈的特点"><a href="#栈的特点" class="headerlink" title="栈的特点"></a>栈的特点</h3><ol>
 <li>每个方法被调用时都会创建一个栈帧（存储局部变量，操作数，方法出口）</li>
 <li>栈帧先进后出，后进先出</li>
 <li>JVM为每个线程创建一个栈。用于存放该线程执行方法的信息（实际参数，局部变量）</li>
 <li>栈属于线程私有，不能实现线程间共享</li>
 <li>栈是由系统自动分配，速度快，栈是一个连续的内存空间</li>
 </ol>
-<h3 id="2-堆的特点"><a href="#2-堆的特点" class="headerlink" title="2.堆的特点"></a>2.堆的特点</h3><ol>
+<h3 id="堆的特点"><a href="#堆的特点" class="headerlink" title="堆的特点"></a>堆的特点</h3><ol>
 <li>堆用于存储创建好的对象和数组（数组也是对象）</li>
 <li>JVM只有一个堆，被所有线程共享</li>
 <li>不连续的内存空间，分配灵活，速度慢</li>
 <li>在堆上的区域，会被垃圾回收器做进一步划分，例如新生代和老年代的划分</li>
 </ol>
-<h3 id="3-方法区（也是堆）的特点"><a href="#3-方法区（也是堆）的特点" class="headerlink" title="3.方法区（也是堆）的特点"></a>3.方法区（也是堆）的特点</h3><ol>
+<h3 id="方法区（也是堆）的特点"><a href="#方法区（也是堆）的特点" class="headerlink" title="方法区（也是堆）的特点"></a>方法区（也是堆）的特点</h3><ol>
 <li>方法区是Java虚拟机规范，可以有不同的实现 JDK8以后是元数据空间和堆结合起来</li>
 <li>Jvm只有一个方法区，被所有线程共享</li>
 <li>方法区实际也是堆，只是用于存储类，常量相关的信息</li>
 <li>用来存放程序中永远是不变或唯一的内容（类信息[class对象，反射机制中会重点讲授],静态变量，字符串常量等）</li>
 <li>常量池主要存放常量:如文本字符串，final常量值</li>
 </ol>
-<h3 id="4-垃圾回收机制"><a href="#4-垃圾回收机制" class="headerlink" title="4.垃圾回收机制"></a>4.垃圾回收机制</h3><ol>
+<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><ol>
 <li>java的内存管理很大程度就是：堆中对象的管理</li>
 <li>垃圾回收的两种方法；a.引用技术法 b.引用可达法</li>
 <li>对象空间的分配：使用new创建对象</li>
@@ -399,18 +399,12 @@
 <li>抽象方法必须被子类实现</li>
 </ol>
 <h2 id="4-封装-encapsulation"><a href="#4-封装-encapsulation" class="headerlink" title="4.封装 encapsulation"></a>4.封装 encapsulation</h2><ol>
-<li><p>提高代码的安全性，复用性</p>
-</li>
-<li><p>高内聚 封装细节，便于修改内部代码，提高可维护性</p>
-</li>
-<li><p>低耦性 简化外部调用，便于使用，扩展，协作</p>
-</li>
-<li><p>封装的实现，使用访问控制符/访问权限修饰符</p>
-</li>
-<li><p>修饰符   private default默认protected public </p>
-</li>
-<li><p>关于protected包的两个细节</p>
-<blockquote>
+<li>提高代码的安全性，复用性</li>
+<li>高内聚 封装细节，便于修改内部代码，提高可维护性</li>
+<li>低耦性 简化外部调用，便于使用，扩展，协作</li>
+<li>封装的实现，使用访问控制符/访问权限修饰符</li>
+<li>修饰符   private default默认protected public </li>
+<li>关于protected包的两个细节<blockquote>
 <p>若父类和子类在同一个包中，子类可以访问父类的protected成员，也可访问父类对象的protected成员<br>若父类和子类不在同一包中，子类可以访问父类的protected成员，但不能访问父类对象的protected成员</p>
 </blockquote>
 </li>
@@ -466,7 +460,7 @@
 <h2 id="8-类-class"><a href="#8-类-class" class="headerlink" title="8.类 class"></a>8.类 class</h2><blockquote>
 <p>类class 对象object 类是描述对象的抽象概念</p>
 </blockquote>
-<h3 id="1-属性field-静态数据"><a href="#1-属性field-静态数据" class="headerlink" title="1.属性field 静态数据"></a>1.属性field 静态数据</h3><h3 id="2-方法method-动态方法"><a href="#2-方法method-动态方法" class="headerlink" title="2.方法method 动态方法"></a>2.方法method 动态方法</h3><h3 id="3-构造器constructor-用于对象的初始化，而不是创建对象"><a href="#3-构造器constructor-用于对象的初始化，而不是创建对象" class="headerlink" title="3.构造器constructor 用于对象的初始化，而不是创建对象"></a>3.构造器constructor 用于对象的初始化，而不是创建对象</h3><h4 id="创建对象的四步"><a href="#创建对象的四步" class="headerlink" title="创建对象的四步"></a>创建对象的四步</h4><ol>
+<h3 id="1-属性field-静态数据"><a href="#1-属性field-静态数据" class="headerlink" title="1).属性field 静态数据"></a>1).属性field 静态数据</h3><h3 id="2-方法method-动态方法"><a href="#2-方法method-动态方法" class="headerlink" title="2).方法method 动态方法"></a>2).方法method 动态方法</h3><h3 id="3-构造器constructor-用于对象的初始化，而不是创建对象"><a href="#3-构造器constructor-用于对象的初始化，而不是创建对象" class="headerlink" title="3).构造器constructor 用于对象的初始化，而不是创建对象"></a>3).构造器constructor 用于对象的初始化，而不是创建对象</h3><h4 id="创建对象的四步"><a href="#创建对象的四步" class="headerlink" title="创建对象的四步"></a>创建对象的四步</h4><ol>
 <li>分配对象空间，并将对象成员变量初始化为0或null</li>
 <li>执行属性值的显式初始化</li>
 <li>执行构造方法</li>
