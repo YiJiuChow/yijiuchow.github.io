@@ -423,7 +423,9 @@
 <li>接口名：和类名相同的命名机制</li>
 <li>extends：接口可以多继承</li>
 <li>常量：接口中的属性只能是常量，总是用public static final修饰，可以省略</li>
-<li>方法：接口中的方法只能是 public abstract 也可以省略<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3></li>
+<li>方法：接口中的方法只能是 public abstract 也可以省略</li>
+</ol>
+<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
 <li>子类通过implements来实现接口的规范</li>
 <li>接口不能创建对象，但是可以用于声明引用变量类型</li>
 <li>一个类实现了接口，必须要实现接口中的所有方法，并且这些方法只能是public的</li>
@@ -447,10 +449,7 @@
 <h3 id="2-super"><a href="#2-super" class="headerlink" title="2.super"></a>2.super</h3><blockquote>
 <p>super 可以看作 是直接父类对象的引用，可通过super来访问父类中被子类覆盖的方法和属性</p>
 </blockquote>
-<ul>
-<li>继承树的追溯</li>
-</ul>
-<ol>
+<h4 id="继承树的追溯"><a href="#继承树的追溯" class="headerlink" title="继承树的追溯"></a>继承树的追溯</h4><ol>
 <li>创建一个类的对象，首先会创建其父类的对象，依次追溯</li>
 <li>调用一个类的方法时，是先在这个类中找有没有这个方法，如果有则用，没有则去查看其父类有没有这个<br>方法，如果Object类里也没有就编译出错</li>
 </ol>
