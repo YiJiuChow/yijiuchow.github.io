@@ -351,35 +351,46 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一-面向对象编程-Object-Oriented-Programming"><a href="#一-面向对象编程-Object-Oriented-Programming" class="headerlink" title="一.面向对象编程 Object Oriented Programming"></a>一.面向对象编程 Object Oriented Programming</h1><h2 id="1-简要"><a href="#1-简要" class="headerlink" title="1.简要"></a>1.简要</h2><p>面向工程是一种执行者思维，解决简单问题可以使用面向过程</p>
-<p>面向对象是一种设计者思维，解决复杂，需要协作的问题</p>
-<p>面向对象离不开面向过程</p>
-<p>面向对象三大特征：继承 封装 多态</p>
-<p>宏观上：通过面向对象进行整体设计</p>
-<p>微观上：执行和处理数据，任然是面向过程</p>
-<p>c面向过程 c++面向对象 java面向对象</p>
-<h2 id="2-Java虚拟机的内存可以分为三个区域"><a href="#2-Java虚拟机的内存可以分为三个区域" class="headerlink" title="2.Java虚拟机的内存可以分为三个区域"></a>2.Java虚拟机的内存可以分为三个区域</h2><p>虚拟机栈stack  堆heap  方法区method area</p>
-<h3 id="1-栈的特点"><a href="#1-栈的特点" class="headerlink" title="1.栈的特点"></a>1.栈的特点</h3><p>每个方法被调用时都会创建一个栈帧（存储局部变量，操作数，方法出口）</p>
-<p>栈帧先进后出，后进先出</p>
-<p>JVM为每个线程创建一个栈。用于存放该线程执行方法的信息（实际参数，局部变量）</p>
-<p>栈属于线程私有，不能实现线程间共享</p>
-<p>栈是由系统自动分配，速度快，栈是一个连续的内存空间</p>
-<h3 id="2-堆的特点"><a href="#2-堆的特点" class="headerlink" title="2.堆的特点"></a>2.堆的特点</h3><p>堆用于存储创建好的对象和数组（数组也是对象）</p>
-<p>JVM只有一个堆，被所有线程共享</p>
-<p>不连续的内存空间，分配灵活，速度慢</p>
-<p>在堆上的区域，会被垃圾回收器做进一步划分，例如新生代和老年代的划分</p>
-<h3 id="3-方法区（也是堆）的特点"><a href="#3-方法区（也是堆）的特点" class="headerlink" title="3.方法区（也是堆）的特点"></a>3.方法区（也是堆）的特点</h3><p>方法区是Java虚拟机规范，可以有不同的实现 JDK8以后是元数据空间和堆结合起来</p>
-<p>Jvm只有一个方法区，被所有线程共享</p>
-<p>方法区实际也是堆，只是用于存储类，常量相关的信息</p>
-<p>用来存放程序中永远是不变或唯一的内容（类信息[class对象，反射机制中会重点讲授],静态变量，字符串常量等）</p>
-<p>常量池主要存放常量:如文本字符串，final常量值</p>
-<h3 id="4-垃圾回收机制"><a href="#4-垃圾回收机制" class="headerlink" title="4.垃圾回收机制"></a>4.垃圾回收机制</h3><p>java的内存管理很大程度就是：堆中对象的管理</p>
-<p>垃圾回收的两种方法；a.引用技术法 b.引用可达法</p>
-<p>对象空间的分配：使用new创建对象</p>
-<p>对象空间的释放：将对象赋值null即可</p>
-<p>Minor GC 清理新生代垃圾     Major GC 清理老年代垃圾</p>
-<p>Full GC 用于清理年轻代，年老代，永久代区域，成本较高，会对系统性能产生影响</p>
-<p>System.gc()通知虚拟机调用Full GC 而不是直接运行</p>
+                <h1 id="一-面向对象编程-Object-Oriented-Programming"><a href="#一-面向对象编程-Object-Oriented-Programming" class="headerlink" title="一.面向对象编程 Object Oriented Programming"></a>一.面向对象编程 Object Oriented Programming</h1><h2 id="1-简要"><a href="#1-简要" class="headerlink" title="1.简要"></a>1.简要</h2><ol>
+<li>面向工程是一种执行者思维，解决简单问题可以使用面向过程</li>
+<li>面向对象是一种设计者思维，解决复杂，需要协作的问题</li>
+<li>面向对象离不开面向过程</li>
+<li>面向对象三大特征：继承 封装 多态</li>
+<li>宏观上：通过面向对象进行整体设计;微观上：执行和处理数据，任然是面向过程</li>
+<li>c面向过程 c++面向对象 java面向对象</li>
+</ol>
+<h2 id="2-Java虚拟机的内存可以分为三个区域"><a href="#2-Java虚拟机的内存可以分为三个区域" class="headerlink" title="2.Java虚拟机的内存可以分为三个区域"></a>2.Java虚拟机的内存可以分为三个区域</h2><blockquote>
+<p>虚拟机栈stack  堆heap  方法区method area</p>
+</blockquote>
+<h3 id="1-栈的特点"><a href="#1-栈的特点" class="headerlink" title="1.栈的特点"></a>1.栈的特点</h3><ol>
+<li>每个方法被调用时都会创建一个栈帧（存储局部变量，操作数，方法出口）</li>
+<li>栈帧先进后出，后进先出</li>
+<li>JVM为每个线程创建一个栈。用于存放该线程执行方法的信息（实际参数，局部变量）</li>
+<li>栈属于线程私有，不能实现线程间共享</li>
+<li>栈是由系统自动分配，速度快，栈是一个连续的内存空间</li>
+</ol>
+<h3 id="2-堆的特点"><a href="#2-堆的特点" class="headerlink" title="2.堆的特点"></a>2.堆的特点</h3><ol>
+<li>堆用于存储创建好的对象和数组（数组也是对象）</li>
+<li>JVM只有一个堆，被所有线程共享</li>
+<li>不连续的内存空间，分配灵活，速度慢</li>
+<li>在堆上的区域，会被垃圾回收器做进一步划分，例如新生代和老年代的划分</li>
+</ol>
+<h3 id="3-方法区（也是堆）的特点"><a href="#3-方法区（也是堆）的特点" class="headerlink" title="3.方法区（也是堆）的特点"></a>3.方法区（也是堆）的特点</h3><ol>
+<li>方法区是Java虚拟机规范，可以有不同的实现 JDK8以后是元数据空间和堆结合起来</li>
+<li>Jvm只有一个方法区，被所有线程共享</li>
+<li>方法区实际也是堆，只是用于存储类，常量相关的信息</li>
+<li>用来存放程序中永远是不变或唯一的内容（类信息[class对象，反射机制中会重点讲授],静态变量，字符串常量等）</li>
+<li>常量池主要存放常量:如文本字符串，final常量值</li>
+</ol>
+<h3 id="4-垃圾回收机制"><a href="#4-垃圾回收机制" class="headerlink" title="4.垃圾回收机制"></a>4.垃圾回收机制</h3><ol>
+<li>java的内存管理很大程度就是：堆中对象的管理</li>
+<li>垃圾回收的两种方法；a.引用技术法 b.引用可达法</li>
+<li>对象空间的分配：使用new创建对象</li>
+<li>对象空间的释放：将对象赋值null即可</li>
+<li>Minor GC 清理新生代垃圾     Major GC 清理老年代垃圾</li>
+<li>Full GC 用于清理年轻代，年老代，永久代区域，成本较高，会对系统性能产生影响</li>
+<li>System.gc()通知虚拟机调用Full GC 而不是直接运行</li>
+</ol>
 <h2 id="3-抽象类-abstract"><a href="#3-抽象类-abstract" class="headerlink" title="3.抽象类 abstract"></a>3.抽象类 abstract</h2><ol>
 <li>有抽象方法的类只能，必须定义成抽象类</li>
 <li>抽象类不能实例化，即不能new来实例化抽象类</li>
@@ -388,19 +399,26 @@
 <li>抽象方法必须被子类实现</li>
 </ol>
 <h2 id="4-封装-encapsulation"><a href="#4-封装-encapsulation" class="headerlink" title="4.封装 encapsulation"></a>4.封装 encapsulation</h2><ol>
-<li>提高代码的安全性，复用性</li>
-<li>高内聚 封装细节，便于修改内部代码，提高可维护性</li>
-<li>低耦性 简化外部调用，便于使用，扩展，协作</li>
+<li><p>提高代码的安全性，复用性</p>
+</li>
+<li><p>高内聚 封装细节，便于修改内部代码，提高可维护性</p>
+</li>
+<li><p>低耦性 简化外部调用，便于使用，扩展，协作</p>
+</li>
+<li><p>封装的实现，使用访问控制符/访问权限修饰符</p>
+</li>
+<li><p>修饰符   private default默认protected public </p>
+</li>
+<li><p>关于protected包的两个细节</p>
+<blockquote>
+<p>若父类和子类在同一个包中，子类可以访问父类的protected成员，也可访问父类对象的protected成员<br>若父类和子类不在同一包中，子类可以访问父类的protected成员，但不能访问父类对象的protected成员</p>
+</blockquote>
+</li>
 </ol>
-<p>封装的实现，使用访问控制符/访问权限修饰符<br>修饰符   private default默认protected public<br>关于protected包的两个细节</p>
-<ol>
-<li>若父类和子类在同一个包中，子类可以访问父类的protected成员，也可访问父类对象的protected成员</li>
-<li>若父类和子类不在同一包中，子类可以访问父类的protected成员，但不能访问父类对象的protected成员</li>
-</ol>
-<h2 id="5-接口-interface"><a href="#5-接口-interface" class="headerlink" title="5.接口 interface"></a>5.接口 interface</h2><ul>
-<li>接口就是一个规范，是一个比抽象类更抽象的抽象类<h3 id="定义接口的详细说明"><a href="#定义接口的详细说明" class="headerlink" title="定义接口的详细说明"></a>定义接口的详细说明</h3></li>
-</ul>
-<ol>
+<h2 id="5-接口-interface"><a href="#5-接口-interface" class="headerlink" title="5.接口 interface"></a>5.接口 interface</h2><blockquote>
+<p>接口就是一个规范，是一个比抽象类更抽象的抽象类</p>
+</blockquote>
+<h3 id="定义接口的详细说明"><a href="#定义接口的详细说明" class="headerlink" title="定义接口的详细说明"></a>定义接口的详细说明</h3><ol>
 <li>访问修饰符；只能是public或者default</li>
 <li>接口名：和类名相同的命名机制</li>
 <li>extends：接口可以多继承</li>
@@ -426,7 +444,12 @@
 <li>在静态初始化块中不能直接访问非static成员</li>
 <li>变量的分类和作用域:局部变量属于方法，静态变量属于类，成员变量属于对象</li>
 </ol>
-<h3 id="2-super"><a href="#2-super" class="headerlink" title="2.super"></a>2.super</h3><p>super 可以看作 是直接父类对象的引用，可通过super来访问父类中被子类覆盖的方法和属性<br>继承树的追溯</p>
+<h3 id="2-super"><a href="#2-super" class="headerlink" title="2.super"></a>2.super</h3><blockquote>
+<p>super 可以看作 是直接父类对象的引用，可通过super来访问父类中被子类覆盖的方法和属性</p>
+</blockquote>
+<ul>
+<li>继承树的追溯</li>
+</ul>
 <ol>
 <li>创建一个类的对象，首先会创建其父类的对象，依次追溯</li>
 <li>调用一个类的方法时，是先在这个类中找有没有这个方法，如果有则用，没有则去查看其父类有没有这个<br>方法，如果Object类里也没有就编译出错</li>
@@ -441,7 +464,9 @@
 <li>this不能用于static方法中</li>
 <li>this作为普通方法的隐式参数，由系统传入到方法中</li>
 </ol>
-<h2 id="8-类-class"><a href="#8-类-class" class="headerlink" title="8.类 class"></a>8.类 class</h2><p>类class 对象object<br>类是描述对象的抽象概念</p>
+<h2 id="8-类-class"><a href="#8-类-class" class="headerlink" title="8.类 class"></a>8.类 class</h2><blockquote>
+<p>类class 对象object 类是描述对象的抽象概念</p>
+</blockquote>
 <h3 id="1-属性field-静态数据"><a href="#1-属性field-静态数据" class="headerlink" title="1.属性field 静态数据"></a>1.属性field 静态数据</h3><h3 id="2-方法method-动态方法"><a href="#2-方法method-动态方法" class="headerlink" title="2.方法method 动态方法"></a>2.方法method 动态方法</h3><h3 id="3-构造器constructor-用于对象的初始化，而不是创建对象"><a href="#3-构造器constructor-用于对象的初始化，而不是创建对象" class="headerlink" title="3.构造器constructor 用于对象的初始化，而不是创建对象"></a>3.构造器constructor 用于对象的初始化，而不是创建对象</h3><h4 id="创建对象的四步"><a href="#创建对象的四步" class="headerlink" title="创建对象的四步"></a>创建对象的四步</h4><ol>
 <li>分配对象空间，并将对象成员变量初始化为0或null</li>
 <li>执行属性值的显式初始化</li>
@@ -460,7 +485,9 @@
 <li>子类继承父类，可以得到父亲的全部属性和方法（除了父类的构造方法），但不见得可以直接访问（比如父类的私有属性和方法）</li>
 <li>定义一个类，没有调用extends，则它的父类是java.lang.Object</li>
 </ol>
-<h2 id="10-重写-Override"><a href="#10-重写-Override" class="headerlink" title="10.重写 Override"></a>10.重写 Override</h2><p>其实就是覆盖父类的方法</p>
+<h2 id="10-重写-Override"><a href="#10-重写-Override" class="headerlink" title="10.重写 Override"></a>10.重写 Override</h2><blockquote>
+<p>其实就是覆盖父类的方法</p>
+</blockquote>
 <h3 id="三个必须条件"><a href="#三个必须条件" class="headerlink" title="三个必须条件"></a>三个必须条件</h3><ol>
 <li>“==”：方法名，形参列表相同</li>
 <li>“&lt;=”：返回值类型和声明异常类型，子类小于</li>
