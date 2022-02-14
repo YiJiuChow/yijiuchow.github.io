@@ -404,11 +404,12 @@
 <li>低耦性 简化外部调用，便于使用，扩展，协作</li>
 <li>封装的实现，使用访问控制符/访问权限修饰符</li>
 <li>修饰符   private default默认protected public </li>
-<li>关于protected包的两个细节<blockquote>
-<p>若父类和子类在同一个包中，子类可以访问父类的protected成员，也可访问父类对象的protected成员<br>若父类和子类不在同一包中，子类可以访问父类的protected成员，但不能访问父类对象的protected成员</p>
-</blockquote>
-</li>
+<li>关于protected包的两个细节</li>
 </ol>
+<ul>
+<li>若父类和子类在同一个包中，子类可以访问父类的protected成员，也可访问父类对象的protected成员</li>
+<li>若父类和子类不在同一包中，子类可以访问父类的protected成员，但不能访问父类对象的protected成员</li>
+</ul>
 <h3 id="5-接口-interface"><a href="#5-接口-interface" class="headerlink" title="5.接口 interface"></a>5.接口 interface</h3><blockquote>
 <p>接口就是一个规范，是一个比抽象类更抽象的抽象类</p>
 </blockquote>
@@ -432,7 +433,7 @@
 <li>多态存在要有3个必要条件，继承，方法重写，父类引用指向子类对象</li>
 <li>父类引用指向子类对象后，用该父类引用调用子类重写的方法，此时多态就出现了</li>
 </ol>
-<h3 id="7-关键词"><a href="#7-关键词" class="headerlink" title="7.关键词"></a>7.关键词</h3><h4 id="1-static-静态"><a href="#1-static-静态" class="headerlink" title="1.static 静态"></a>1.static 静态</h4><ol>
+<h3 id="7-关键词"><a href="#7-关键词" class="headerlink" title="7.关键词"></a>7.关键词</h3><h4 id="1-static-静态"><a href="#1-static-静态" class="headerlink" title="1).static 静态"></a>1).static 静态</h4><ol>
 <li>static方法，不能调用非static成员</li>
 <li>static是属于类的，普通方法是属于对象的</li>
 <li>static属性和方法都在方法区中，而堆里只有对象，没有static属性</li>
@@ -440,19 +441,19 @@
 <li>在静态初始化块中不能直接访问非static成员</li>
 <li>变量的分类和作用域:局部变量属于方法，静态变量属于类，成员变量属于对象</li>
 </ol>
-<h4 id="2-super"><a href="#2-super" class="headerlink" title="2.super"></a>2.super</h4><blockquote>
+<h4 id="2-super"><a href="#2-super" class="headerlink" title="2).super"></a>2).super</h4><blockquote>
 <p>super 可以看作 是直接父类对象的引用，可通过super来访问父类中被子类覆盖的方法和属性</p>
 </blockquote>
 <h5 id="继承树的追溯"><a href="#继承树的追溯" class="headerlink" title="继承树的追溯"></a>继承树的追溯</h5><ol>
 <li>创建一个类的对象，首先会创建其父类的对象，依次追溯</li>
 <li>调用一个类的方法时，是先在这个类中找有没有这个方法，如果有则用，没有则去查看其父类有没有这个<br>方法，如果Object类里也没有就编译出错</li>
 </ol>
-<h4 id="3-final"><a href="#3-final" class="headerlink" title="3.final"></a>3.final</h4><ol>
+<h4 id="3-final"><a href="#3-final" class="headerlink" title="3).final"></a>3).final</h4><ol>
 <li>修饰变量，被它修饰的变量不可改变，一旦被赋值，就不能被重新赋值</li>
 <li>修饰方法，该方法不可被子类重写，但可以被重载！</li>
 <li>修饰类，修饰的类不能被继承</li>
 </ol>
-<h4 id="4-this"><a href="#4-this" class="headerlink" title="4.this"></a>4.this</h4><ol>
+<h4 id="4-this"><a href="#4-this" class="headerlink" title="4).this"></a>4).this</h4><ol>
 <li>this()调用重载的构造方法，避免相同的初始化代码，但只能用于构造方法中，且必须位于构造方法中的第一句</li>
 <li>this不能用于static方法中</li>
 <li>this作为普通方法的隐式参数，由系统传入到方法中</li>
