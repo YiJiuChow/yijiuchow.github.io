@@ -364,7 +364,7 @@
 <li>行宽不要超过80个字符</li>
 <li>代码编写次行风格和行尾风格</li>
 </ol>
-<h4 id="转义-略"><a href="#转义-略" class="headerlink" title="转义 略"></a>转义 略</h4><h4 id="DOS-Command-略"><a href="#DOS-Command-略" class="headerlink" title="DOS Command 略"></a>DOS Command 略</h4><h3 id="3-chapter03"><a href="#3-chapter03" class="headerlink" title="3).chapter03"></a>3).chapter03</h3><h4 id="变量-variable"><a href="#变量-variable" class="headerlink" title="变量 variable"></a>变量 variable</h4><ol>
+<h4 id="转义-略"><a href="#转义-略" class="headerlink" title="转义 略"></a>转义 略</h4><h4 id="DOS-Command-略"><a href="#DOS-Command-略" class="headerlink" title="DOS Command 略"></a>DOS Command 略</h4><h3 id="3-chapter03-变量"><a href="#3-chapter03-变量" class="headerlink" title="3).chapter03  变量"></a>3).chapter03  变量</h3><h4 id="变量定义-variable"><a href="#变量定义-variable" class="headerlink" title="变量定义 variable"></a>变量定义 variable</h4><ol>
 <li>变量是程序的基本组成单位</li>
 <li>变量相当于内存中的一个数据存储空间的表示，你可以把变量看做是一个房间的们牌号，通过门牌号我们可以找到房间，而通过变量名可以访问到变量</li>
 <li>变量使用的基本步骤 声明-&gt;赋值</li>
@@ -441,7 +441,37 @@
 <ol start="2">
 <li>1byte = 8bit bit：最小存储单位，byte：基本存储单位，数值型的第一个bit表示正负</li>
 <li>关于浮点数在机器中存放形式的简单说明，浮点数=符号位+指数位+尾数位 ，尾数部分可能丢失，造成精度损失（小数都是近似值）</li>
-<li>char本质是一个整数，默认输出时，unicode码对应的字符 </li>
+<li>char本质是一个整数，默认输出时，unicode码对应的字符</li>
+</ol>
+<h4 id="简单了解字符编码"><a href="#简单了解字符编码" class="headerlink" title="简单了解字符编码"></a>简单了解字符编码</h4><ol>
+<li>ASCII(一个字节表示，128个字符，实际上1个字节可以表示256个字符，只用了128个)</li>
+<li>Unicode(固定大小的编码，使用2个字节来表示字符，字母和汉字统一都是占用2个字节，这样浪费空间),兼容ASCII编码</li>
+<li>UTF-8(大小可变的编码，字母使用1个字节，汉字使用3个字节)，是Unicode编码的改进版</li>
+<li>GBK(可以表示汉字，而且范围广，字母使用1个字节，汉字使用2个字节)</li>
+<li>gb2312(可以表示汉字，gb2312 &lt; GBK)</li>
+<li>big5码(繁体中文，台湾，香港)</li>
+</ol>
+<h4 id="基本数据类型转换"><a href="#基本数据类型转换" class="headerlink" title="基本数据类型转换"></a>基本数据类型转换</h4><h5 id="1-自动类型转换-auto-convert"><a href="#1-自动类型转换-auto-convert" class="headerlink" title="1.自动类型转换(auto-convert)"></a>1.自动类型转换(auto-convert)</h5><ol>
+<li>当Java程序在进行赋值或者运算时，精度小的类型自动转换为精度大的数据类型</li>
+<li>数据类型按精度(容量)大小排序<blockquote>
+<p>char -&gt; int -&gt; long -&gt; float -&gt; double</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>byte -&gt; short -&gt; int -&gt; long -&gt; float -&gt;double</p>
+</blockquote>
+<ol start="3">
+<li>当有多种类型的数据混合运算时，系统首先自动将所有数据转换成容量最大的数据类型，然后再进行计算 </li>
+<li>char，byte，short 之间不发生自动类型转换，当把具体的数值赋给它们时，先判断该数是否在其范围内,如果使用变量赋值，则判断类型</li>
+<li>char，byte，short 在计算时，首先转换成int</li>
+<li>boolean 不参与自动转换</li>
+<li>自动提升原则：表达式结果类型自动提升为操作数中最大的类型</li>
+</ol>
+<h5 id="2-强制类型转换-force-convert"><a href="#2-强制类型转换-force-convert" class="headerlink" title="2.强制类型转换(force-convert)"></a>2.强制类型转换(force-convert)</h5><ol>
+<li>当进行数据从大到小转换时，就需要使用强制类型转换</li>
+<li>需要转换一串运算结果时，常用小括号提升优先级</li>
+<li>强制类型转换会造成精度损失</li>
 </ol>
 
                 
