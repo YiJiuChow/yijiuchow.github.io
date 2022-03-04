@@ -473,50 +473,139 @@
 <li>需要转换一串运算结果时，常用小括号提升优先级</li>
 <li>强制类型转换会造成精度损失</li>
 </ol>
-<h3 id="4-chapter04-运算符-Operator"><a href="#4-chapter04-运算符-Operator" class="headerlink" title="4).chapter04 运算符 Operator"></a>4).chapter04 运算符 Operator</h3><h4 id="算术运算符-arithmetic-operator"><a href="#算术运算符-arithmetic-operator" class="headerlink" title="算术运算符 arithmetic operator"></a>算术运算符 arithmetic operator</h4><h4 id="关系运算符-relational-operator"><a href="#关系运算符-relational-operator" class="headerlink" title="关系运算符 relational operator"></a>关系运算符 relational operator</h4><h4 id="逻辑运算符-operator"><a href="#逻辑运算符-operator" class="headerlink" title="逻辑运算符 operator"></a>逻辑运算符 operator</h4><table>
+<h3 id="4-chapter04-运算符和标识符-Operator-and-Identifier"><a href="#4-chapter04-运算符和标识符-Operator-and-Identifier" class="headerlink" title="4).chapter04 运算符和标识符 Operator and Identifier"></a>4).chapter04 运算符和标识符 Operator and Identifier</h3><h4 id="算术运算符-Arithmetic-operator"><a href="#算术运算符-Arithmetic-operator" class="headerlink" title="算术运算符 Arithmetic operator"></a>算术运算符 Arithmetic operator</h4><h4 id="关系运算符-Relational-operator"><a href="#关系运算符-Relational-operator" class="headerlink" title="关系运算符 Relational operator"></a>关系运算符 Relational operator</h4><h4 id="逻辑运算符-Logic-operator"><a href="#逻辑运算符-Logic-operator" class="headerlink" title="逻辑运算符 Logic operator"></a>逻辑运算符 Logic operator</h4><ol>
+<li>短路与&amp;&amp; ，短路或|| 取反！</li>
+<li>逻辑与&amp; ，逻辑或|，逻辑异或^</li>
+</ol>
+<table>
 <thead>
 <tr>
 <th>a</th>
 <th>b</th>
 <th>a&amp;b</th>
 <th>a&amp;&amp;b</th>
-<th>a&amp;#124b</th>
-<th>a&amp;#124&amp;#124</th>
+<th>a&#124;b</th>
+<th>a&#124;&#124;b</th>
 <th>!a</th>
 <th>a^b</th>
 </tr>
 </thead>
 <tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
 </tr>
 </tbody></table>
+<h4 id="赋值运算符-Assign-operator"><a href="#赋值运算符-Assign-operator" class="headerlink" title="赋值运算符 Assign operator"></a>赋值运算符 Assign operator</h4><ol>
+<li>运算顺序从右往左</li>
+<li>赋值运算符的左边只能是变量，右边可以是变量，表达式，常量值</li>
+<li>复合赋值运算符 +=，-=，/=，%=，*=</li>
+<li>复合赋值运算符会进行类型转换 <code>b += 2; // b = (byte)(b + 2) </code></li>
+</ol>
+<h4 id="三元运算符-Ternary-operator"><a href="#三元运算符-Ternary-operator" class="headerlink" title="三元运算符 Ternary operator"></a>三元运算符 Ternary operator</h4><ol>
+<li><code>条件表达式?表达式1:表达式2</code> 一真大师</li>
+<li>三元运算符可以转换成if-else语句 <code>if (条件表达式) &#123;表达式1&#125; else &#123;表达式2&#125;;</code></li>
+</ol>
+<h4 id="运算符优先级-Operator-priority"><a href="#运算符优先级-Operator-priority" class="headerlink" title="运算符优先级 Operator priority"></a>运算符优先级 Operator priority</h4><ol>
+<li>运算符有不同的优先级，就是所谓的运算顺序</li>
+<li>只有单目运算符，赋值运算符是从右向左运算的</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>code</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顶级运算符</td>
+<td><code>. () &#123;&#125; ; ,</code></td>
+</tr>
+<tr>
+<td>单目运算符</td>
+<td><code>++ --</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>+ - * /</code></td>
+</tr>
+<tr>
+<td>位移运算符</td>
+<td><code> << >> >>> </code></td>
+</tr>
+<tr>
+<td>比较运算符</td>
+<td><code> == != > < >= <= </code></td>
+</tr>
+<tr>
+<td>逻辑运算符</td>
+<td><code>& &#124; && &#124;&#124; ^</code></td>
+</tr>
+<tr>
+<td>三元运算符</td>
+<td><code>条件表达式?表达式1:表达式2</code></td>
+</tr>
+<tr>
+<td>赋值运算符号</td>
+<td><code> = += -= /= *= %= </code></td>
+</tr>
+</tbody></table>
+<h4 id="标识符-Identifier"><a href="#标识符-Identifier" class="headerlink" title="标识符 Identifier"></a>标识符 Identifier</h4><ol>
+<li>Java对任何变量，方法和类命名时使用的字符序列称为标识符</li>
+<li>凡是可以自己取名字的地方都是标识符</li>
+</ol>
+<h5 id="1-标识符命名规则-Identifier-naming-rules"><a href="#1-标识符命名规则-Identifier-naming-rules" class="headerlink" title="1.标识符命名规则 Identifier naming rules"></a>1.标识符命名规则 Identifier naming rules</h5><ol>
+<li>由26个英文字母大小写，0~9，_或$组成</li>
+<li>数字不可以开头</li>
+<li>不可以使用关键字和保留字，但能包含关键字和保留字</li>
+<li>Java中严格区分大小写，长度无限制</li>
+<li>标识符不能包含空格</li>
+</ol>
+<h5 id="2-标识符命名规范-Identifier-naming-conventions"><a href="#2-标识符命名规范-Identifier-naming-conventions" class="headerlink" title="2.标识符命名规范 Identifier naming conventions"></a>2.标识符命名规范 Identifier naming conventions</h5><ol>
+<li>包名: 多单词组成时所有字母都小西额，域名型</li>
+<li>类名，接口名: 多单词组成时，所有单词的首字母大写，大驼峰</li>
+<li>变量名，方法名: 多单词组成时，第一个单词小写，后面的单词首字母大写，小驼峰</li>
+<li>常量名: 所有字母都大写，多单词时每个单词用下划线连接: XXX_YYY_ZZZ</li>
+<li>更多规范见[文档]</li>
+</ol>
+<h4 id="键盘输入类-Java-util-Scanner"><a href="#键盘输入类-Java-util-Scanner" class="headerlink" title="键盘输入类 Java.util.Scanner"></a>键盘输入类 Java.util.Scanner</h4><h4 id="进制-Into-the-system"><a href="#进制-Into-the-system" class="headerlink" title="进制 Into the system"></a>进制 Into the system</h4><ol>
+<li>二进制 binary ，八进制 octal 十进制 decimal 十六进制 hex</li>
+</ol>
 
                 
             </div>
