@@ -601,11 +601,58 @@
 <li>类名，接口名: 多单词组成时，所有单词的首字母大写，大驼峰</li>
 <li>变量名，方法名: 多单词组成时，第一个单词小写，后面的单词首字母大写，小驼峰</li>
 <li>常量名: 所有字母都大写，多单词时每个单词用下划线连接: XXX_YYY_ZZZ</li>
-<li>更多规范见[文档]</li>
+<li>更多规范见<a href="">文档</a></li>
 </ol>
-<h4 id="键盘输入类-Java-util-Scanner"><a href="#键盘输入类-Java-util-Scanner" class="headerlink" title="键盘输入类 Java.util.Scanner"></a>键盘输入类 Java.util.Scanner</h4><h4 id="进制-Into-the-system"><a href="#进制-Into-the-system" class="headerlink" title="进制 Into the system"></a>进制 Into the system</h4><ol>
-<li>二进制 binary ，八进制 octal 十进制 decimal 十六进制 hex</li>
+<h4 id="键盘输入类-java-util-Scanner"><a href="#键盘输入类-java-util-Scanner" class="headerlink" title="键盘输入类 java.util.Scanner"></a>键盘输入类 java.util.Scanner</h4><h4 id="进制-Into-the-system"><a href="#进制-Into-the-system" class="headerlink" title="进制 Into the system"></a>进制 Into the system</h4><ol>
+<li>二进制 binary 八进制 octal 十进制 decimal 十六进制 hex</li>
+<li>二进制显式存储，位数必须为8的倍数，如0b00010101，因为一个字节有8个空间(bit)</li>
+<li>二进制可以表示任何数</li>
 </ol>
+<h5 id="1-二，八，十六进制转十进制"><a href="#1-二，八，十六进制转十进制" class="headerlink" title="1.二，八，十六进制转十进制"></a>1.二，八，十六进制转十进制</h5><p>每位 * (2,8,16)的(n-1)次方</p>
+<h5 id="2-十进制转二，八，十六进制"><a href="#2-十进制转二，八，十六进制" class="headerlink" title="2.十进制转二，八，十六进制"></a>2.十进制转二，八，十六进制</h5><p>将十进制数，不断除以(2,8,16)，直到商为0为止，然后将每步得到的余数倒过来，就是对应的二，八，十六进制数</p>
+<h5 id="3-二进制转八，十六进制"><a href="#3-二进制转八，十六进制" class="headerlink" title="3.二进制转八，十六进制"></a>3.二进制转八，十六进制</h5><ol>
+<li>二进制转八进制：从低位开始，将二进制数每<strong>三</strong>位一组，转成对应的八进制数即可</li>
+<li>二进制转十六进制：从低位开始，将二进制每<strong>四</strong>位一组，转成对应的十六进制即可</li>
+</ol>
+<h5 id="4-八，十六进制转二进制"><a href="#4-八，十六进制转二进制" class="headerlink" title="4.八，十六进制转二进制"></a>4.八，十六进制转二进制</h5><ol>
+<li>将八进制数每位，转成对应的一个3位的二进制数即可</li>
+<li>将十六进制数每位，转成对应的一个4位的二进制数即可</li>
+</ol>
+<h4 id="原码，反码，补码-底层，重点，难点-对于有符号的而言"><a href="#原码，反码，补码-底层，重点，难点-对于有符号的而言" class="headerlink" title="原码，反码，补码(底层，重点，难点)(对于有符号的而言)"></a><strong>原码，反码，补码</strong>(底层，重点，难点)(对于有符号的而言)</h4><ol>
+<li>二进制的最高位(最左位)的符号位: 0表示正数，1表示负数</li>
+<li>正数的原码，反码，补码都一样(三码合一)</li>
+<li>负数的反码 = 它的原码符号位不变，其它位取反</li>
+<li>负数的补码 = 它的反码 + 1，负数的反码 = 负数的补码 - 1</li>
+<li>0的反码，补码都是0</li>
+<li>java没有无符号数，换言之，java中的数都是有符号的</li>
+<li>在计算机运算的时候，都是以<strong>补码的方式来运算</strong>的</li>
+<li>当我们看到运算结果的时候，要看它的<strong>原码</strong></li>
+</ol>
+<h4 id="位运算符-Bitwise-operator"><a href="#位运算符-Bitwise-operator" class="headerlink" title="位运算符 Bitwise operator"></a>位运算符 Bitwise operator</h4><p><code>& | ^ ~ >> << >>></code></p>
+<table>
+<thead>
+<tr>
+<th>位运算符</th>
+<th>规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>按位与&amp;</td>
+<td>两位全为1，结果为1，否则为0</td>
+</tr>
+<tr>
+<td>按位或&#124;</td>
+<td>两位有一个为1，结果为1，否则为0</td>
+</tr>
+<tr>
+<td>按位异或^</td>
+<td>两位一个为0，一个为1，结果为1，否则为0</td>
+</tr>
+<tr>
+<td>按位取反~</td>
+<td>0 -&gt; 1 ,1 -&gt; 0</td>
+</tr>
+</tbody></table>
 
                 
             </div>
