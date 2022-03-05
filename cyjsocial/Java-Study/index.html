@@ -473,7 +473,9 @@
 <li>需要转换一串运算结果时，常用小括号提升优先级</li>
 <li>强制类型转换会造成精度损失</li>
 </ol>
-<h3 id="4-chapter04-运算符和标识符-Operator-and-Identifier"><a href="#4-chapter04-运算符和标识符-Operator-and-Identifier" class="headerlink" title="4).chapter04 运算符和标识符 Operator and Identifier"></a>4).chapter04 运算符和标识符 Operator and Identifier</h3><h4 id="算术运算符-Arithmetic-operator"><a href="#算术运算符-Arithmetic-operator" class="headerlink" title="算术运算符 Arithmetic operator"></a>算术运算符 Arithmetic operator</h4><h4 id="关系运算符-Relational-operator"><a href="#关系运算符-Relational-operator" class="headerlink" title="关系运算符 Relational operator"></a>关系运算符 Relational operator</h4><h4 id="逻辑运算符-Logic-operator"><a href="#逻辑运算符-Logic-operator" class="headerlink" title="逻辑运算符 Logic operator"></a>逻辑运算符 Logic operator</h4><ol>
+<h3 id="4-chapter04-运算符和标识符-Operator-and-Identifier"><a href="#4-chapter04-运算符和标识符-Operator-and-Identifier" class="headerlink" title="4).chapter04 运算符和标识符 Operator and Identifier"></a>4).chapter04 运算符和标识符 Operator and Identifier</h3><h4 id="算术运算符-Arithmetic-operator"><a href="#算术运算符-Arithmetic-operator" class="headerlink" title="算术运算符 Arithmetic operator"></a>算术运算符 Arithmetic operator</h4><p>算术运算符是对数值类型的变量进行运算的<code>+ - * / %</code></p>
+<h4 id="关系运算符-Relational-operator"><a href="#关系运算符-Relational-operator" class="headerlink" title="关系运算符 Relational operator"></a>关系运算符 Relational operator</h4><p>关系运算符也叫比较运算符 <code> == != > < >= <= instanceof </code></p>
+<h4 id="逻辑运算符-Logic-operator"><a href="#逻辑运算符-Logic-operator" class="headerlink" title="逻辑运算符 Logic operator"></a>逻辑运算符 Logic operator</h4><ol>
 <li>短路与&amp;&amp; ，短路或|| 取反！</li>
 <li>逻辑与&amp; ，逻辑或|，逻辑异或^</li>
 </ol>
@@ -534,16 +536,17 @@
 <h4 id="赋值运算符-Assign-operator"><a href="#赋值运算符-Assign-operator" class="headerlink" title="赋值运算符 Assign operator"></a>赋值运算符 Assign operator</h4><ol>
 <li>运算顺序从右往左</li>
 <li>赋值运算符的左边只能是变量，右边可以是变量，表达式，常量值</li>
-<li>复合赋值运算符 +=，-=，/=，%=，*=</li>
+<li>复合赋值运算符 <code>+=，-=，/=，%=，*=</code></li>
 <li>复合赋值运算符会进行类型转换 <code>b += 2; // b = (byte)(b + 2) </code></li>
 </ol>
 <h4 id="三元运算符-Ternary-operator"><a href="#三元运算符-Ternary-operator" class="headerlink" title="三元运算符 Ternary operator"></a>三元运算符 Ternary operator</h4><ol>
 <li><code>条件表达式?表达式1:表达式2</code> 一真大师</li>
-<li>三元运算符可以转换成if-else语句 <code>if (条件表达式) &#123;表达式1&#125; else &#123;表达式2&#125;;</code></li>
+<li>三元运算符可以转换成if-else语句 <code>if (条件表达式) &#123;表达式1;&#125; else &#123;表达式2;&#125;</code></li>
 </ol>
 <h4 id="运算符优先级-Operator-priority"><a href="#运算符优先级-Operator-priority" class="headerlink" title="运算符优先级 Operator priority"></a>运算符优先级 Operator priority</h4><ol>
 <li>运算符有不同的优先级，就是所谓的运算顺序</li>
 <li>只有单目运算符，赋值运算符是从右向左运算的</li>
+<li>不用背，用多了，就熟悉了</li>
 </ol>
 <table>
 <thead>
@@ -562,7 +565,7 @@
 </tr>
 <tr>
 <td>算术运算符</td>
-<td><code>+ - * /</code></td>
+<td><code>+ - * / %</code></td>
 </tr>
 <tr>
 <td>位移运算符</td>
@@ -603,7 +606,8 @@
 <li>常量名: 所有字母都大写，多单词时每个单词用下划线连接: XXX_YYY_ZZZ</li>
 <li>更多规范见<a href="">文档</a></li>
 </ol>
-<h4 id="键盘输入类-java-util-Scanner"><a href="#键盘输入类-java-util-Scanner" class="headerlink" title="键盘输入类 java.util.Scanner"></a>键盘输入类 java.util.Scanner</h4><h4 id="进制-Into-the-system"><a href="#进制-Into-the-system" class="headerlink" title="进制 Into the system"></a>进制 Into the system</h4><ol>
+<h4 id="键盘输入类-java-util-Scanner"><a href="#键盘输入类-java-util-Scanner" class="headerlink" title="键盘输入类 java.util.Scanner"></a>键盘输入类 java.util.Scanner</h4><p><code>Scanner myScanner = new Scanner(System.in);</code></p>
+<h4 id="进制-Into-the-system"><a href="#进制-Into-the-system" class="headerlink" title="进制 Into the system"></a>进制 Into the system</h4><ol>
 <li>二进制 binary 八进制 octal 十进制 decimal 十六进制 hex</li>
 <li>二进制显式存储，位数必须为8的倍数，如0b00010101，因为一个字节有8个空间(bit)</li>
 <li>二进制可以表示任何数</li>
@@ -624,11 +628,14 @@
 <li>负数的反码 = 它的原码符号位不变，其它位取反</li>
 <li>负数的补码 = 它的反码 + 1，负数的反码 = 负数的补码 - 1</li>
 <li>0的反码，补码都是0</li>
-<li>java没有无符号数，换言之，java中的数都是有符号的</li>
+<li>java没有无符号数，换言之，java中的数都是<strong>有符号的</strong></li>
 <li>在计算机运算的时候，都是以<strong>补码的方式来运算</strong>的</li>
 <li>当我们看到运算结果的时候，要看它的<strong>原码</strong></li>
+<li>补码:为了方便存储有符号位的负数，和方便加减法运算，变成只有加法的二进制运算，提高执行效率，把正数和整数统一起来了，后面有时间学学计组</li>
 </ol>
-<h4 id="位运算符-Bitwise-operator"><a href="#位运算符-Bitwise-operator" class="headerlink" title="位运算符 Bitwise operator"></a>位运算符 Bitwise operator</h4><p><code>& | ^ ~ >> << >>></code></p>
+<h4 id="位运算符-Bitwise-operator"><a href="#位运算符-Bitwise-operator" class="headerlink" title="位运算符 Bitwise operator"></a>位运算符 Bitwise operator</h4><ol>
+<li><code>& | ^ ~ >> << >>></code></li>
+</ol>
 <table>
 <thead>
 <tr>
@@ -653,6 +660,12 @@
 <td>0 -&gt; 1 ,1 -&gt; 0</td>
 </tr>
 </tbody></table>
+<ol start="2">
+<li>算术右移 &gt;&gt;: 低位溢出，符号位不变，并用符号位补溢出的高位</li>
+<li>算术左移 &lt;&lt;: 符号位不变，低位补0</li>
+<li>无符号(逻辑)右移 &gt;&gt;&gt; : 低位溢出，高位补0</li>
+<li>没有 &lt;&lt;&lt; 符号</li>
+</ol>
 
                 
             </div>
