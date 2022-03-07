@@ -714,7 +714,7 @@
 <td><code>10000000 00000000 00000000 00000100</code></td>
 </tr>
 </tbody></table>
-<h3 id="chapter05-控制结构-Control-structure"><a href="#chapter05-控制结构-Control-structure" class="headerlink" title="chapter05 控制结构 Control structure"></a>chapter05 控制结构 Control structure</h3><h4 id="分支控制-Branch-control"><a href="#分支控制-Branch-control" class="headerlink" title="分支控制 Branch control"></a>分支控制 Branch control</h4><h5 id="1-if单分支-if-else双分支-if-else-if-else多分支"><a href="#1-if单分支-if-else双分支-if-else-if-else多分支" class="headerlink" title="1.if单分支 if-else双分支 if-else if-else多分支"></a>1.if单分支 if-else双分支 if-else if-else多分支</h5><p>1.多分支可以没有else，如果所有的条件表达式都不成立，则一个执行入口都没有，多分支最多只能有一个执行入口<br>2.嵌套分支 Nested branches</p>
+<h3 id="05-chapter05-控制结构-Control-structure"><a href="#05-chapter05-控制结构-Control-structure" class="headerlink" title="05)chapter05 控制结构 Control structure"></a>05)chapter05 控制结构 Control structure</h3><h4 id="分支控制-Branch-control"><a href="#分支控制-Branch-control" class="headerlink" title="分支控制 Branch control"></a>分支控制 Branch control</h4><h5 id="1-if单分支-if-else双分支-if-else-if-else多分支"><a href="#1-if单分支-if-else双分支-if-else-if-else多分支" class="headerlink" title="1.if单分支 if-else双分支 if-else if-else多分支"></a>1.if单分支 if-else双分支 if-else if-else多分支</h5><p>1.多分支可以没有else，如果所有的条件表达式都不成立，则一个执行入口都没有，多分支最多只能有一个执行入口<br>2.嵌套分支 Nested branches</p>
 <h5 id="2-switch-case-default"><a href="#2-switch-case-default" class="headerlink" title="2.switch-case-default"></a>2.switch-case-default</h5><ol>
 <li>default不需要break;</li>
 <li>表达式数据类型，应该和case后的常量类型<strong>一致</strong>，或者是可以<strong>自动转换</strong>可以相互比较的</li>
@@ -723,7 +723,7 @@
 <li>default子句是可选的，当没有匹配的case时，执行default，如果没有default子句则没有任何输出</li>
 <li>case子句中如果没有break，则会按顺序执行到switch结尾</li>
 </ol>
-<p>如果判断的具体数值不多，而且符合byte,short,int,char,enum[],String这6种类型，建议使用switch<br>其他情况：对区间判断，对结果为boolean类型判断，建议使用if</p>
+<h5 id="3-嵌套分支-Nested-branches"><a href="#3-嵌套分支-Nested-branches" class="headerlink" title="3.嵌套分支 Nested branches"></a>3.嵌套分支 Nested branches</h5><p>如果判断的具体数值不多，而且符合byte,short,int,char,enum[],String这6种类型，建议使用switch<br>其他情况：对区间判断，对结果为boolean类型判断，建议使用if</p>
 <h4 id="循环控制-Loop-control"><a href="#循环控制-Loop-control" class="headerlink" title="循环控制 Loop control"></a>循环控制 Loop control</h4><h5 id="1-for循环控制"><a href="#1-for循环控制" class="headerlink" title="1.for循环控制"></a>1.for循环控制</h5><ol>
 <li><code> for (循环变量初始化;循环条件;循环变量迭代) &#123; 循环体; &#125; </code></li>
 <li>循环初始值可以有多条初始化语句，但要求类型一致，并且中间用<strong>逗号</strong>隔开</li>
@@ -740,7 +740,7 @@
 <li>最后有一个<strong>分号;</strong>,别忘了</li>
 <li>do while是关键词</li>
 </ol>
-<h5 id="4-多重循环，嵌套循环-nested-loop"><a href="#4-多重循环，嵌套循环-nested-loop" class="headerlink" title="4.多重循环，嵌套循环 nested loop"></a>4.多重循环，嵌套循环 nested loop</h5><ol>
+<h5 id="4-多重循环，嵌套循环-Nested-loop"><a href="#4-多重循环，嵌套循环-Nested-loop" class="headerlink" title="4.多重循环，嵌套循环 Nested loop"></a>4.多重循环，嵌套循环 Nested loop</h5><ol>
 <li>实质上，嵌套循环就是把内层循环当成外层循环的循环体，当只有内层循环的循环条件为false时，才会完全跳出内层循环，进行下一个外层循环</li>
 <li>空心金字塔，空心菱形，化繁为简，先死后活，循序渐进，建立编程思想</li>
 </ol>
