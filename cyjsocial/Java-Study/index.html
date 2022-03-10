@@ -752,6 +752,71 @@
 </ol>
 <h5 id="2-continue"><a href="#2-continue" class="headerlink" title="2.continue"></a>2.continue</h5><p>continue语句用于结束本次循环，进入下一次循环</p>
 <h5 id="3-return"><a href="#3-return" class="headerlink" title="3.return"></a>3.return</h5><p>当return用在方法时，表示跳出方法，用在main时，表示退出程序</p>
+<h3 id="06-数组-Array"><a href="#06-数组-Array" class="headerlink" title="06) 数组 Array"></a>06) 数组 Array</h3><h4 id="数组的使用-use-of-arrays"><a href="#数组的使用-use-of-arrays" class="headerlink" title="数组的使用 use of arrays"></a>数组的使用 use of arrays</h4><h5 id="1-动态初始化-Dynamic-initialization"><a href="#1-动态初始化-Dynamic-initialization" class="headerlink" title="1.动态初始化 Dynamic initialization"></a>1.动态初始化 Dynamic initialization</h5><p>第一种方式:</p>
+<p><code>int[] a = new int[]</code></p>
+<p>第二种方式:</p>
+<ol>
+<li>先声明数组<code> int a[]; | int[] a; </code> 不会分配空间，a为空</li>
+<li><code>a = new int[5];</code> ,分配内存空间，可以存放数据</li>
+</ol>
+<h5 id="2-静态初始化-Static-initialization"><a href="#2-静态初始化-Static-initialization" class="headerlink" title="2.静态初始化 Static initialization"></a>2.静态初始化 Static initialization</h5><p><code>int[] a = &#123;1,2,3,4,5&#125;;</code></p>
+<h4 id="数组细节-Array-detail"><a href="#数组细节-Array-detail" class="headerlink" title="数组细节 Array detail"></a>数组细节 Array detail</h4><ol>
+<li>数组是多个相同类型数据的组合，用于对这些数据的统一管理</li>
+<li>数组中的元素可以是任何数据类型，包括基本数据类型和引用数据类型，但不能混用</li>
+<li>数组创建后如果没有赋值，有默认值</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>int</th>
+<th>short</th>
+<th>byte</th>
+<th>long</th>
+<th>float</th>
+<th>double</th>
+<th>char</th>
+<th>boolean</th>
+<th>String</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>\u0000</td>
+<td>false</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li>数组的下标是从0开始的，使用时必须在指定范围内使用</li>
+<li>数组属于引用数据类型，数组型数据是对象object</li>
+</ol>
+<h4 id="数组赋值机制-Array-assign"><a href="#数组赋值机制-Array-assign" class="headerlink" title="数组赋值机制 Array assign"></a>数组赋值机制 Array assign</h4><ol>
+<li>基本数据类型(相互)赋值方式是，<strong>值拷贝</strong>，互不影响</li>
+<li>数组在默认情况下是引用传递，赋的值是地址，赋值方式是引用传达</li>
+</ol>
+<h4 id="冒泡算法-Bubble-algorithm"><a href="#冒泡算法-Bubble-algorithm" class="headerlink" title="冒泡算法 Bubble algorithm"></a>冒泡算法 Bubble algorithm</h4><ol>
+<li>假设有五个元素</li>
+<li>一共会进行4轮排序，可以看成是一个外层循环</li>
+<li>每一轮排序可以确定一个数的位置，比如第一轮排序确定最大数，第二轮排序，确定第2大的数位置，依次类推</li>
+<li>当进行比较时，如果前面的数大于后面的数，就交换</li>
+<li>每轮比较次数都减少1次</li>
+</ol>
+<h4 id="查找-Search"><a href="#查找-Search" class="headerlink" title="查找 Search"></a>查找 Search</h4><p>1.顺序查找<br>2.二分法查找</p>
+<h4 id="多维数组-Multidimensional-Arrays"><a href="#多维数组-Multidimensional-Arrays" class="headerlink" title="多维数组 Multidimensional Arrays"></a>多维数组 Multidimensional Arrays</h4><h5 id="1-二维数组-two-dimensional-array"><a href="#1-二维数组-two-dimensional-array" class="headerlink" title="1.二维数组 two-dimensional array"></a>1.二维数组 two-dimensional array</h5><p>二维数组实际上是由多个一维数组组成的，它的各个一维数组的长度可以相同</p>
+<p>动态初始化：</p>
+<ol>
+<li><code>类型[][] 数组名;数组名 = new 类型[大小][大小]</code> 先声明，不分配空间，new之后分配空间</li>
+<li><code>类型[][] 数组名 = new 类型[大小][大小]</code></li>
+<li><code>类型[] 数组名[] = new 类型[大小][大小]</code></li>
+<li><code>类型 数组名[][] = new 类型[大小][大小]</code></li>
+</ol>
+<p>静态初始化：<code>类型[][] 数组名 = &#123;&#123;1,2,3&#125;,&#123;1,2&#125;,&#123;1&#125;&#125;</code></p>
+<h5 id="2-N维数组-N-dimensional-array"><a href="#2-N维数组-N-dimensional-array" class="headerlink" title="2.N维数组 N-dimensional array"></a>2.N维数组 N-dimensional array</h5><p>照虎花猫，根据二维数组类推</p>
 
                 
             </div>
