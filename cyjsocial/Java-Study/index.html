@@ -977,7 +977,7 @@
 <li>Ctrl + / 注释 </li>
 <li>Alt + Enter 导入</li>
 <li>Ctrl + Shift + L 代码格式化</li>
-<li>Ctrl + B 显示方法定义的位置</li>
+<li>Ctrl + B 跳转到方法定义的位置,即源码</li>
 <li>new Object().var 自动生成变量名</li>
 <li>Ctrl + H 显示层级关系(继承相关)</li>
 <li>Ctrl + Shift + F10 运行代码</li>
@@ -1003,7 +1003,7 @@
 </ol>
 <h5 id="3-包的本质-The-essence-of-the-package"><a href="#3-包的本质-The-essence-of-the-package" class="headerlink" title="3.包的本质 The essence of the package"></a>3.包的本质 The essence of the package</h5><p>包的本质实际上就是创建不同的文件夹/目录来保存文件</p>
 <h5 id="4-包的命名-The-name-of-the-package"><a href="#4-包的命名-The-name-of-the-package" class="headerlink" title="4.包的命名 The name of the package"></a>4.包的命名 The name of the package</h5><ol>
-<li>只能包含数字，字母，下划线，小圆点，但不能用数字开头，不能时关键词或保留字</li>
+<li>只能包含数字，字母，下划线，小圆点，但不能用数字开头，不能是关键词或保留字</li>
 <li>一般是小写字母</li>
 <li>com.公司名.项目名.业务模块名 com.huawei…</li>
 </ol>
@@ -1062,6 +1062,7 @@
 <li>只有默认和public才能修饰类，并且遵顼上述访问权限的特点</li>
 <li>关于子类的访问权限，后面补充</li>
 <li>成员方法的访问规则和属性完全一样</li>
+<li>父子类可以不同包，所以子类不一定能访问父类的默认成员</li>
 </ol>
 <h4 id="面向对象三大特征-oop-three-characteristics"><a href="#面向对象三大特征-oop-three-characteristics" class="headerlink" title="面向对象三大特征 oop three characteristics"></a>面向对象三大特征 oop three characteristics</h4><h5 id="1-封装-Encapsulation"><a href="#1-封装-Encapsulation" class="headerlink" title="1.封装 Encapsulation"></a>1.封装 Encapsulation</h5><p>概念:</p>
 <p>封装就是把抽象出的数据(属性)和对数据的操作(方法)封装在一起，数据被保护在内部，程序的其他部分只有通过被授权的操作(方法)，才能对数据进行操作</p>
@@ -1077,23 +1078,165 @@
 <li><code>public getXxx(类型 xxx) &#123;//加入数据验证的业务逻辑 this.xxx = xxx;&#125;</code></li>
 <li><code>public setXxx(类型 xxx) &#123;//权限判断 return xxx;&#125;</code></li>
 </ol>
-<h5 id="2-继承-Extend"><a href="#2-继承-Extend" class="headerlink" title="2.继承 Extend"></a>2.继承 Extend</h5><p>为什么需要继承？小学生类和大学生类的属性和方法有很多相同的，所以需要继承来提高代码复用</p>
-<p>继承的语法:<br><code>class 子类 extends 父类&#123;&#125;</code></p>
+<h5 id="2-继承-Extend"><a href="#2-继承-Extend" class="headerlink" title="2.继承 Extend"></a>2.继承 Extend</h5><p>为什么需要继承？小学生类和大学生类的属性和方法有很多相同的，所以需要继承来<strong>提高代码复用</strong></p>
+<h6 id="继承的语法"><a href="#继承的语法" class="headerlink" title="继承的语法"></a>继承的语法</h6><p><code>class 子类 extends 父类&#123;&#125;</code></p>
 <ol>
 <li>子类将会自动拥有父类定义的属性和方法</li>
 <li>父类又叫超类，基类，子类又叫派生类</li>
 </ol>
-<p>继承的细节:</p>
-<ol>
-<li>子类继承了所有的属性和方法，非私有的属性和方法可以在子类直接访问，但是私有属性和方法不能在子类直接访问，要通过父类提供的<strong>公共方法</strong>来访问</li>
-<li>子类必须调用父类的构造器，完成父类的初始化</li>
-<li>当创建子类对象时，不管使用子类的哪个构造器，默认情况下总会去调用父类的无参构造器，如果父类没有提供无参构造器，则必须在子类的构造器中用super去指顶使用父类的哪个构造器完成对父类的初始化，否则，编译无法通过</li>
+<h6 id="继承的细节"><a href="#继承的细节" class="headerlink" title="继承的细节"></a>继承的细节</h6><ol>
+<li>子类继承了父类<strong>所有</strong>的属性和方法，非私有的属性和方法可以在子类直接访问，但是<strong>私有属性和方法不能在子类直接访问</strong>，要通过父类提供的<strong>公共方法</strong>来访问</li>
+<li>子类<strong>必须</strong>调用父类的构造器，完成父类的<strong>初始化</strong></li>
+<li>当创建子类对象时，不管使用子类的哪个构造器，默认情况下总会去调用父类的无参构造器(<code>super();</code>可省略)，如果父类<strong>没有无参构造器</strong>，则<strong>必须</strong>在子类的构造器中用<code>super(形参);</code>去指定使用父类的哪个构造器完成对父类的初始化</li>
 <li>如果希望指定去调用父类的某个构造器，则显式的调用一下</li>
-<li><code>super();</code>和<code>this();</code>一样，必须放在构造器的第一句，因此这两个<strong>方法</strong>不可能存在于同一个构造器中</li>
+<li><code>super();</code>和<code>this();</code>一样，必须放在构造器的第一句，因此这两个<strong>方法</strong>不可能存在于同一个构造器中,小细节(<code>this();</code>是调用当前类中其他的构造器，所以<code>this();</code>是一定包含有<code>super();</code>方法的)</li>
 <li>Java所有类都是Object类的子类，因此所有类都是默认继承Object类的</li>
-<li>构造器的调用不限于父类，父类也会调用其父类的构造器，这将一直追溯到Object类(顶级父类)</li>
-<li>子类做多只能继承一个父类(指直接继承),即Java中是单继承机制</li>
-<li>不能滥用继承，子类和父类之间必须满足 is - a 的逻辑关系</li>
+<li>构造器的调用不限于父类，父类也会调用其父类的构造器，这将一直<strong>追溯</strong>到Object类(顶级父类)</li>
+<li>子类最多只能继承一个父类(指直接继承),即Java中是<strong>单继承机制</strong></li>
+<li>不能滥用继承，子类和父类之间必须满足 <strong>is - a</strong> 的逻辑关系</li>
+<li>个人总结:<code>this();</code>是用来调用当前类的其他构造器，<code>super();</code>是用来调用其父类的构造器的</li>
+</ol>
+<h6 id="继承的本质"><a href="#继承的本质" class="headerlink" title="继承的本质"></a>继承的本质</h6><ol>
+<li>当子类对象创建好后，建立<strong>查找</strong>的关系</li>
+<li>访问子类对象属性时，首先看子类是否有该属性</li>
+<li>如果子类有这个属性，并且<strong>可以访问</strong>，则返回信息,若不能访问，则直接报错</li>
+<li>如果子类没有这个属性，就看父类有没有这个属性，一直追溯到Object类</li>
+</ol>
+<h6 id="super"><a href="#super" class="headerlink" title="super"></a>super</h6><p>super grammar:</p>
+<ol>
+<li>super代表父类的引用，用于访问父类的属性，方法，构造器，不能访问父类的<strong>private</strong>属性，方法</li>
+<li><code>super(参数列表);</code><strong>只能</strong>出现在构造器中，且必须在第一句</li>
+</ol>
+<p>super detail:</p>
+<ol>
+<li>调用父类构造器的好处(分工明确，父类属性由父类构造器初始化，子类属性由子类构造器初始化)</li>
+<li>当子类中有属性和父类的成员(属性和方法)重名时，为了访问父类的成员，必须通过super，如果没有重名，使用super，this，或直接访问是一样的效果</li>
+<li>super的访问不限于父类，如果爷爷类和本类中有同名的成员，也可以使用super去访问爷爷类的成员，如果多个基类中都有同名的成员，使用super访问遵循<strong>就近原则</strong>，当然也需要遵守访问权限的相关规则</li>
+<li><code>xxx();</code>等价于<code>this.xxx();</code><code>super.xxx();</code><strong>直接跳过对本类的查找</strong>，查找父类，一直追溯到Object类</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>区别点</th>
+<th>this</th>
+<th>super</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>访问属性</td>
+<td>如果本类没有此属性则从父类中继续查找</td>
+<td>从父类开始查找属性</td>
+</tr>
+<tr>
+<td>访问方法</td>
+<td>如果本类没有此方法则从父类中继续查找</td>
+<td>从父类开始查找方法</td>
+</tr>
+<tr>
+<td>调用构造器</td>
+<td>调用本类构造器，必须放在构造器首行</td>
+<td>调用父类构造器，必须放在子类构造器首行</td>
+</tr>
+<tr>
+<td>特殊</td>
+<td>表示当前对象</td>
+<td>子类中访问父类对象</td>
+</tr>
+</tbody></table>
+<h6 id="方法重写-Method-override"><a href="#方法重写-Method-override" class="headerlink" title="方法重写 Method override:"></a>方法重写 Method override:</h6><p>简单的说:方法重写(覆盖)就是子类有一个方法，和父类的某个方法的名称，返回类型，<br>参数一样，那麽我们就说子类的这个方法重写了父类的方法</p>
+<h6 id="细节"><a href="#细节" class="headerlink" title="细节:"></a>细节:</h6><ol>
+<li>子类方法的<strong>形参列表</strong>，<strong>方法名称</strong>要和父类的完全一样</li>
+<li>子类方法的返回类型和父类方法的返回类型一样，或者是父类返回类型的子类</li>
+<li>子类不能<strong>缩小</strong>父类方法的访问权限，但可以扩大父类方法的访问权限</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>发生范围</th>
+<th>方法名</th>
+<th>形参列表</th>
+<th>返回类型</th>
+<th>修饰符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>重载(overload)</td>
+<td>本类</td>
+<td>必须相同</td>
+<td>必须不同</td>
+<td>无要求</td>
+<td>无要求</td>
+</tr>
+<tr>
+<td>重写(override)</td>
+<td>父子类</td>
+<td>必须相同</td>
+<td>必须相同</td>
+<td>相同，或者是父类返回类型的子类</td>
+<td>不能缩小父类访问方法的访问权限</td>
+</tr>
+</tbody></table>
+<h5 id="4-多态-polymorphic"><a href="#4-多态-polymorphic" class="headerlink" title="4.多态 polymorphic"></a>4.多态 polymorphic</h5><p>方法或对象具有多种形态，是面向对象的第三大特征，多态是建立在封装和继承基础之上的，提高代码复用性</p>
+<p>方法的多态体现在<strong>重载和重写</strong></p>
+<h6 id="对象的多态-核心，困难，重点"><a href="#对象的多态-核心，困难，重点" class="headerlink" title="对象的多态(核心，困难，重点)"></a>对象的多态(核心，困难，重点)</h6><ol>
+<li>一个对象的编译类型和运行类型可以不一致</li>
+<li>编译类型在定义对象时，就确定了，不能改变</li>
+<li>运行类型是可以变化的</li>
+<li><strong>编译类型看定义是 = 的左边，运行类型是 = 号的右边</strong></li>
+</ol>
+<h6 id="多态的细节"><a href="#多态的细节" class="headerlink" title="多态的细节:"></a>多态的细节:</h6><p>前提: 两个对象(类)存在继承关系</p>
+<p>多态的向上转型:</p>
+<ol>
+<li>可以调用父类中的所有成员(遵守访问权限)</li>
+<li>但是不能调用子类的特有成员 </li>
+<li>因为在编译阶段，能调用那些成员，是由编译类型决定的，所以animal.catchMouse();错误 </li>
+<li>最终的运行效果还要看运行类型的具体实现，即调用方法时，按照从运行类型开始查找方法，然后调用</li>
+</ol>
+<p>多态的向下转型:</p>
+<ol>
+<li>语法:<code>子类类型 引用名 = (子类类型) 父类引用;</code></li>
+<li>只能强转父类的引用，不能强转父类的对象,且强转后，父类引用本身的指向不会发生变化</li>
+<li>要求父类的引用必须指向的是当前目标类型的对象</li>
+<li>可以调用子类类型中的所有的成员</li>
+</ol>
+<p>属性没有重写之说，属性的值直接看<strong>编译类型</strong></p>
+<p><code>instanceof</code> 比较操作符,用于判断对象的<strong>运行类型</strong>是否为XX类型或XX类型的子类型</p>
+<h6 id="Java的动态绑定-非常非常重要-Dynamic-banding"><a href="#Java的动态绑定-非常非常重要-Dynamic-banding" class="headerlink" title="Java的动态绑定(非常非常重要) Dynamic banding"></a>Java的动态绑定(非常非常重要) Dynamic banding</h6><ol>
+<li>当调用对象方法的时候，该方法会和该对象的<strong>内存地址/运行类型</strong> 绑定</li>
+<li>当调用对象属性的时候，没有动态绑定机制，<strong>哪里声明，哪里使用</strong></li>
+</ol>
+<h6 id="多态数组-Polymorphic-array"><a href="#多态数组-Polymorphic-array" class="headerlink" title="多态数组 Polymorphic array"></a>多态数组 Polymorphic array</h6><p>数组的定义类型为<strong>父类</strong>类型，里面保存的实际元素类型为<strong>子类</strong>类型</p>
+<h6 id="多态参数"><a href="#多态参数" class="headerlink" title="多态参数"></a>多态参数</h6><p>方法定义的<strong>形参</strong>类型为<strong>父类</strong>类型，<strong>实参</strong>类型允许为<strong>子类</strong>类型</p>
+<h5 id="Object类详解"><a href="#Object类详解" class="headerlink" title="Object类详解"></a>Object类详解</h5><h6 id="和-equals方法对比"><a href="#和-equals方法对比" class="headerlink" title="== 和 equals方法对比"></a>== 和 equals方法对比</h6><ol>
+<li>== 既可以判断基本类型，又可以判断引用类型</li>
+<li>== 如果判断基本类型，判断的值是否相等</li>
+<li>== 如果判断引用类型，判断的是地址是否相等，即判断是不是同一个对象</li>
+<li>equals方法只能比较引用类型，如果两者不相关联，则直接编译报错</li>
+<li>有时候需要重写equals方法，来满足业务需求</li>
+</ol>
+<h6 id="hashCode-方法"><a href="#hashCode-方法" class="headerlink" title="hashCode 方法"></a>hashCode 方法</h6><ol>
+<li>提高具有<strong>哈希结构的容器的效率</strong></li>
+<li>两个引用，如果指向的是同一个对象，则哈希值肯定是一样的</li>
+<li>两个引用，如果指向的是不同对象，则哈希值是不一样的</li>
+<li>哈希值主要根据地址号来的，但<strong>哈希值不是真正的地址</strong></li>
+<li>后面在集合中，hashCode方法，如果需要的话，也会重写</li>
+</ol>
+<h6 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString 方法"></a>toString 方法</h6><ol>
+<li>默认返回:全类名 + @ + 哈希值的十六进制</li>
+<li>重写toString方法,打印对象或拼接对象的属性，都会自动调用</li>
+<li>直接打印对象的引用，会<strong>默认调用</strong>toString()方法，因此toString()是可以省略的</li>
+</ol>
+<h6 id="finalize-方法"><a href="#finalize-方法" class="headerlink" title="finalize 方法"></a>finalize 方法</h6><ol>
+<li>当对象被回收时，系统自动调用该对象的finalize方法，子类可以重写该方法，做一些<strong>释放资源</strong>的操作</li>
+<li>什么时候被回收:当某个对象没有任何引用时，则Jvm就认为这个对象是一个垃圾对象，就会使用垃圾回收机制来销毁该对象，在销毁该对象前会调用finalize方法</li>
+<li>垃圾回收机制的调用，是由系统来决定的(即它有自己的GC算法),也可以通过System.gc() 主动除法垃圾回收机制</li>
+<li>实际开发中，几乎不会使用finalize方法,且System.gc()也是一个危险操作，更多就是应付面试</li>
+</ol>
+<h4 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h4><ol>
+<li>Debug，可以用断点调试，一步一步地看源码执行的过程，从而发现错误所在</li>
+<li>重要提示:在断点调试 过程中，是运行状态，是以对象的<strong>运行类型</strong>来执行的</li>
+<li>F7跳入，F8跳过，Shift + F8跳出，F9执行到下一个断点</li>
 </ol>
 
                 
@@ -1207,29 +1350,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/cyjsocial/Java-Study/">
+                <a href="/cyjsocial/Docker/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Java Study">
                         
-                        <span class="card-title">Java Study</span>
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker">
+                        
+                        <span class="card-title">Docker</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一份樸實無華的Java學習筆記
+                            容器技术
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1237,19 +1380,6 @@
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
-                    </a>
-                    
                 </div>
                 
             </div>
