@@ -1265,7 +1265,7 @@
 <ol>
 <li>完成获取用户各种输入</li>
 </ol>
-<h2 id="Second-stage"><a href="#Second-stage" class="headerlink" title="Second stage"></a>Second stage</h2><h3 id="chapter10-面向对象编程-高级-Object-Oriented-Programming-high-level"><a href="#chapter10-面向对象编程-高级-Object-Oriented-Programming-high-level" class="headerlink" title="chapter10 面向对象编程(高级) Object-Oriented Programming (high-level)"></a>chapter10 面向对象编程(高级) Object-Oriented Programming (high-level)</h3><h4 id="static"><a href="#static" class="headerlink" title="static"></a>static</h4><h5 id="类变量-静态变量"><a href="#类变量-静态变量" class="headerlink" title="类变量(静态变量)"></a>类变量(静态变量)</h5><ol>
+<h2 id="Second-stage"><a href="#Second-stage" class="headerlink" title="Second stage"></a>Second stage</h2><h3 id="chapter10-面向对象编程-高级-Object-Oriented-Programming-high-level"><a href="#chapter10-面向对象编程-高级-Object-Oriented-Programming-high-level" class="headerlink" title="chapter10 面向对象编程(高级) Object-Oriented Programming (high-level)"></a>chapter10 面向对象编程(高级) Object-Oriented Programming (high-level)</h3><h4 id="static"><a href="#static" class="headerlink" title="static"></a>static</h4><h5 id="类变量-静态变量-Static-variable"><a href="#类变量-静态变量-Static-variable" class="headerlink" title="类变量(静态变量) Static variable"></a>类变量(静态变量) Static variable</h5><ol>
 <li>类变量也叫静态变量，是该类的<strong>所有对象共享</strong>的变量</li>
 <li>语法: <code>访问修饰符 static 数据类型 变量名;</code> &amp; <code>static 访问修饰符 数据类型 变量名;</code></li>
 <li>普通属性还可以叫普通成员变量，非静态属性，非静态成员变量，实例变量</li>
@@ -1273,7 +1273,7 @@
 <li>访问方法 <code>对象名.类变量名</code> &amp; <code>类名.类变量名</code>(推荐)，必须遵守访问权限</li>
 <li>类变量的生命周期是随着类的加载开始，随着类的消亡而消亡</li>
 </ol>
-<h5 id="类方法-静态方法"><a href="#类方法-静态方法" class="headerlink" title="类方法(静态方法)"></a>类方法(静态方法)</h5><ol>
+<h5 id="类方法-静态方法-Static-method"><a href="#类方法-静态方法-Static-method" class="headerlink" title="类方法(静态方法) Static method"></a>类方法(静态方法) Static method</h5><ol>
 <li>语法: <code>访问修饰符 static 数据返回类型 方法名() &#123;&#125;</code> &amp; <code>static 访问修饰符 数据返回类型 方法名() &#123;&#125;</code></li>
 <li>静态方法(类方法)<strong>只能访问静态成员</strong>，且必须遵守访问权限</li>
 <li>类方法只能访问类变量，所以类方法中<strong>不允许使用和对象有关的关键字(this,super)</strong></li>
@@ -1293,19 +1293,106 @@
 <h4 id="代码块-Code-block"><a href="#代码块-Code-block" class="headerlink" title="代码块 Code block"></a>代码块 Code block</h4><h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><ol>
 <li>代码化块又称为初始化块，属于类中的成员[即是类的一部分]，类似于方法，将逻辑语句封装在方法啊体中，通过<code>&#123;&#125;</code>包围起来</li>
 <li>但它和方法不同，没有方法名，没有返回，没有参数，只有方法体，而且不用通过对象或类显式调用，而是<strong>加载类时，或创建对象时隐式调用</strong></li>
-<li>语法: <code>修饰符&#123;方法体&#125;;</code> 最后这个<code>;</code>可写也可不写 </li>
+<li>语法: <code>修饰符&#123;方法体&#125;;</code> 最后这个<code>;</code>可写也可不写</li>
 <li>普通代码块相当于一种对构造器的补充机制，可以做初始化操作，实现代码复用</li>
 <li>不管调用类的哪个构造器，创建对象，都会优先调用代码块的内容</li>
 </ol>
 <h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><ol>
 <li>static代码块也叫静态代码块，作用就是对类进行初始化，它随着<strong>类的加载</strong>而<strong>执行</strong>，<strong>并且只会执行一次</strong>，如果是<strong>普通代码块，每创建一个对象，就执行一次</strong></li>
-<li>类什么时候被加载? ①创建对象实例时 ②创建子类对象实例，父类也会被加载 ③使用类的静态成员(静态方法和静态属性)时</li>
+<li>类什么时候被加载? <strong>①创建对象实例时 ②创建子类对象实例，父类也会被加载 ③使用类的静态成员(静态方法和静态属性)时</strong></li>
 <li>普通的代码块，在创建对象实例时，会被隐式的调用，创建一次就会调用一次，<strong>如果只是使用类的静态成员时，普通代码块不会执行</strong></li>
-<li>创建一个对象时，在一个类中调用顺序是(重点，难点，面试题):</li>
+<li>创建一个对象时，在一个类中调用顺序是(重点，难点，面试题):<ol>
+<li>调用<strong>静态代码块和静态属性初始化</strong>(注意:静态代码块和静态属性初始化调用的<strong>优先级一样</strong>，如果有多个静态代码块和多个静态变量初始化，则按<strong>定义顺序</strong>调用)</li>
+<li>调用<strong>普通代码块和普通属性初始化</strong>(注意:普通代码块和普通属性初始化调用的<strong>优先级一样</strong>，如果有多个普通代码块和多个普通属性初始化，则按<strong>定义顺序</strong>调用)</li>
+<li>调用构造方法</li>
 </ol>
-<p>①调用静态代码块和静态属性初始化(注意:静态代码块和静态属性初始化调用的优先级一样，如果又多个静态代码块和多个静态变量初始化，则按它们定义的顺序调用)</p>
-<p>②调用普通代码块的普通属性的初始化(注意:普通代码块和普通属性初始化调用的优先级一样，如果有多个普通代码块和多个普通属性初始化，则按定义顺序调用)</p>
-<p>③调用构造方法</p>
+</li>
+<li>构造器的最前面其实隐含了<strong>super()和调用本类普通代码块</strong><code>public Test() &#123;super();调用本类的普通代码块;...&#125;</code></li>
+<li>创建一个子类对象时，它们的静态代码块，静态属性初始化，普通代码块，普通属性初始化，构造方法的调用顺序如下(面试题):<ol>
+<li>父类的静态代码块和静态属性初始化(优先级一样，按定义顺序执行)</li>
+<li>子类的静态代码块和静态属性初始化(优先级一样，按定义顺序执行)</li>
+<li>父类的普通代码块和普通属性初始化(优先级一样，按定义顺序执行)</li>
+<li>父类的构造方法</li>
+<li>子类的普通代码块和普通属性初始化(优先级一样，按定义顺序执行)</li>
+<li>子类的构造方法</li>
+</ol>
+</li>
+<li><strong>静态代码块</strong>只能直接调用<strong>静态成员</strong></li>
+</ol>
+<h4 id="单例设计模式-Singleton-design-pattern"><a href="#单例设计模式-Singleton-design-pattern" class="headerlink" title="单例设计模式 Singleton design pattern"></a>单例设计模式 Singleton design pattern</h4><ol>
+<li>静态方法和静态属性的经典使用</li>
+<li>设计模式是在大量实践中总结和理论化之后优选的代码结构，编程风格，以及解决问题的思考方式，设计模式就像是经典的棋谱，不同的棋局，我们用不同的棋谱，免去我们自己再思考和摸索</li>
+</ol>
+<h5 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h5><ol>
+<li>将构造器私有化</li>
+<li>在类的内部直接创建对象(private static)</li>
+<li>提供一个public的static方法，返回对象</li>
+</ol>
+<h5 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h5><ol>
+<li>仍然是构造器私有化</li>
+<li>定义一个static静态属性对象</li>
+<li>提供一个public的static方法，在其中new一个对象再返回这个对象</li>
+<li>只有当用户使用上一步创建的方法时，才返回对象，后面再次调用时，会返回上次创建的对象</li>
+</ol>
+<h5 id="饿汉式和懒汉式的区别"><a href="#饿汉式和懒汉式的区别" class="headerlink" title="饿汉式和懒汉式的区别"></a>饿汉式和懒汉式的区别</h5><ol>
+<li>最主要区别在于创建对象的时机不同，饿汉式是在类加载就创建了对象实例，而懒汉式是在使用时才创建</li>
+<li>饿汉式不存在线程安全问题，懒汉式存在线程安全问题</li>
+<li>饿汉式存在浪费资源的可能，因为如果程序员一个对象都没有使用，那麽饿汉式创建的对象就浪费了，懒汉式则是在使用时才创建，就不存在这个问题</li>
+<li>在我们JavaSE标准类中，java.lang.Runtime就是经典的单例模式(饿汉式)</li>
+</ol>
+<h4 id="final"><a href="#final" class="headerlink" title="final"></a>final</h4><h5 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h5><ol>
+<li>当不希望类<strong>被继承</strong>时，可以用final修饰</li>
+<li>当不希望方法<strong>被子类重写</strong>时，可以用final修饰</li>
+<li>当不希望某个属性<strong>被修改</strong>时，可以用final修饰</li>
+<li>当不希望某个局部变量<strong>被修改</strong>时，可以用final修饰</li>
+</ol>
+<h5 id="细节及注意事项"><a href="#细节及注意事项" class="headerlink" title="细节及注意事项"></a>细节及注意事项</h5><ol>
+<li>final修饰的属性一般又叫<strong>常量</strong>，一般用全大写字母和_来命名</li>
+<li>final修饰的属性在定义时，<strong>必须赋初值</strong>，且只能赋一次，<strong>以后不能修改</strong>，<strong>非静态的final属性赋值</strong>可以在三个位置:<strong>①定义时②在构造器③在代码块</strong></li>
+<li>如果final修饰的属性是<strong>静态</strong>的，则初始化的位置只能是:<strong>①定义时 ②在静态代码块</strong></li>
+<li>final类不能被继承，但是可以实例化对象</li>
+<li>如果类不是final类，但是含有final方法，则该方法虽然不能被重写，但是可以被继承</li>
+<li>一般来说，如果一个类已经是final类，就没有必要再将方法用final修饰，因为这个类不能被继承，所以它的方法肯定也不能被重写</li>
+<li>final不能修饰构造方法</li>
+<li>final和static往往搭配使用，效率更高，<strong>不会导致类加载</strong>，<strong>底层编译器做了优化处理</strong></li>
+<li>包装类(Integer Double Float Boolean等都是final),String 也是final类</li>
+<li>形参列表也可以使用final</li>
+</ol>
+<h4 id="抽象类-Abstract-class"><a href="#抽象类-Abstract-class" class="headerlink" title="抽象类 Abstract class"></a>抽象类 Abstract class</h4><h5 id="基本概念-2"><a href="#基本概念-2" class="headerlink" title="基本概念"></a>基本概念</h5><ol>
+<li>当父类的某些方法，需要声明，但是又不确定如何实现时，可以用abstract来修饰该方法，这个方法就是抽象方法，用abstract来修饰类就是抽象类</li>
+<li><code>访问修饰符 abstract 类名&#123;&#125;</code></li>
+<li><code>访问修饰符 abstract 返回类型 方法名(参数列表);</code> 没有方法体</li>
+<li>抽象类的价值更多的是在于设计，是设计者设计好后，让子类继承并实现抽象类</li>
+<li>抽象类是面试官爱问的知识点，在框架和设计模式使用较多</li>
+</ol>
+<h5 id="细节和注意事项"><a href="#细节和注意事项" class="headerlink" title="细节和注意事项"></a>细节和注意事项</h5><ol>
+<li>抽象类<strong>不能被实例化</strong></li>
+<li>抽象类不一定包含abstract方法,而且可以包含已经实现的方法</li>
+<li>一旦类包含了abstract方法，则这个<strong>类必须声明为abstract类</strong></li>
+<li>abstract 只能<strong>修饰类和方法</strong></li>
+<li>抽象类可以有任意成员(抽象类本质还是类)，</li>
+<li>抽象类不能有方法体，即不能被实现，只要加了{}就算实现</li>
+<li>如果一个类继承了抽象类，则它<strong>必须实现抽象类的所有抽象方法，除非它自己也声明为abstract类</strong></li>
+<li>抽象方法不能使用 <strong>private ,final, static</strong> 来修饰，因为<strong>这些关键字都是和重写相违背的</strong></li>
+</ol>
+<h4 id="模板设计模式-Template-design-patterns"><a href="#模板设计模式-Template-design-patterns" class="headerlink" title="模板设计模式 Template design patterns"></a>模板设计模式 Template design patterns</h4><p><strong>抽象类和多态</strong>的结合</p>
+<h4 id="接口-interface"><a href="#接口-interface" class="headerlink" title="接口 interface"></a>接口 interface</h4><h5 id="基本概念-3"><a href="#基本概念-3" class="headerlink" title="基本概念"></a>基本概念</h5><ol>
+<li>接口就是给出一些没有实现的方法，封装到一起，到某个类要具体使用时，再根据具体情况把这些方法写出来</li>
+<li>语法: <code>interface 接口名&#123;&#125;</code> , <code>class 类名 implements 接口名&#123;&#125;</code></li>
+<li>在<strong>jdk7.0</strong>之前，接口里的所有方法都没有方法体，即都是抽象方法，在<strong>jdk8.0</strong>以后接口可以有<strong>静态方法，默认方法</strong></li>
+<li>接口体现了程序设计的<strong>多态和高内聚低耦合</strong>的设计思想</li>
+</ol>
+<h5 id="细节和注意事项-1"><a href="#细节和注意事项-1" class="headerlink" title="细节和注意事项"></a>细节和注意事项</h5><ol>
+<li>接口<strong>不能被实例化</strong></li>
+<li><strong>接口中的所有方法都是public方法，可以不用public修饰</strong></li>
+<li><strong>接口中的抽象方法，可以不用abstract修饰</strong></li>
+<li>一个普通类实现接口，就<strong>必须将该接口的所有方法都实现</strong></li>
+<li><strong>抽象类</strong>实现<strong>接口</strong>，可以不用实现接口的方法</li>
+<li>一个类同时可以实现<strong>多个接口</strong>,且这多个接口中可以有重名的抽象方法，这些方法视为一个方法</li>
+<li><strong>接口中所有的属性都是public final static</strong>的，可以省略，所以它的属性的访问形式是: <code>接口名.属性名</code></li>
+<li>接口不能继承其它的类，但是可以继承多个别的接口 <code>interface IC extends IA,IB&#123;&#125;</code>,extends是继承，implements是实现</li>
+<li>接口的修饰符，只能是public和默认，这点和类的修饰符是一样的</li>
+</ol>
 
                 
             </div>
