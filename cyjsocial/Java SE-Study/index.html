@@ -1477,7 +1477,7 @@
 <li>定义在外部类的成员位置，并且<strong>有static修饰</strong></li>
 <li>可以<strong>添加任何访问修饰符</strong>，因为它的地位就是一个<strong>外部类的成员</strong></li>
 <li>作用域:在<strong>整个外部类中</strong></li>
-<li>可以<strong>直接访问外部类的所有静态成员，包含私有的</strong>,但不能访问私有的</li>
+<li>可以<strong>直接访问外部类的所有静态成员，包含私有的</strong>,但<strong>不能访问非静态成员</strong></li>
 <li>外部类访问静态内部类，需要<strong>先创建静态内部类的对象</strong></li>
 <li>外部其他类可以访问成员内部类<ol>
 <li><code>Outer.Inner staticInner = new Outer.Inner();</code></li>
