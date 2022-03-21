@@ -1393,6 +1393,103 @@
 <li>接口不能继承其它的类，但是可以继承多个别的接口 <code>interface IC extends IA,IB&#123;&#125;</code>,extends是继承，implements是实现</li>
 <li>接口的修饰符，只能是public和默认，这点和类的修饰符是一样的</li>
 </ol>
+<h5 id="实现接口和继承类的区别"><a href="#实现接口和继承类的区别" class="headerlink" title="实现接口和继承类的区别"></a>实现接口和继承类的区别</h5><ol>
+<li>接口和继承解决的问题不同<ol>
+<li>继承的价值主要在于: 解决代码的<strong>复用性和可维护性</strong></li>
+<li>接口的价值主要在于: 设计，<strong>设计好各种规范(方法)</strong>,让其它类去实现这些方法</li>
+</ol>
+</li>
+<li>接口比继承更加灵活，继承是满足<strong>is - a</strong>的关系，而接口只需满足<strong>like - a</strong>的关系</li>
+<li>接口在一定程度实现代码<strong>解耦</strong>(即 <strong>接口的规范性+动态绑定</strong>)</li>
+</ol>
+<h5 id="接口的多态特性"><a href="#接口的多态特性" class="headerlink" title="接口的多态特性"></a>接口的多态特性</h5><ol>
+<li>多态参数，和之前的同理</li>
+<li>多态数组，和之前的同理</li>
+<li>接口存在多态传递现象,如果 B接口 继承了 A接口，而 C类 实现了 B接口 ,那麽，实际上就相当于C类也实现了 A接口 这就是所谓的，接口多态传递现象</li>
+</ol>
+<h4 id="类的第五大成员-内部类-Inner-class-重点-难点"><a href="#类的第五大成员-内部类-Inner-class-重点-难点" class="headerlink" title="类的第五大成员 内部类 Inner class (重点 难点)"></a>类的第五大成员 内部类 Inner class (重点 难点)</h4><ol>
+<li><strong>类的五大成员: 属性 构造器 方法 代码块 内部类</strong></li>
+<li>一个类的内部又完整的嵌套了另一个类结构，被嵌套的类称为<strong>内部类(inner class)</strong>,嵌套其他类的类称为<strong>外部类(outer class)</strong></li>
+<li>内部类最大的特点就是可以<strong>直接访问私有属性</strong>，并且可以提现类与类之间的包含关系</li>
+<li>基本语法: <code>class Outer &#123; class Inner &#123;&#125; &#125;</code></li>
+</ol>
+<h5 id="内部类的分类"><a href="#内部类的分类" class="headerlink" title="内部类的分类"></a>内部类的分类</h5><ol>
+<li>定义在外部类局部位置上(比如方法内):<ol>
+<li>局部内部类(<strong>有类名</strong>)</li>
+<li>匿名内部类(<strong>没有类名,超级重点!!!</strong>)</li>
+</ol>
+</li>
+<li>定义在外部类的成员位置上<ol>
+<li>成员内部类 (没用static修饰)</li>
+<li>静态内部类 (使用static修饰)</li>
+</ol>
+</li>
+</ol>
+<h5 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h5><p>局部内部类定义在外部类的局部位置，比如方法中，并且有类名</p>
+<ol>
+<li>局部内部类可以<strong>直接</strong>访问<strong>外部类的所有成员</strong>，<strong>包含私有的</strong></li>
+<li><strong>不能添加访问修饰符</strong>，因为它的地位就是一个<strong>局部变量</strong>，局部变量是不能使用修饰符的，但是<strong>可以使用final修饰</strong>(使其不能被继承)，因为局部变量也可以使用final</li>
+<li><strong>作用域: 仅仅在定义它的方法或代码块中</strong></li>
+<li>外部类要访问局部内部类的成员，需要<strong>创建对象再访问</strong>，且<strong>必须在作用域内</strong></li>
+<li>局部内部类的本质仍然是一个<strong>类</strong></li>
+<li>外部其他类<strong>不能访问局部内部类</strong>，因为它的地位是<strong>局部变量</strong></li>
+<li>如果外部类和局部内部类的成员重名时，默认<strong>遵循就近原则</strong><ol>
+<li>如果想访问外部类的成员，则可以使用<code>外部类名.this.成员</code></li>
+<li><code>外部类名.this</code>本质就是<strong>外部类的对象</strong></li>
+</ol>
+</li>
+</ol>
+<h5 id="匿名内部类-重点-Anonymous-inner-class"><a href="#匿名内部类-重点-Anonymous-inner-class" class="headerlink" title="匿名内部类(重点) Anonymous inner class"></a>匿名内部类(重点) Anonymous inner class</h5><ol>
+<li>本质还是类，没有名字，同时还是一个对象</li>
+<li>在底层实际上会分配名字，一般是外部类名 + $ + 定义的次序(从1开始)</li>
+<li>匿名内部类仍然是定义在外部类的<strong>局部位置</strong></li>
+<li>语法: <code>new 类或接口(参数列表)&#123;类体&#125;</code></li>
+<li>匿名内部类既是一个<strong>类</strong>的定义，同时它本身也是一个<strong>对象</strong></li>
+<li>可以<strong>直接访问外部类的所有成员，包含私有的</strong></li>
+<li><strong>不能添加访问修饰符</strong>，因为它的地位是一个<strong>局部变量</strong></li>
+<li>作用域:仅仅在<strong>定义它的方法或代码块</strong>中</li>
+<li>外部其他类<strong>不能访问局部内部类</strong>，因为它的地位是<strong>局部变量</strong></li>
+<li>如果外部类和局部内部类的成员重名时，默认<strong>遵循就近原则</strong><ol>
+<li>如果想访问外部类的成员，则可以使用<code>外部类名.this.成员</code></li>
+<li><code>外部类名.this</code>本质就是<strong>外部类的对象</strong></li>
+</ol>
+</li>
+</ol>
+<h5 id="成员内部类-Member-inner-class"><a href="#成员内部类-Member-inner-class" class="headerlink" title="成员内部类 Member inner class"></a>成员内部类 Member inner class</h5><ol>
+<li><strong>没有用static修饰</strong>，定义在外部类的<strong>成员</strong>位置</li>
+<li>可以<strong>添加任何访问修饰符</strong>，因为它的地位就是一个<strong>外部类的成员</strong></li>
+<li>作用域:在<strong>整个外部类中</strong></li>
+<li>可以<strong>直接访问外部类的所有成员，包含私有的</strong></li>
+<li>外部类访问成员内部类，需要<strong>先创建成员内部类的对象</strong></li>
+<li>外部其他类可以访问成员内部类<ol>
+<li><code>Outer.Inner memberInner = new Outer().new Inner();</code></li>
+<li><code>new Outer().new Inner().内部类的方法</code></li>
+<li>或者在外部类中定义一个返回成员内部类对象的方法</li>
+</ol>
+</li>
+<li>如果外部类和局部内部类的成员重名时，默认<strong>遵循就近原则</strong><ol>
+<li>如果想访问外部类的成员，则可以使用<code>外部类名.this.成员</code></li>
+<li><code>外部类名.this</code>本质就是<strong>外部类的对象</strong></li>
+</ol>
+</li>
+</ol>
+<h5 id="静态内部类-Static-inner-class"><a href="#静态内部类-Static-inner-class" class="headerlink" title="静态内部类 Static inner class"></a>静态内部类 Static inner class</h5><ol>
+<li>定义在外部类的成员位置，并且<strong>有static修饰</strong></li>
+<li>可以<strong>添加任何访问修饰符</strong>，因为它的地位就是一个<strong>外部类的成员</strong></li>
+<li>作用域:在<strong>整个外部类中</strong></li>
+<li>可以<strong>直接访问外部类的所有静态成员，包含私有的</strong>,但不能访问私有的</li>
+<li>外部类访问静态内部类，需要<strong>先创建静态内部类的对象</strong></li>
+<li>外部其他类可以访问成员内部类<ol>
+<li><code>Outer.Inner staticInner = new Outer.Inner();</code></li>
+<li>同样可以在外部类中定义一个返回静态内部类的普通方法，或静态方法</li>
+</ol>
+</li>
+<li>如果外部类和局部内部类的成员重名时，默认<strong>遵循就近原则</strong><ol>
+<li>如果想访问外部类的成员，则可以使用<code>外部类名.成员</code></li>
+<li>因为外部类名可以直接访问其静态成员</li>
+</ol>
+</li>
+</ol>
 
                 
             </div>
