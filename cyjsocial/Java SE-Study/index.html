@@ -1489,6 +1489,87 @@
 </ol>
 </li>
 </ol>
+<h3 id="chapter11-枚举与注解"><a href="#chapter11-枚举与注解" class="headerlink" title="chapter11 枚举与注解"></a>chapter11 枚举与注解</h3><h4 id="枚举-Enumeration"><a href="#枚举-Enumeration" class="headerlink" title="枚举 Enumeration"></a>枚举 Enumeration</h4><h5 id="自定义类实现枚举"><a href="#自定义类实现枚举" class="headerlink" title="自定义类实现枚举"></a>自定义类实现枚举</h5><ol>
+<li>不需要set方法,因为枚举对象值通常为只读</li>
+<li>对枚举对象使用<code>final static</code>共同修饰，实现底层优化</li>
+<li><strong>构造器私有化</strong></li>
+<li>枚举对象名字母全大写,因为它是常量</li>
+<li>对外暴露对象(使用<code>public final static</code>修饰)</li>
+<li>在类的内部创建一组枚举对象</li>
+</ol>
+<h5 id="enum关键字实现枚举"><a href="#enum关键字实现枚举" class="headerlink" title="enum关键字实现枚举"></a>enum关键字实现枚举</h5><ol>
+<li>使用enum关键字开发一个枚举类时，默认会<strong>继承Enum类</strong>，而且<strong>枚举类会直接变成一个final类</strong>，使用javap工具进行反编译可以看到</li>
+<li>传统的<code>public final static Season SPRING = new Season(&quot;春天&quot;,&quot;温暖&quot;);</code>可以简化成<code>SPRING(&quot;春天&quot;,&quot;温暖&quot;)</code>，括号里的实参对应构造器形参</li>
+<li>如果使用无参构造器创建枚举对象，则<strong>实参列表和小括号都可以省略，只需要写一个常量名</strong></li>
+<li>当有多个枚举对象时，使用<code>,</code>间隔，最后一个用分号结尾</li>
+<li>枚举对象必须放在枚举类的<strong>行首</strong></li>
+<li>其他规则和自定义类实现枚举一样</li>
+</ol>
+<h5 id="enum常用方法一览表"><a href="#enum常用方法一览表" class="headerlink" title="enum常用方法一览表"></a>enum常用方法一览表</h5><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>详细描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>valueOf</td>
+<td>将字符串转换成枚举对象，要求字符串必须为已有的常量名，否则报错(根据输入的字符串，到枚举类中查找同名的对象，找到便返回，没找到就报错)</td>
+</tr>
+<tr>
+<td>toString</td>
+<td>得到当前枚举常量的名称，你可以通过重写这个方法来使得到的结果更易读</td>
+</tr>
+<tr>
+<td>equals</td>
+<td>在枚举类型中可以直接使用”==”来比较两个枚举常量是否相等。Enum提供的这个equals方法，也是直接使用”==”实现的。它的存在是为了在Set，List和Map中使用。注意equals方法是不能重写的</td>
+</tr>
+<tr>
+<td>hashCode</td>
+<td>Enum实现了hashCode方法和equals保持一致。它是final的，不可被重写</td>
+</tr>
+<tr>
+<td>getDeclaringClass</td>
+<td>得到枚举常量所属的枚举类型的Class对象。可以用它来判断两个枚举常量是否属于同一个枚举类型</td>
+</tr>
+<tr>
+<td>name</td>
+<td>得到当前枚举常量的名称，建议优先使用toString()</td>
+</tr>
+<tr>
+<td>ordinal</td>
+<td>得到当前枚举常量的次序，从0开始编号的</td>
+</tr>
+<tr>
+<td>compareTo</td>
+<td>枚举类型实现了Comparable接口，这样可以比较两个枚举常量的大小(该方法返回值为，当前对象的次序 - 括号内对象的次序)</td>
+</tr>
+<tr>
+<td>clone</td>
+<td>枚举类型不能被Clone。为了防止子类实现克隆方法，Enum实现了一个仅抛出CloneNotSupportedException异常的不变Clone()</td>
+</tr>
+<tr>
+<td>values</td>
+<td>使用枚举类名调用，返回枚举类[],含有其定义的所有枚举对象</td>
+</tr>
+</tbody></table>
+<h5 id="enum实现枚举类注意事项"><a href="#enum实现枚举类注意事项" class="headerlink" title="enum实现枚举类注意事项"></a>enum实现枚举类注意事项</h5><ol>
+<li>使用 enum 关键字后，就不能再继承其它类了，因为 enum 会隐式继承 Enum，而 Java 是单继承机制</li>
+<li>enum实现的枚举类，仍然还是一个类，可以实现接口</li>
+</ol>
+<h4 id="注解-Annotation"><a href="#注解-Annotation" class="headerlink" title="注解 Annotation"></a>注解 Annotation</h4><ol>
+<li>注解也被称为元数据(Metadata),用于修饰解释 包、类、方法、属性、构造器、局部变量等数据信息</li>
+<li>和注释一样，注解不影响程序逻辑，但注解可以被编译或运行，相当于嵌入在代码中的补充信息</li>
+<li>在 JavaSE 中，注解的使用目的比较简单，例如标记过时的功能，忽略警告等。在 JavaEE 中注解占据了更重要的角色，例如用来配置应用程序的任何切面，代替 java EE 旧版中所遗留的繁冗代码和 XML 配置等</li>
+<li>使用 Annotation 时要在其前面增加 @ 符号, 并把该 Annotation 当成一个修饰符使用。用于修饰它支持的程序元素 </li>
+<li>三个基本的 Annotation: <ol>
+<li>@Override: 限定某个方法，是重写父类方法, 该注解只能用于方法，写了注解，编译器就会检查该方法是否真的重写了父类的方法，没有重写就会报错</li>
+<li>@Deprecated: 用于表示某个程序元素(类, 方法，字段/属性，包，参数等)已过时，常用于版本升级过度 </li>
+<li>@SuppressWarnings: 抑制编译器警告</li>
+</ol>
+</li>
+<li>@Target是修饰注解的注解，称为元注解</li>
+</ol>
 
                 
             </div>
