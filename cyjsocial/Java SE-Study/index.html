@@ -479,7 +479,10 @@
 <li>强制类型转换会造成精度损失</li>
 </ol>
 <h3 id="chapter04-运算符和标识符-Operator-and-Identifier"><a href="#chapter04-运算符和标识符-Operator-and-Identifier" class="headerlink" title="chapter04 运算符和标识符 Operator and Identifier"></a>chapter04 运算符和标识符 Operator and Identifier</h3><h4 id="算术运算符-Arithmetic-operator"><a href="#算术运算符-Arithmetic-operator" class="headerlink" title="算术运算符 Arithmetic operator"></a>算术运算符 Arithmetic operator</h4><p>算术运算符是对数值类型的变量进行运算的<code>+ - * / %</code></p>
-<h4 id="关系运算符-Relational-operator"><a href="#关系运算符-Relational-operator" class="headerlink" title="关系运算符 Relational operator"></a>关系运算符 Relational operator</h4><p>关系运算符也叫比较运算符 <code> == != > < >= <= instanceof </code></p>
+<h4 id="关系运算符-Relational-operator"><a href="#关系运算符-Relational-operator" class="headerlink" title="关系运算符 Relational operator"></a>关系运算符 Relational operator</h4><ol>
+<li>关系运算符也叫比较运算符 <code> == != > < >= <= instanceof </code></li>
+<li>注意<code>==</code>两边<strong>有基本数据类型时，判断的必然是值是否相等</strong></li>
+</ol>
 <h4 id="逻辑运算符-Logic-operator"><a href="#逻辑运算符-Logic-operator" class="headerlink" title="逻辑运算符 Logic operator"></a>逻辑运算符 Logic operator</h4><ol>
 <li>短路与&amp;&amp; ，短路或|| 取反！</li>
 <li>逻辑与&amp; ，逻辑或|，逻辑异或^</li>
@@ -1569,6 +1572,151 @@
 </ol>
 </li>
 <li>@Target是修饰注解的注解，称为元注解</li>
+</ol>
+<h3 id="chapter12-异常-Exception"><a href="#chapter12-异常-Exception" class="headerlink" title="chapter12 异常 Exception"></a>chapter12 异常 Exception</h3><h4 id="异常基本概念-Exception-basic-concepts"><a href="#异常基本概念-Exception-basic-concepts" class="headerlink" title="异常基本概念 Exception basic concepts"></a>异常基本概念 Exception basic concepts</h4><p>Java语言中，将程序执行中发生的不正常情况称为 “异常” (开发过程中的语法错误和逻辑错误不是异常)</p>
+<h4 id="执行过程中所发生的异常事件可以分为两大类"><a href="#执行过程中所发生的异常事件可以分为两大类" class="headerlink" title="执行过程中所发生的异常事件可以分为两大类"></a>执行过程中所发生的异常事件可以分为两大类</h4><ol>
+<li><strong>Error</strong>(错误): Java虚拟机无法解决的严重问题<ol>
+<li>Jvm系统内部错误，资源耗尽等严重情况</li>
+<li>比如: <strong>StackOverflowError(栈溢出)<strong>和</strong>OOM(out of memory)</strong></li>
+<li>Error是严重错误，程序会崩溃</li>
+</ol>
+</li>
+<li><strong>Exception</strong>: 其它因编程错误或偶然的外在因素导致的一般性问题，可以使用针对性的代码进行处理<ol>
+<li>例如<strong>空指针访问</strong>，试图读取不存在的文件，网络连接中断等等</li>
+<li>Exception又分为两大类:<strong>运行时异常</strong>(程序运行时，发生的异常)和<strong>编译时异常</strong>(编程时，编译器检查出的异常)</li>
+</ol>
+</li>
+</ol>
+<h4 id="异常体系图-Abnormal-system-diagram"><a href="#异常体系图-Abnormal-system-diagram" class="headerlink" title="异常体系图 Abnormal system diagram"></a>异常体系图 Abnormal system diagram</h4><ol>
+<li>运行时异常，编译器检查不出来。一般是指的逻辑错误，是程序员应该避免其出现的异常。java.lang.RuntimeException类及它的子类都是运行时异常</li>
+<li>运行时异常可以不做处理，因为这类异常很普遍</li>
+<li>编译时异常，是编译器要求必须处理的异常</li>
+</ol>
+<h4 id="异常处理-Exception-handling"><a href="#异常处理-Exception-handling" class="headerlink" title="异常处理 Exception handling"></a>异常处理 Exception handling</h4><ol>
+<li><code>try catch finally</code> 和 <code>throws</code> 二选一</li>
+<li>如果程序员没有做显式的异常处理，默认<code>throws Exception</code></li>
+</ol>
+<h5 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="try-catch-finally"></a>try-catch-finally</h5><ol>
+<li>如果异常发生了，则<strong>异常发生后面的代码不会执行，直接进入catch块</strong></li>
+<li>如果异常没有发生，则按顺序执行try的代码块，<strong>不会进入到catch</strong></li>
+<li>如果希望不管是否发生异常，都执行某段代码(比如关闭链接，释放资源)，则使用finally块</li>
+<li>无论如何，<strong>finally</strong>里的语句都是<strong>必定</strong>会执行的</li>
+<li>如果try块可能有多个异常<ol>
+<li>可以使用多个catch分别捕获不同的异常，做相应处理</li>
+<li>要求子类异常写在前面，父类异常写在后面</li>
+<li>同样只要异常发生，则异常后面的代码不会执行</li>
+</ol>
+</li>
+<li>可以使用try-finally配合使用<ol>
+<li>这种用法相当于没有捕获异常，因此程序会直接崩掉</li>
+<li>try里的语句出现异常会throws出去，finally语句还是必定执行</li>
+<li>应用场景:就是执行一段代码，不管是否发生异常，都必须执行某个业务逻辑</li>
+</ol>
+</li>
+</ol>
+<h5 id="throws"><a href="#throws" class="headerlink" title="throws"></a>throws</h5><ol>
+<li>如果有一个方法中可能出现异常，但是不确定如何处理这种异常，可以使用<code>throws</code>抛出异常,让调用该方法的调用者(调用者也是一个方法)处理异常</li>
+<li>在方法声明中用<code>throws</code>可以<strong>抛出异常列表，即多个异常，用逗号隔开</strong>，throws后面的异常类型可以是<strong>方法中产生的异常类型，也可以是它的父类</strong></li>
+<li><strong>对于编译异常，程序中必须处理</strong>，比如try catch，或者 throws ，二选一</li>
+<li>对于<strong>运行时异常</strong>，程序中如果没有处理，<strong>默认</strong>就是<strong>throws</strong>的方式处理 </li>
+<li>子类重写父类的方法时，对抛出异常的规定:子类重写的方法所抛出的异常类型<strong>要么和父类抛出的异常一致</strong>，<strong>要么为父类抛出的异常类型的子类</strong></li>
+</ol>
+<h4 id="自定义异常-Custom-exception"><a href="#自定义异常-Custom-exception" class="headerlink" title="自定义异常 Custom exception"></a>自定义异常 Custom exception</h4><ol>
+<li>自定义异常类名，去继承RuntimeException 或 Exception</li>
+<li>如果继承Exception,属于<strong>编译异常</strong></li>
+<li>如果继承RuntimeException,属于<strong>运行异常</strong>(一般来说继承RuntimeException)</li>
+<li><code>throw new 自定义异常()</code>，可在自定义异常类构造器编辑异常信息</li>
+<li>throws 和 throw 的区别 </li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>意义</th>
+<th>位置</th>
+<th>后面跟的东西</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>throws</td>
+<td>异常处理的一种方式</td>
+<td>方法声明处</td>
+<td>异常类型</td>
+</tr>
+<tr>
+<td>throw</td>
+<td>手动生成异常类型的关键字</td>
+<td>方法体中</td>
+<td>异常对象</td>
+</tr>
+</tbody></table>
+<h3 id="chapter12-常用类"><a href="#chapter12-常用类" class="headerlink" title="chapter12 常用类"></a>chapter12 常用类</h3><h4 id="包装类-Wrapper"><a href="#包装类-Wrapper" class="headerlink" title="包装类 Wrapper"></a>包装类 Wrapper</h4><ol>
+<li>针对八种基本数据类型相应的引用类型–&gt;包装类</li>
+<li><code>Boolean</code> <code>Character</code> <code>Byte</code> <code>Short</code> <code>Integer</code> <code>Long</code> <code>Float</code> <code>Double</code> </li>
+<li>jdk5以前，是手动装箱和拆箱，jdk5以后则是自动装箱和拆箱<ol>
+<li>装箱<code>int -&gt; Integer</code>,底层使用的还是<code>Integer.valueOf(n2);</code></li>
+<li>拆箱<code>Integer -&gt; int</code>,底层使用的还是 <code>intValue();</code></li>
+<li>其他基本数据类型可类推</li>
+</ol>
+</li>
+<li>和String之间的转换,同样以Integer为例，其他类推<ol>
+<li><code>Integer -&gt; String</code><ol>
+<li>(Integer i) + “”</li>
+<li>(Integer i).toString()方法</li>
+<li>String.valueOf(Integer i)方法</li>
+</ol>
+</li>
+<li><code>String -&gt; Integer</code><ol>
+<li>Integer.parse(String s)</li>
+<li>new Integer(String s)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>注意:<code>Integer i1 = 1;Integer i2 = 1</code>,<code>sout(i1 = i2)</code><ol>
+<li>因为直接赋值，所以底层是<code>Integer i1 = Integer.valueOf(1)</code></li>
+<li>这时要看它的源码，如果后面的值在-128 ~ 127之间，则直接返回，不会创建新的东西</li>
+<li>所以i1和i2是同一个对象，因此输出true</li>
+</ol>
+</li>
+</ol>
+<h4 id="字符串类-String"><a href="#字符串类-String" class="headerlink" title="字符串类 String"></a>字符串类 String</h4><ol>
+<li>String类用于保存字符串，也就是一段字符序列</li>
+<li>String<strong>实现了Serializable接口，说明String可串行化，String实现了Comparable接口，说明String对象可以比较</strong></li>
+<li>字符串的字符使用Unicode字符编码，一个字符(不区分字母和汉字)占两个字节</li>
+<li>常用的构造器<ol>
+<li><code>new String();</code></li>
+<li><code>new String(String original)</code></li>
+<li><code>new String(char[] a)</code></li>
+<li><code>new String(char[] a, int startIndex, int count)</code></li>
+</ol>
+</li>
+<li>String 类是<strong>final类</strong>，即不能被其他的类继承</li>
+<li>String 类有属性 <code>private final char[] value;</code> <ol>
+<li>用于存放字符串的内容</li>
+<li>String的本质<strong>就是value，一个字符数组</strong></li>
+<li>注意<code>value</code>是一个<strong>final类型，不可以修改它的地址</strong></li>
+</ol>
+</li>
+</ol>
+<h5 id="两种创建String对象的区别"><a href="#两种创建String对象的区别" class="headerlink" title="两种创建String对象的区别"></a>两种创建String对象的区别</h5><ol>
+<li>方式一: 直接赋值<code>String str = &quot;chowyijiu&quot;</code><ol>
+<li>先从常量池查看是否有”chowyijiu”数据空间</li>
+<li>如果有，直接指向，如果没有，则重新创建，然后指向</li>
+<li><strong>str最终指向的是常量池的空间地址</strong></li>
+</ol>
+</li>
+<li>方式二: 调用构造器 <code>String str = new String(&quot;chowyijiu&quot;)</code><ol>
+<li>先在堆中创建空间，里面维护了value属性，然后查看常量池是否有”chowyijiu”空间</li>
+<li>如果常量池有这个空间，直接通过value指向，如果没有，则重新创建</li>
+<li><strong>str最终指向堆中的空间地址，堆中的value指向常量池的空间地址</strong></li>
+</ol>
+</li>
+<li><code>String str = new String(&quot;chowyijiu&quot;);sout(str == str.intern())</code><ol>
+<li>返回false</li>
+<li>intern()方法<strong>必定返回常量池的地址</strong></li>
+</ol>
+</li>
 </ol>
 
                 
