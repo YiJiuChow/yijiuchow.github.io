@@ -1717,6 +1717,94 @@
 <li>intern()方法<strong>必定返回常量池的地址</strong></li>
 </ol>
 </li>
+<li><code>String c = &quot;ab&quot; + &quot;cd&quot;</code> <strong>常量相加，c最终指向常量池地址</strong>，<code>String c = a + b</code> <strong>“=”后面只要有变量，c最终指向堆中对象</strong></li>
+</ol>
+<h5 id="占位符-Placeholder"><a href="#占位符-Placeholder" class="headerlink" title="占位符 Placeholder"></a>占位符 Placeholder</h5><ol>
+<li><code>%s , %d , %.2f , %c</code> 称为占位符</li>
+<li><code>%s</code> 表示后面由<strong>字符串</strong>来替换</li>
+<li><code>%d</code> 是<strong>整数</strong>来替换</li>
+<li><code>%.2f</code> 表示使用<strong>小数</strong>来替换，替换后，只会保留小数点两位, 并且<strong>进行四舍五入的处理</strong></li>
+<li><code>%c</code> 使用 <strong>char</strong> 类型来替换</li>
+</ol>
+<h5 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h5><ol>
+<li>属于<code>java.lang</code>包，代表可变的字符序列，可以对字符串内容进行增删</li>
+<li>很多方法和String相同，但<strong>StringBuffer是可变长度的</strong></li>
+<li>StringBuffer 是一个容器</li>
+<li>StringBuffer 的直接父类是 AbstractStringBuilder </li>
+<li>StringBuffer 实现了 Serializable，即StringBuffer的对象可以串行化，可以保存到文件，进行网络传输</li>
+<li>父类 AbstractStringBuilder 有属性 char[] value ，<strong>不是final</strong>，该value数组同样存放字符串内容，<strong>存放在堆中</strong></li>
+<li>StringBuffer <strong>是一个final类，不能被继承</strong></li>
+<li>String VS StringBuffer <ol>
+<li>String保存的字符串常量，里面的值，存放在<strong>常量池</strong>，不能更改，每次String类的更新实际上就是更改地址，效率较低// <code>private final char value[] </code></li>
+<li>因为 StringBuffer 字符内容是存在 char[] value(堆中), 所以在变化(增加/删除)时，不用每次都更换地址(即不是每次都创建新对象)，所以效率高于 String</li>
+</ol>
+</li>
+</ol>
+<h5 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h5><ol>
+<li>该类被设计用作StringBuffer的一个简易替换，它们有相同的方法，都是可变的字符序列</li>
+<li>如果可能，建议优先使用此类，因为在大多数实现中，它比StringBuffer效率要高</li>
+<li>在StringBuilder上的主要操作是append和insert方法，同样可以接收任意数据类型的数据</li>
+<li>StringBuilder的方法，不是线程安全的，没有做互斥的处理，即没有synchronized关键字，因此在单线程的使用</li>
+</ol>
+<h5 id="String-StringBuffer-StringBuilder的比较"><a href="#String-StringBuffer-StringBuilder的比较" class="headerlink" title="String StringBuffer StringBuilder的比较"></a>String StringBuffer StringBuilder的比较</h5><ol>
+<li>StringBuilder 和 StringBuffer非常类似，均代表可变的字符序列，而且方法也一样</li>
+<li>String 不可变字符序列，效率低，但是复用率高</li>
+<li>StringBuffer 可变字符序列，效率较高，线程安全，即方法有synchronized关键字</li>
+<li>StringBuilder 可变字符序列，效率最高，线程不安全</li>
+<li>效率 StringBuilder &gt; StringBuffer &gt; StringBuilder </li>
+<li>如果存在大量字符串修改操作，单线程使用StringBuilder，多线程是使用StringBuffer，字符串修改很好，则使用String，因为它可以被多个对象引用</li>
+</ol>
+<h4 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h4><ol>
+<li>都是静态方法</li>
+<li><code>Math.abs(a)</code> 绝对值</li>
+<li><code>Math.pow(a, b)</code> 求幂,a的b次方</li>
+<li><code>Math.ceil(a)</code> 向上取整，返回&gt;=该参数的最小整数(double)</li>
+<li><code>Math.floor(a)</code> 向下取整，返回&lt;=该参数的最大整数(double)</li>
+<li><code>Math.round(a)</code> 四舍五入</li>
+<li><code>Math.sqrt(a)</code> 开方</li>
+<li><code>Math.min(a, b)</code> 最小值</li>
+<li><code>Math.max(a, b)</code> 最大值</li>
+<li><code>Math.random()</code> 返回0 ~ 1(不包括1)的随机小数</li>
+<li>获取a ~ b之间的随机整数 <code>(int)(Math.random() * (b - a + 1) + a)</code></li>
+</ol>
+<h4 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h4><ol>
+<li><code>Arrays.toString(arr),Arrays.deepToString(arr)</code></li>
+<li><code>Arrays.sort(arr)</code> 排序，<strong>可以用匿名内部类实现Comparator接口并重写compare方法从而自定义排序</strong></li>
+<li><code>Arrays.binarySearch(arr, n) </code>二分查找元素<ol>
+<li>要求该数组是有序的. 如果该数组是无序的，不能使用 binarySearch </li>
+<li>如果数组中不存在该元素，就返回 return -(low + 1);</li>
+</ol>
+</li>
+<li><code>Arrays.equals(arr1, arr2)</code> 比较两个数组的元素是否完全一致</li>
+<li><code>Arrays.copyOf(arr, arr.length)</code> 复制数组的元素<ol>
+<li>从 arr 数组中，拷贝 arr.length 个元素到 newArr 数组中</li>
+<li>如果拷贝的长度 &gt; arr.length 就在新数组的后面 增加 null</li>
+<li>如果拷贝长度 &lt; 0 就抛出异常 NegativeArraySizeException</li>
+<li>该方法的底层使用的是 System.arraycopy()</li>
+</ol>
+</li>
+<li><code>Arrays.asList(a,b,c,d)</code> 将一组值，转换成 list (集合，接口)</li>
+</ol>
+<h4 id="System"><a href="#System" class="headerlink" title="System"></a>System</h4><ol>
+<li>System.exit() 退出当前程序</li>
+<li>System.arraycopy() 复制数组元素，比较适合底层云哥用</li>
+<li>System.currenTimeMillis() 返回<strong>当前时间距离1970-01-01的毫秒数</strong></li>
+<li>System.gc() 垃圾回收</li>
+</ol>
+<h4 id="BigInteger-and-BigDecimal"><a href="#BigInteger-and-BigDecimal" class="headerlink" title="BigInteger and BigDecimal"></a>BigInteger and BigDecimal</h4><ol>
+<li>非常大的整型类和高精度浮点数类</li>
+<li>加(add)减(subtract)乘(multiply)除(divide)</li>
+<li>除法结果无限循环会抛出异常ArithmeticException，解决方法,指定精度<code>o1.divide(o2 ,BigDecimal.ROUND_CEILING)</code>,如果有无限循环，保留<strong>分子的精度</strong></li>
+</ol>
+<h4 id="Date-Calendar-LocalDateTime"><a href="#Date-Calendar-LocalDateTime" class="headerlink" title="Date, Calendar, LocalDateTime"></a>Date, Calendar, LocalDateTime</h4><ol>
+<li>Calendar的月份字段(Calendar.MONTH)是从0开始计的，获取时 + 1</li>
+<li>LocalDateTime <ol>
+<li><code>LocalDateTime ldt = LocalDateTime.now();</code> now()方法获取时间</li>
+<li><code>DateTimeFormatter dtf = DateTimeFormatter.ofPattern(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);</code> 格式化时间</li>
+<li>提供plus和minus方法对日期进行加减</li>
+</ol>
+</li>
+<li><code>Instant now = Instant.now();</code> 获取时间戳，可以和第一代时间互相转换(from方法，toInstant)</li>
 </ol>
 
                 
