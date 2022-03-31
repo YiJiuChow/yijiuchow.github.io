@@ -1752,10 +1752,9 @@
 <li>StringBuffer 可变字符序列，效率较高，线程安全，即方法有synchronized关键字</li>
 <li>StringBuilder 可变字符序列，效率最高，线程不安全</li>
 <li>效率 StringBuilder &gt; StringBuffer &gt; StringBuilder </li>
-<li>如果存在大量字符串修改操作，单线程使用StringBuilder，多线程是使用StringBuffer，字符串修改很好，则使用String，因为它可以被多个对象引用</li>
+<li>如果存在大量字符串修改操作，单线程使用StringBuilder，多线程是使用StringBuffer，字符串很少修改，则使用String，因为它可以被多个对象引用</li>
 </ol>
 <h4 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h4><ol>
-<li>都是静态方法</li>
 <li><code>Math.abs(a)</code> 绝对值</li>
 <li><code>Math.pow(a, b)</code> 求幂,a的b次方</li>
 <li><code>Math.ceil(a)</code> 向上取整，返回&gt;=该参数的最小整数(double)</li>
@@ -1764,7 +1763,7 @@
 <li><code>Math.sqrt(a)</code> 开方</li>
 <li><code>Math.min(a, b)</code> 最小值</li>
 <li><code>Math.max(a, b)</code> 最大值</li>
-<li><code>Math.random()</code> 返回0 ~ 1(不包括1)的随机小数</li>
+<li> <code>Math.random()</code> 返回0 ~ 1(不包括1)的随机小数</li>
 <li>获取a ~ b之间的随机整数 <code>(int)(Math.random() * (b - a + 1) + a)</code></li>
 </ol>
 <h4 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h4><ol>
