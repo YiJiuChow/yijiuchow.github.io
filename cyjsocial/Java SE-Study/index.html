@@ -1805,6 +1805,244 @@
 </li>
 <li><code>Instant now = Instant.now();</code> 获取时间戳，可以和第一代时间互相转换(from方法，toInstant)</li>
 </ol>
+<h3 id="chapter14-集合-Collection"><a href="#chapter14-集合-Collection" class="headerlink" title="chapter14 集合 Collection"></a>chapter14 集合 Collection</h3><h4 id="集合的理解和好处"><a href="#集合的理解和好处" class="headerlink" title="集合的理解和好处"></a>集合的理解和好处</h4><ol>
+<li>我们之前保存多个数据使用的是数组，数组有几个不足<ol>
+<li>长度开始必须指定，而且一旦指定，不能修改</li>
+<li>保存的必须为统一类型的元素</li>
+<li>使用数组进行增加/删除元素的示意代码,太麻烦</li>
+</ol>
+</li>
+<li>集合的优点<ol>
+<li>可以<strong>动态保存</strong>任意多个对象，使用比较方便</li>
+<li>提供一系列方便的操作对象的方法,add,remove,set,get</li>
+</ol>
+</li>
+</ol>
+<h4 id="Collection接口和常用方法"><a href="#Collection接口和常用方法" class="headerlink" title="Collection接口和常用方法"></a>Collection接口和常用方法</h4><ol>
+<li>遍历方式<ol>
+<li><code>Iterator iterator = collection.iterator()</code>生成迭代器,<code>while (iterator.hasNext()) &#123;&#125;</code>遍历,<code>itit</code>快捷键</li>
+<li>foreach循环,底层仍然是iterator迭代器，简化版本的迭代器遍历,<code>I</code> &amp; <code>iter</code>快捷键</li>
+<li>子接口List的本质其实是数组，可以使用普通for循环<code>for(int i = 0;i &lt; list.size();i++)&#123;Object obj = list.get(i);&#125;</code></li>
+</ol>
+</li>
+</ol>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ol>
+<li>List集合类中元素有序，且可重复</li>
+<li>List集合中每个元素都有对应的顺序索引</li>
+<li>List容器中的每个元素都对应一个整数型序号记载其在容器中的位置</li>
+</ol>
+<h5 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h5><ol>
+<li><code>add(Object obj)</code> 添加单个对象到末尾，<code>addAll(List list)</code> 添加多个对象</li>
+<li><code>indexOf(Object obj)</code> 返回第一个obj的索引，<code>lastIndexOf(Object obj)</code> 返回最后一个obj的索引</li>
+<li><code>remove(int index)</code> 移除指定索引的元素</li>
+<li><code>set(int index, Object obj)</code> 设置 &amp; 替换指定索引的对象，索引必须有效</li>
+<li><code>subList(int fromIndex, int toIndex)</code> 返回当前集合中fromIndex到toIndex位置(不包括toIndex)的子集合</li>
+<li>三种遍历方式</li>
+</ol>
+<h5 id="ArrayList-Detail"><a href="#ArrayList-Detail" class="headerlink" title="ArrayList Detail"></a>ArrayList Detail</h5><h6 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h6><ol>
+<li>jdk1.2</li>
+<li>可以存放null，即空，并且多个</li>
+<li>ArrayList 是由数组来实现数据存储的</li>
+<li>ArrayList 基本等同于 Vector，除了<strong>ArrayList是线程不安全的效率更高</strong></li>
+</ol>
+<h6 id="底层操作机制源码分析"><a href="#底层操作机制源码分析" class="headerlink" title="底层操作机制源码分析"></a>底层操作机制源码分析</h6><ol>
+<li>ArrayList中维护了一个Object类型的数组(elementData) <code>transient Object[] elementData</code>,<strong>transient表示瞬间，短暂的，该属性不会被序列化</strong></li>
+<li>当创建ArrayList对象时，如果使用的是无参构造器，则初始elementData容量为0，第一次添加，则扩容elementData为10，如需要再次扩容，则扩容elementData为1.5倍</li>
+<li>如果使用的是指定大小的构造器，则初始elementData容量为指定大小，如果需要扩容，则直接扩容elementData为1.5倍</li>
+</ol>
+<h5 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h5><ol>
+<li>jdk1.0</li>
+<li>Vector底层也是一个对象数组 <code>protected Object[] elementData</code></li>
+<li>Vector是线程同步的，即线程安全的，Vector类的操作方法带有synchronized</li>
+<li>当创建Vector对象时，如果使用的是无参构造器，则初始elementData容量为0，第一次添加，则扩容elementData为10，如需要再次扩容，则扩容elementData为2倍</li>
+<li>如果使用的是指定大小的构造器，则初始elementData容量为指定大小，如果需要扩容，则直接扩容elementData为2倍</li>
+</ol>
+<h5 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h5><h6 id="基本概念-4"><a href="#基本概念-4" class="headerlink" title="基本概念"></a>基本概念</h6><ol>
+<li>LinkedList底层实现了双向链表和双端队列特点</li>
+<li>可以添加任意元素(元素同样可以重复)，包括null</li>
+<li>线程不安全，没有实现同步和互斥</li>
+</ol>
+<h6 id="底层结构"><a href="#底层结构" class="headerlink" title="底层结构"></a>底层结构</h6><ol>
+<li>底层维护的是<strong>双向链表</strong></li>
+<li>LinkedList中维护了两个属性，<strong>first和last分别指向首节点和尾节点</strong></li>
+<li>每个节点(Node对象),里面维护了prev,next,item三个属性，其中通过prev指向前一个，通过next指向后一个节点，最终实现双向链表</li>
+<li>LinkedList的元素的<strong>添加和删除</strong>，<strong>不是通过数组完成的</strong>，相对来说<strong>效率较高</strong></li>
+</ol>
+<h6 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h6><ol>
+<li>因为它是List接口的实现，所以可以使用三种遍历方式</li>
+<li>remove()方法，不带参数删除LinkedList对象的第一个节点(Node)</li>
+<li>set(),add()等方法，用多了自然就熟悉了</li>
+</ol>
+<h5 id="ArrayList-和-LinkedList-比较"><a href="#ArrayList-和-LinkedList-比较" class="headerlink" title="ArrayList 和 LinkedList 比较"></a>ArrayList 和 LinkedList 比较</h5><table>
+<thead>
+<tr>
+<th></th>
+<th>底层结构</th>
+<th>增删的效率</th>
+<th>改查的效率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ArrayList</td>
+<td>可变数组</td>
+<td>较低 数组扩容</td>
+<td>较高</td>
+</tr>
+<tr>
+<td>LinkedList</td>
+<td>双向链表</td>
+<td>较高  通过链表追加</td>
+<td>较低</td>
+</tr>
+</tbody></table>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><h5 id="基本概念-5"><a href="#基本概念-5" class="headerlink" title="基本概念"></a>基本概念</h5><ol>
+<li><strong>无序(添加/删除的顺序和取出的顺序不一致)，没有索引</strong></li>
+<li><strong>不允许重复元素</strong>，所以<strong>最多包含一个null</strong></li>
+<li>Set接口的实现类主要有HashSet，TreeSet </li>
+<li>是Collection的子接口，因此，常用方法和Collection接口一样</li>
+</ol>
+<h5 id="遍历方法"><a href="#遍历方法" class="headerlink" title="遍历方法"></a>遍历方法</h5><ol>
+<li>可以使用迭代器</li>
+<li>可以使用增强for，即foreach</li>
+<li>不能使用索引的方式来获取，因此不能使用普通for循环遍历</li>
+</ol>
+<h5 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h5><p>取出的顺序和添加/删除的顺序<strong>可能不一致</strong>，但它是<strong>固定</strong>的</p>
+<h5 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h5><h6 id="基本概念-6"><a href="#基本概念-6" class="headerlink" title="基本概念"></a>基本概念</h6><ol>
+<li>Set的实现类</li>
+<li>HashSet的<strong>底层是HashMap</strong></li>
+<li>可以也只能存放一个null，不能有重复元素</li>
+<li>取出的顺序和添加/删除的顺序<strong>不一致</strong>，但它是<strong>固定</strong>的</li>
+</ol>
+<h6 id="底层分析"><a href="#底层分析" class="headerlink" title="底层分析"></a>底层分析</h6><ol>
+<li>HashSet的<strong>底层是HashMap，HashMap底层是(数组+链表+红黑树)</strong></li>
+<li>添加一个元素时，先得到hash值 -&gt; 索引值</li>
+<li>找到存储数据表table，看这个索引位置是否已经存放的有元素<ol>
+<li>如果没有，直接加入</li>
+<li>如果有，调用 equals 比较，如果相同，就放弃添加，如果不相同，则添加到最后</li>
+</ol>
+</li>
+<li>在 java8 中<ol>
+<li>如果一条链表的元素个数达到 TREEIFY_THRESHOLD(默认是8)</li>
+<li>并且table的大小 &gt;= MIN_TREEIFY_CAPACITY(默认为64)</li>
+<li>就会进行树化(红黑树)</li>
+</ol>
+</li>
+<li>扩容，树化<ol>
+<li>HashSet底层是HashMap，第一次添加时，table数组扩容到16，临界值(threshold)为 16 * 0.75(加载因子) = 12</li>
+<li>当table数组使用已经到了临界值为12(即存放了12个对象)，add第13个对象时，就会扩容到 16 * 12 = 32，新的临界值就是 32 * 0.75 = 24(以此类推)</li>
+<li>在Java8中，如果一条链表的元素个数到达TREEIFY_THRESHOLD(默认是8),并且table的大小 &gt;= MIN_TREEIFY_CAPACITY(默认为64)，就会进行树化(红黑树),<strong>否则采用数组机制扩容</strong></li>
+</ol>
+</li>
+</ol>
+<h5 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h5><h6 id="基本概念-7"><a href="#基本概念-7" class="headerlink" title="基本概念"></a>基本概念</h6><ol>
+<li>LinkedHashSet 是 HashSet 的子类</li>
+<li>LinkedHashSet 底层是一个 LinkedHashMap(HashMap 的子类), 底层维护了一个<strong>数组 + 双向链表</strong></li>
+<li>LinkedHashSet 根据元素的 hashCode 值来决定元素的存储位置，同时使用双向链表维护元素的次序，这使得元素看起来是以插入顺序保存的</li>
+<li>LinkedHashSet 不允许添加重复元素</li>
+</ol>
+<h6 id="细节-1"><a href="#细节-1" class="headerlink" title="细节"></a>细节</h6><ol>
+<li>添加/删除元素的顺序一致</li>
+<li>LinkedHashSet 中有 head(头) 和 tail(尾)</li>
+<li>每一个节点[Entry(静态内部类Node的子类)]有 before 和 after 属性，这样可以形成双向链表</li>
+<li>在添加每一个元素时，先求hash值，确定该元素在table的位置，然后将添加的元素加入到双向链表(添加原则和HashSet一样)</li>
+<li>这样的话，遍历 LinkedHashSet 就能确保插入顺序和遍历顺序一致</li>
+</ol>
+<h5 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h5><ol>
+<li>无参构造器，存取数据是无序的</li>
+<li>可以使用带参(Comparator c)构造器，传入匿名内部类，并重写compare方法，可以使存取数据时，按指定规则进行排序</li>
+<li>之前判断是否相等是由equals方法决定的，而TreeSet底层由compare方法决定</li>
+<li>TreeSet添加的对象对应的类必须实现Comparable接口 <code>implements Comparable</code></li>
+</ol>
+<h5 id="面试题-HashSet-和-TreeSet分别如何实现去重"><a href="#面试题-HashSet-和-TreeSet分别如何实现去重" class="headerlink" title="面试题 HashSet 和 TreeSet分别如何实现去重"></a>面试题 HashSet 和 TreeSet分别如何实现去重</h5><ol>
+<li>HashSet的去重机制: hashCode() + equals(),底层先通过存入对象，进行运算得到一个hash值，通过hash值得到对应的索引，如果发现table索引所在的位置，没有数据，就直接存放，如果有数据，就进行equals比较(遍历比较)</li>
+<li>TreeSet的去重机制: 如果你传入了一个Comparator匿名内部类对象，就使用实现的compare去重，如果方法返回0，就认为是相同的元素/数据，如果没有传入Comparator匿名对象，则以你<strong>添加的对象实现的Comparable接口的compareTo去重</strong></li>
+</ol>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><h5 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h5><ol>
+<li>Map用于保存具有<strong>映射关系</strong>的数据key-value(键值对)</li>
+<li>Map中的key和value可以是任何引用类型的数据，会封装到<strong>HashMap$Node</strong>对象中</li>
+<li>Map中的<strong>key不允许重复</strong>，****</li>
+<li>Map中的<strong>value可以重复</strong></li>
+<li>Map的key可以为null，value也可以为null，注意只能有一个key为null，可以有多个value为null</li>
+<li>常用String类，做Map的key</li>
+<li>key和value之间存在单向一对一关系，即<strong>通过key总能找到对应的value</strong></li>
+</ol>
+<h5 id="常用方法-2"><a href="#常用方法-2" class="headerlink" title="常用方法"></a>常用方法</h5><p>put,remove,get,containsKey,containsValue,clear,size</p>
+<h5 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h5><ol>
+<li><code>hashMap.keySet()</code> <ol>
+<li>返回一个keySet(Set)</li>
+<li>使用foreach或迭代器遍历keySet</li>
+<li>使用<code>hashMap.get(key)</code>得到对应的value</li>
+</ol>
+</li>
+<li><code>hashMap.values()</code> <ol>
+<li>返回一个values(Collection)</li>
+<li>使用foreach或迭代器遍历values</li>
+</ol>
+</li>
+<li><code>hashMap.entrySet()</code><ol>
+<li>返回一个entrySet(Set)</li>
+<li>再使用foreach或迭代器遍历entrySet把它的对象转换成mapEntry(Map.Entry)</li>
+<li>使用<code>mapEntry.getKey()</code>和<code>mapEntry.getValue()</code></li>
+</ol>
+</li>
+</ol>
+<h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><ol>
+<li>以key-value的键值对存取数据(HashMap$Node)</li>
+<li>put新数据时，如果使用相同的key，则会把key原来对应的value替换掉</li>
+<li>key不能重复，value可以重复，允许使用null 线程不安全，没有做同步互斥的操作，即方法没有用synchronized修饰</li>
+<li>和HashSet一样，不保证数据存放的顺序(因为底层是以Hashtable的方式存储的)</li>
+<li>HashMap底层同样是 数组 + 链表 + 红黑树</li>
+<li>HashMap的扩容机制和HashSet基本相同</li>
+</ol>
+<h5 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h5><ol>
+<li>存取的元素仍然是key-value键值对</li>
+<li>Hashtable 的键和值都不能为null，否则会抛出NullPointerException</li>
+<li>Hashtable 使用方法基本和 HashMap 一致</li>
+<li>Hashtable 是线程安全的(synchronized),但效率与HashMap相比偏低</li>
+</ol>
+<h5 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h5><ol>
+<li>继承了Hashtable，所以实现了Map接口，也是使用键值对来保存数据</li>
+<li>使用特点和Hashtable相似</li>
+<li>Properties 一般用于从 xxx.properties配置文件中，加载数据到Properties类对象并进行读取和修改</li>
+</ol>
+<h5 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h5><ol>
+<li>无参构造器，存取数据仍然是无序的</li>
+<li>可以使用带参(Comparator c)构造器，传入匿名内部类，并重写compare方法，可以使存取数据时，按指定规则进行排序</li>
+<li>之前判断是否相等是由equals方法决定的，而TreeMap底层由compare方法决定</li>
+<li>TreeMap添加的对象对应的类必须实现Comparable接口 <code>implements Comparable</code></li>
+</ol>
+<h4 id="集合实现类的选择"><a href="#集合实现类的选择" class="headerlink" title="集合实现类的选择"></a>集合实现类的选择</h4><ul>
+<li>在开发中，选择什么集合实现类，主要取决于业务操作逻辑，然后根据集合实现类的特性进行选择 </li>
+</ul>
+<ol>
+<li>先判断存储的类型(一组对象[单列]或一组键对值[双列])</li>
+<li>一组对象: Collection<ol>
+<li>允许重复: List<ol>
+<li>增删多: LinkedList (底层维护了一个双向链表)</li>
+<li>改查多: ArrayList (底层维护了 Object 类型的可变数组)</li>
+</ol>
+</li>
+<li>不允许重复: Set<ol>
+<li>无序: HashSet (底层是HashMap，维护了一个哈希表，即数组 + 链表 + 红黑树)</li>
+<li>排序: TreeSet</li>
+<li>插入和取出顺序一致: LinkedHashSet ，维护了一个数组 + 双向链表</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>一组键值对: Map<ol>
+<li>键无序: HashMap (底层: Hash表 jdk7: 数组 + 链表 jdk8: 数组 + 链表 + 红黑树)</li>
+<li>键排序: TreeMap</li>
+<li>键插入和取出顺序一致: LinkedHashMap</li>
+<li>读取文件 Properties</li>
+</ol>
+</li>
+<li>多线程的时候使用Hashtable,Vector</li>
+</ol>
+<h4 id="Collections-工具类"><a href="#Collections-工具类" class="headerlink" title="Collections 工具类"></a>Collections 工具类</h4><ol>
+<li>Collections 是一个操作 Set，List 和 Map等集合的工具类</li>
+<li>Collections 中提供了一系列静态的方法对集合元素进行排序，查询和修改等操作</li>
+</ol>
 
                 
             </div>
