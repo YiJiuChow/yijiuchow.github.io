@@ -193,7 +193,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -2122,7 +2122,7 @@
 </ul>
 <h4 id="进程-Process"><a href="#进程-Process" class="headerlink" title="进程 Process"></a>进程 Process</h4><ol>
 <li>进程是程序的一次执行过程，或是正在运行的一个程序</li>
-<li>启动一个进程，操作系统将为迅雷分配新的内存空间</li>
+<li>启动一个进程，操作系统将为其分配新的内存空间</li>
 <li>进程是一个动态过程，有自身的产生，存在和消亡的过程</li>
 </ol>
 <h4 id="线程-Thread"><a href="#线程-Thread" class="headerlink" title="线程 Thread"></a>线程 Thread</h4><ol>
@@ -2222,6 +2222,130 @@
 <li>活用集合</li>
 <li>编程思想的逐步建立</li>
 </ol>
+<h3 id="chapter19-IO-流"><a href="#chapter19-IO-流" class="headerlink" title="chapter19 IO 流"></a>chapter19 IO 流</h3><h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ul>
+<li>文件就是<strong>保存数据的地方</strong></li>
+</ul>
+<h5 id="文件流"><a href="#文件流" class="headerlink" title="文件流"></a>文件流</h5><ol>
+<li>文件在程序中是<strong>以流的形式</strong>来操作的</li>
+<li>流: <strong>数据在数据源(文件)和程序(内存)的路径</strong>, <strong>流是一组有序的数据序列</strong>，将数据从一个地方带到另一个地方</li>
+<li>输入流: 数据从数据源(文件)到程序(内存)的路径</li>
+<li>输出流: 数据从程序(内存)到数据源(文件)的路径</li>
+</ol>
+<h5 id="常用的文件操作"><a href="#常用的文件操作" class="headerlink" title="常用的文件操作"></a>常用的文件操作</h5><ul>
+<li>创建文件对象相关构造器和方法<ol>
+<li><code>new File(String pathname)</code>            // 根据路径创建一个File对象</li>
+<li><code>new File(File parent, String child)</code>  //根据父目录文件 + 子路径构建</li>
+<li><code>new File(String parent,String child)</code> //根据父目录 + 子路径构建</li>
+<li><code>createNewFile()</code> 创建新文件</li>
+<li>注意<code>mkdir()</code>只能创建一级目录 <code>mkdirs()</code>可以创建多级目录</li>
+</ol>
+</li>
+</ul>
+<h4 id="IO流原理及流的分类"><a href="#IO流原理及流的分类" class="headerlink" title="IO流原理及流的分类"></a>IO流原理及流的分类</h4><h5 id="IO流原理"><a href="#IO流原理" class="headerlink" title="IO流原理"></a>IO流原理</h5><ol>
+<li>I/O 是 Input/Output缩写, I/O技术是非常实用的技术,用于处理数据传输. 如读/写文件/,网络通讯等</li>
+<li>Java程序中, 对于数据的输入/输出操作以流(stream)的方式进行</li>
+<li><strong>java.io</strong> 包下提供了<strong>流</strong>类的接口,用以获取不同种类的数据,并通过方法输入或输出数据</li>
+<li>输入input: 读取外部数据(从磁盘,光盘,网络,数据库等中读取)到程序(内存)中</li>
+<li>输出output: 将程序(内存)数据输出到磁盘,光盘,网络,数据库等 </li>
+</ol>
+<h5 id="流的分类"><a href="#流的分类" class="headerlink" title="流的分类"></a>流的分类</h5><ol>
+<li>按<strong>操作数据单位</strong>不同分为: <ol>
+<li>字节流(8 bit) 二进制文件(也可以操作文本文件)</li>
+<li>字符流(按字符) 文本文件  </li>
+</ol>
+</li>
+<li>按<strong>数据流的流向</strong>不同分为: <ol>
+<li>输入流</li>
+<li>输出流</li>
+</ol>
+</li>
+<li>按<strong>数据流的角色</strong>不同分为: <ol>
+<li>节点流</li>
+<li>处理流</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>抽象基类</th>
+<th>字节流</th>
+<th>字符流</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入流</td>
+<td>InputStream</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td>输出流</td>
+<td>OutputStream</td>
+<td>Writer</td>
+</tr>
+</tbody></table>
+<ul>
+<li>java的IO流共涉及40多个类,实际上非常规则,都是从如上四个抽象基类派生出的,这些类的名称都是以其父类名作为子类名后缀的</li>
+</ul>
+<h4 id="节点流和处理流"><a href="#节点流和处理流" class="headerlink" title="节点流和处理流"></a>节点流和处理流</h4><h5 id="节点流"><a href="#节点流" class="headerlink" title="节点流"></a>节点流</h5><ul>
+<li>节点流: 可以<strong>从一个特定的数据源(文件,数组,管道(pipe),字符串)读写数据</strong><h5 id="处理流"><a href="#处理流" class="headerlink" title="处理流"></a>处理流</h5></li>
+<li>处理流: 也叫包装流(对节点流或处理流进行包装), 是”连接”在已存在的流(节点流或处理流)之上,为程序提供更为强大的读写功能,也更加灵活,如BufferedReader,BufferedWriter<ol>
+<li>性能的提高: 主要以增加缓冲的方式来提高输入输出的效率</li>
+<li>操作的便捷: 处理流可能提供了一系列便捷的方法来一次输入输出大量的数据, 使用更加灵活方便</li>
+</ol>
+</li>
+</ul>
+<h5 id="区别和联系"><a href="#区别和联系" class="headerlink" title="区别和联系"></a>区别和联系</h5><ol>
+<li>节点流是底层流/低级流, 直接跟数据源相关</li>
+<li><strong>关闭处理流时,只需关闭外层流,内层流在底层会自动关闭</strong> </li>
+<li>处理流对节点流进行包装, 使用了<strong>修饰器设计模式</strong>, 不会直接与数据源相连</li>
+</ol>
+<h4 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h4><h5 id="基本概念-9"><a href="#基本概念-9" class="headerlink" title="基本概念"></a>基本概念</h5><ol>
+<li>序列化: 保存数据时,保存值和数据类型</li>
+<li>反序列化: 就是在恢复数据时,恢复数据的值和数据类型</li>
+<li>需要让某个对象支持序列化机制,则<strong>必须让其类是可序列化的</strong>,则该类必须实现下面两个接口之一:<ol>
+<li>Serializable   这是一个标记接口,没有方法</li>
+<li>Externalizable 该接口有方法需要实现,因此一般不使用</li>
+</ol>
+</li>
+</ol>
+<h4 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h4><ul>
+<li>打印流只有输出流,没有输入流<ol>
+<li>PrintStream 字节打印流</li>
+<li>PrintWriter 字符打印流</li>
+</ol>
+</li>
+</ul>
+<h5 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h5><ol>
+<li><strong>读写顺序要一致</strong></li>
+<li>要求序列化或反序列化对象,需要实现Serializable接口</li>
+<li>序列化的类中建议添加SerialVersionUID,提高兼容性</li>
+<li><strong>序列化对象时,默认将所有属性都进行序列化, 因此每个属性都必须能序列化, 但除了static或transient修饰的成员</strong>,</li>
+<li>序列化对象时,要求里面的属性的类型也需要实现序列化接口</li>
+<li>序列化具备可继承性(序列化接口的可继承性),也就是如果某类已经实现了序列化,则<strong>它的所有子类也已经默认实现了序列化</strong></li>
+</ol>
+<h4 id="Properties-1"><a href="#Properties-1" class="headerlink" title="Properties"></a>Properties</h4><h5 id="基本概念-10"><a href="#基本概念-10" class="headerlink" title="基本概念"></a>基本概念</h5><ol>
+<li>Hashtable的子类, 专门用于读写配置文件的集合类</li>
+<li>配置文件的格式: <code>键=值</code> <code>key=value</code></li>
+<li>注意: <strong>键值对不需要有空格, 值不需要用引号, 默认类型是String</strong></li>
+</ol>
+<h5 id="常用方法-3"><a href="#常用方法-3" class="headerlink" title="常用方法"></a>常用方法</h5><ol>
+<li>load: 注意配置文件的键值对到Properties对象</li>
+<li>list: 将数据显示到指定文件</li>
+<li>getProperty(key): 根据键获取值</li>
+<li>setProperty(key,value): 设置键值对到啊Properties对象</li>
+<li>store: 将Properties中的键值对存储到配置文件(.properties),在IDEA中,保存信息到配置文件,如果含有中文,会存储为unicode码</li>
+</ol>
+<h3 id="chapter20-IO流-应用到坦克大战"><a href="#chapter20-IO流-应用到坦克大战" class="headerlink" title="chapter20 IO流 应用到坦克大战"></a>chapter20 IO流 应用到坦克大战</h3><h4 id="坦克大战0-5版"><a href="#坦克大战0-5版" class="headerlink" title="坦克大战0.5版"></a>坦克大战0.5版</h4><ul>
+<li>预增加功能</li>
+</ul>
+<ol>
+<li>防止敌人坦克重叠运动</li>
+<li>记录玩家的成绩,存盘退出 (IO)</li>
+<li>记录当时的敌人坦克坐标,存盘退出 (IO)</li>
+<li>玩游戏时,可以选择是开新游戏还是继续上局游戏</li>
+</ol>
+<h3 id="第二阶段总结"><a href="#第二阶段总结" class="headerlink" title="第二阶段总结"></a>第二阶段总结</h3><p>待补充</p>
 
                 
             </div>
