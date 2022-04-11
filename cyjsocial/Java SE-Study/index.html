@@ -2346,6 +2346,160 @@
 <li>玩游戏时,可以选择是开新游戏还是继续上局游戏</li>
 </ol>
 <h3 id="第二阶段总结"><a href="#第二阶段总结" class="headerlink" title="第二阶段总结"></a>第二阶段总结</h3><p>待补充</p>
+<h3 id="chapter21-网络编程"><a href="#chapter21-网络编程" class="headerlink" title="chapter21 网络编程"></a>chapter21 网络编程</h3><h4 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h4><h5 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h5><p>两台或多台设备通过一定物理设备连接起来构成了网络</p>
+<h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><ul>
+<li>根据网络覆盖范围不同,对网络进行分类:</li>
+</ul>
+<ol>
+<li>局域网: 覆盖范围最小, 仅仅覆盖一个教室或一个机房</li>
+<li>城域网: 覆盖范围较大, 可以覆盖一个城市</li>
+<li>广域网: 覆盖范围最大,可以覆盖全国甚至全球,万维网是广域网的代表</li>
+</ol>
+<h5 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h5><ol>
+<li>概念: 用于唯一标识网络中每台计算机/主机</li>
+<li>查看ip地址: ipconfig</li>
+<li>ipv4<ol>
+<li>ipv4地址的表示形式: 点分十进制 ,4个字节</li>
+<li>每一个(字节)十进制数的范围: 0 ~ 255</li>
+</ol>
+</li>
+<li>ipv6<ol>
+<li>ipv6地址的表示形式: 冒号分十六进制 , 16个字节</li>
+<li>每个十六进制数(2个字节)的范围: 0 ~ 65535</li>
+</ol>
+</li>
+</ol>
+<h5 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h5><ol>
+<li>好处: 为了方便记忆, 解决记ip的问题</li>
+<li>概念: 将ip地址映射成域名(HTTP协议)</li>
+</ol>
+<h5 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h5><ol>
+<li>概念: 用于标识计算机上某个特定的网络程序</li>
+<li>表示形式: 以整数形式, 范围 0 ~ 65535</li>
+<li>在网络开发中不要使用 0 ~ 1024, 因为大部分端口已被占用, 比如: <code>ssh 22 | ftp 21 | smtp 25 | http 80 | https 443</code></li>
+<li>常用的网络程序端口号: <code>tomcat 8080 | mysql 3306 | oracle 1521 | sqlserver 1433</code></li>
+</ol>
+<h5 id="网络通信协议"><a href="#网络通信协议" class="headerlink" title="网络通信协议"></a>网络通信协议</h5><table>
+<thead>
+<tr>
+<th align="center">OSI模型</th>
+<th align="center">TCP/IP模型</th>
+<th align="center">TCP/IP模型各层对应协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">应用层</td>
+<td align="center">应</td>
+<td align="center">HTTP, ftp,</td>
+</tr>
+<tr>
+<td align="center">表示层</td>
+<td align="center">用</td>
+<td align="center">telnet,</td>
+</tr>
+<tr>
+<td align="center">会话层</td>
+<td align="center">层</td>
+<td align="center">DNS…</td>
+</tr>
+<tr>
+<td align="center">传输层</td>
+<td align="center">传输层(TCP)</td>
+<td align="center">TCP, UDP…</td>
+</tr>
+<tr>
+<td align="center">网络层</td>
+<td align="center">网络层(IP)</td>
+<td align="center">IP, ICMP, ARP…</td>
+</tr>
+<tr>
+<td align="center">数据链路层</td>
+<td align="center">物理 + 数</td>
+<td align="center">Link</td>
+</tr>
+<tr>
+<td align="center">物理层</td>
+<td align="center">据链路层</td>
+<td align="center">Link</td>
+</tr>
+</tbody></table>
+<h5 id="TCP-和-UDP"><a href="#TCP-和-UDP" class="headerlink" title="TCP 和 UDP"></a>TCP 和 UDP</h5><ul>
+<li>TCP协议: <ol>
+<li>一般也叫传输控制协议(因为TCP协议是使用最多的协议)</li>
+<li>使用TCP协议前, 须先建立TCP连接, 形成传输数据通道</li>
+<li>传输前, 采用”三次握手”方式, 是<strong>可靠的</strong></li>
+<li>TCP协议在进行通信的两个应用进程: <strong>客户端 服务端</strong></li>
+<li>在连接中可进行大数据量的传输</li>
+<li>传输完毕, 需释放已建立的连接, <strong>效率低</strong></li>
+</ol>
+</li>
+<li>UDP协议: <ol>
+<li>将<strong>数据,源,目的</strong>封装成数据包, <strong>不需要建立连接</strong></li>
+<li>每个数据包的大小限制在<strong>64k</strong>内, 不适合传输大量数据</li>
+<li>因无需连接, 所以是<strong>不可靠的</strong>, 即不保证传输的数据一定被接收到</li>
+<li>发送数据结束时无需释放资源, 速度快</li>
+</ol>
+</li>
+</ul>
+<h4 id="InetAddress-类"><a href="#InetAddress-类" class="headerlink" title="InetAddress 类"></a>InetAddress 类</h4><ol>
+<li><code>InetAddress.getLocalHost() </code></li>
+<li><code>InetAddress.getName()</code></li>
+<li><code>InetAddress.getHostName()</code></li>
+</ol>
+<h4 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h4><h5 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h5><ol>
+<li>套接字(Socket)开发网络应用程序被广泛采用,以至于成为事实上的标准</li>
+<li>通信的两端都要有Socket, 是两台机器间通信的端点</li>
+<li>网络通信其实就是Socket间的通信</li>
+<li>Socket允许程序把网络连接当成一个流, 数据在两个Socket间通过IO传输</li>
+<li>一般主动发起通信的应用程序为客户端, 接受(等待)通信请求的为服务端</li>
+</ol>
+<h4 id="TCP-网络通信编程"><a href="#TCP-网络通信编程" class="headerlink" title="TCP 网络通信编程"></a>TCP 网络通信编程</h4><ul>
+<li><p>基本介绍</p>
+<ol>
+<li>基于客户端 – 服务端的网络通信</li>
+<li>底层使用的是TCP/IP协议</li>
+<li>应用场景举例: 客户端发送数据, 服务端接受并显示控制台</li>
+<li>基于Socket的TCP编程</li>
+</ol>
+</li>
+<li><p>netstat</p>
+<ol>
+<li><code>netstat -an</code> 可以查看当前主机网络情况,包括端口监听情况或网络连接情况</li>
+<li><code>netstat -an | more</code> 可以分页显示</li>
+</ol>
+</li>
+<li><p>细节</p>
+<ol>
+<li>当客户端连接到服务端后,实际上客户端也是通过一个端口和服务端进行通讯的, 这个端口是TCP/IP来分配的, 是不确定的, 是随机的</li>
+<li>可以使用netstat验证</li>
+</ol>
+</li>
+</ul>
+<h4 id="UDP网络通信编程-了解"><a href="#UDP网络通信编程-了解" class="headerlink" title="UDP网络通信编程(了解)"></a>UDP网络通信编程(了解)</h4><ul>
+<li>基本介绍<ol>
+<li>类 DatagramSocket 和 DatagramPacket(数据包/数据报)实现了基于UDP协议网络程序</li>
+<li>UDP数据报通过数据套接字 DatagramSocket 发送和接收, 系统不保证UDP数据包一定能够安全送到目的地, 也不能确定什么时候可以抵达</li>
+<li>DatagramPacket 对象封装了UDP数据包, 在数据包中包含了发送端的IP地址和端口号以及接收端的IP地址和端口号</li>
+<li>UDP协议中每个数据包都给出了完整的地址信息, 因此无须建立发送方和接收方的连接</li>
+</ol>
+</li>
+<li>说明<ol>
+<li>没有明确的服务端和客户端,演变成数据的发送端和接收端</li>
+<li>接收数据和发送数据通过DatagramSocket对象完成</li>
+<li>将数据封装到DatagramPacket对象/装包</li>
+<li>当接收到DatagramPacket对象,需要进行拆包,取出数据</li>
+<li>DatagramSocket可以指定在哪个端口接收数据</li>
+<li>发送端和接收端如果在一台主机上,监听的端口不能相同</li>
+</ol>
+</li>
+<li>基本流程<ol>
+<li>建立发送端,接收端</li>
+<li>发送数据前,建立数据包/报 DatagramPacket对象</li>
+<li>调用DatagramSocket的发送,接收方法</li>
+<li>关闭DatagramSocket</li>
+</ol>
+</li>
+</ul>
 
                 
             </div>
