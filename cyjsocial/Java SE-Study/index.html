@@ -2476,14 +2476,16 @@
 </li>
 </ul>
 <h4 id="UDP网络通信编程-了解"><a href="#UDP网络通信编程-了解" class="headerlink" title="UDP网络通信编程(了解)"></a>UDP网络通信编程(了解)</h4><ul>
-<li>基本介绍<ol>
+<li><p>基本介绍</p>
+<ol>
 <li>类 DatagramSocket 和 DatagramPacket(数据包/数据报)实现了基于UDP协议网络程序</li>
 <li>UDP数据报通过数据套接字 DatagramSocket 发送和接收, 系统不保证UDP数据包一定能够安全送到目的地, 也不能确定什么时候可以抵达</li>
 <li>DatagramPacket 对象封装了UDP数据包, 在数据包中包含了发送端的IP地址和端口号以及接收端的IP地址和端口号</li>
 <li>UDP协议中每个数据包都给出了完整的地址信息, 因此无须建立发送方和接收方的连接</li>
 </ol>
 </li>
-<li>说明<ol>
+<li><p>说明</p>
+<ol>
 <li>没有明确的服务端和客户端,演变成数据的发送端和接收端</li>
 <li>接收数据和发送数据通过DatagramSocket对象完成</li>
 <li>将数据封装到DatagramPacket对象/装包</li>
@@ -2492,7 +2494,8 @@
 <li>发送端和接收端如果在一台主机上,监听的端口不能相同</li>
 </ol>
 </li>
-<li>基本流程<ol>
+<li><p>基本流程</p>
+<ol>
 <li>建立发送端,接收端</li>
 <li>发送数据前,建立数据包/报 DatagramPacket对象</li>
 <li>调用DatagramSocket的发送,接收方法</li>
