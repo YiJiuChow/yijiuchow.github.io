@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker, Fortune">
+    <meta name="keywords" content="MySQL-Study, Fortune">
     <meta name="description" content="YiJiu Chow&#39;s Social">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Docker | Fortune</title>
+    <title>MySQL-Study | Fortune</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -193,12 +193,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Docker</h1>
+                    <h1 class="description center-align post-title">MySQL-Study</h1>
                 </div>
             </div>
         </div>
@@ -208,117 +208,19 @@
 
 
 
-<main class="post-container content">
+<main class="container content">
 
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
+    <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Docker/">
-                                <span class="chip bg-color">Docker</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">無標籤</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -330,7 +232,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>發布日期:&nbsp;&nbsp;
-                    2022-03-15
+                    2022-04-16
                 </div>
                 
 
@@ -351,7 +253,284 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2>
+                <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="MySQL数据库三层结构"><a href="#MySQL数据库三层结构" class="headerlink" title="MySQL数据库三层结构"></a>MySQL数据库三层结构</h3><ol>
+<li>安装Mysql数据库, 就是在主机安装一个数据库管理系统 DBMS(database manage system), 这个管理系统可以管理多个数据库</li>
+<li>一个数据库中可以创建多个表, 以保存数据(信息)</li>
+<li>DBMS (以mysqld.exe为主的程序集) -&gt; 数据库(data中) -&gt; 表 (本质就是文件)</li>
+</ol>
+<h3 id="SQL语句分类"><a href="#SQL语句分类" class="headerlink" title="SQL语句分类"></a>SQL语句分类</h3><ol>
+<li>DDL: 数据定义语句 (create 表, 库…)</li>
+<li>DML: 数据操作语句 (增加 insert, 修改 update, 删除 delete…)</li>
+<li>DQL: 数据查询语句 (select…)</li>
+<li>DCL: 数据控制语句 (管理数据库: 比如用户权限 grand revoke)</li>
+</ol>
+<h3 id="创建数据库-Create-database"><a href="#创建数据库-Create-database" class="headerlink" title="创建数据库 Create database"></a>创建数据库 Create database</h3><ul>
+<li><code>CREATE DATABASE (IF NOT EXISTS) databaseName (CHARSET | CHARACTER SET | CHAR SET utf8 ) (COLLATE utf8_bin/utf8_general_ci)</code></li>
+</ul>
+<ol>
+<li><code>CHARACTER SET</code> 指定数据库采用的字符集, 如果不指定字符集, 默认utf8</li>
+<li><code>COLLATE</code> 指定数据库字符集的校对规则常用 <code>utf8_bin</code> (区分大小写) <code>utf8_general_ci</code> (不区分大小写, <strong>默认</strong>)</li>
+<li><code>SHOW DATABASES</code> 显示数据库 </li>
+<li><code>SHOW CREATE DATABASE db_name</code> 显示数据库创建语句</li>
+<li><code>DROP DATABASE (IF EXISTS) db_name</code> 删除数据库</li>
+</ol>
+<h3 id="备份和恢复数据库-Backup-and-restore-databases"><a href="#备份和恢复数据库-Backup-and-restore-databases" class="headerlink" title="备份和恢复数据库 Backup and restore databases"></a>备份和恢复数据库 Backup and restore databases</h3><ul>
+<li>备份数据库<ul>
+<li><code>mysqldump -u root -p -B database1 database2 ... &gt; fileName.sql</code></li>
+</ul>
+</li>
+<li>备份数据库的表<ul>
+<li><code>mysqldump -u root -p db_name table1 table2 ... &gt; fileName.sql</code></li>
+</ul>
+</li>
+<li>恢复数据库<ul>
+<li><code>source fileName.sql</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="创建表-Create-table"><a href="#创建表-Create-table" class="headerlink" title="创建表 Create table"></a>创建表 Create table</h3><ul>
+<li><code>CREATE TABLE (IF NOT EXISTS) tableName (field datatype, ...) CHARSET utf8 (CHARSET | CHARACTER SET | CHAR SET utf8 ) (COLLATE utf8_bin/utf8_general_ci)(ENGINE ...);</code></li>
+</ul>
+<ol>
+<li>创建表不指定字符集和校对规则, 默认为所在数据库的字符集和校对规则</li>
+<li><code>ENGINE</code> 引擎 <code>field</code> 字段/列名 <code>datatype</code> 指定列类型(字段类型) </li>
+<li>() 里的都是非必须的</li>
+</ol>
+<h3 id="表的基本操作"><a href="#表的基本操作" class="headerlink" title="表的基本操作"></a>表的基本操作</h3><ul>
+<li>删除表<code>DROP TABLE tableName;</code></li>
+<li>查看表的结构 <code>DESC tableName;</code></li>
+</ul>
+<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><ol>
+<li>添加列 <code>AlTER TABLE tableName ADD (field datatype,...) after field;</code></li>
+<li>修改列 <code>ALTER TABLE tableName MODIFY (field datatype);</code></li>
+<li>删除列 <code>ALTER TABLE tableName DROP (field);</code></li>
+<li>修改表的字符集 <code>ALTER TABLE tableName CHARSET utf8;</code></li>
+</ol>
+<h3 id="常用数据-列-类型"><a href="#常用数据-列-类型" class="headerlink" title="常用数据(列)类型"></a>常用数据(列)类型</h3><ol>
+<li>数值类型 (使用规范: 在能够满足需求的情况下,尽量选择占用空间小的类型)<ol>
+<li>整型 tinyint(1个字节) smallint(2个字节) mediumint(3个字节) <strong>int(4个字节)</strong> bigint(8个字节)</li>
+<li>浮点型 float(单精度 4个字节) <strong>double(双精度 8个字节)</strong></li>
+<li>decimal(M, D)大小不确定, 如果D是0, 则没有小数部分,M最大65(默认为10), D最大是30(默认为0)</li>
+<li>指定 unsigned 就是无符号数</li>
+</ol>
+</li>
+<li>文本类型(字符串类型)<ol>
+<li><strong>char(0 ~ 255) 固定长度字符串</strong> ,最大255字符, 字节数不定, <strong>查询速度快于varchar</strong></li>
+<li><strong>varchar(0 ~ 21844) 可变长度字符串, 最大65535字节, 会预留1 ~ 3个字节来记录字符串长度, 所以utf8编码最大存(65535 - 3) / 3 = 21844个字符</strong></li>
+<li>text(0 ~ 65535) 和varchar差不多, 根据编码,可存的最大字符长度会变化</li>
+<li>longtxt(0 ~ 2^32 - 1) </li>
+</ol>
+</li>
+<li>二进制类型(不常用)<ol>
+<li>blob 0 ~ 65535</li>
+<li>longblob 0 ~ 2^32 -1</li>
+</ol>
+</li>
+<li>时间日期类型<ol>
+<li>date YYYY-MM-DD</li>
+<li>time HH:mm:ss</li>
+<li><strong>datetime YYYY-MM-DD HH:mm:ss</strong></li>
+<li><strong>timestamp 时间戳 not null</strong> <code>time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</code> 添加行时, 以当前时间填充这个列</li>
+<li>year YYYY</li>
+</ol>
+</li>
+<li>位类型(不常用) bit(m) m指定位数, 默认为1, 范围1 ~ 64 按照位的方式显示</li>
+</ol>
+<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><ul>
+<li><code>INSERT TABLE tableName (column...) VALUES (&#39;&#39;...);</code></li>
+</ul>
+<ol>
+<li>插入的数据应当与字段(列)的数据类型相同 (一些数字可以自动转成字符,和java的规则差不多)</li>
+<li>数据的长度应在列的规定范围内</li>
+<li>在 <code>VALUES</code> 中列出的数据位置必须与被加入的列的排列位置相对应</li>
+<li>字符和日期型数据应包含在单引号中</li>
+<li>列可以插入空值(null)(前提是此字段允许为空)</li>
+<li>如果是给表中的所有字段添加数据, 可以不写前面的字段名称</li>
+<li>如果某个列 没有指定 <code>NOT NULL</code> , 那么当添加数据时,没有给定值,则会默认给 null</li>
+</ol>
+<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><ul>
+<li><code>UPDATE tableName SET fieldName = value,... WHERE fieldName = value;</code></li>
+</ul>
+<ol>
+<li><code>WHERE</code> 子句指定应更新哪些行, 如果没有 <code>WHERE</code> 条件, 则会修改表中所有的记录</li>
+<li><code>UPDATE</code> 语句可以用新值更新原有表行中的各列</li>
+<li><code>SET</code> 子句指示要修改哪些列要给予哪些值</li>
+</ol>
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><ul>
+<li><code>DELETE FROM tablename WHERE fieldName = value;</code></li>
+</ul>
+<ol>
+<li><code>WHERE</code> 子句指定应删除哪些行, 如果没有 <code>WHERE</code> 条件, 则会删除表中所有的记录</li>
+<li>DELETE 语句不能删除某一列的值</li>
+<li>使用 <code>DELETE</code> 语句仅删除记录, 不删除表本身, 如要删除表, 直接使用<code>DROP TABLE tableName;</code></li>
+</ol>
+<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><ul>
+<li><code>SELECT (DISTINCT) * / fieldName (AS otherName),... FROM tableName;</code></li>
+</ul>
+<ol>
+<li><code>*</code> 表示表中所有学生的姓名和对应的英语成绩, ()里的内容是非必须的</li>
+<li><code>DISTINCT</code> 表示去重, 注意去重, 每个要查询的字段都相同才去重</li>
+<li>AS 用于取一个别名</li>
+<li>field可以进行运算</li>
+</ol>
+<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><ul>
+<li>WHERE 子句中常用的运算符</li>
+</ul>
+<ol>
+<li>比较运算符<ol>
+<li>&gt; &lt; &lt;= &gt;= = !=</li>
+<li>BETWEEN…AND… 显示某一<strong>闭区间</strong>的值</li>
+<li>IN (set) 显示在in列表中的值</li>
+<li>LIKE ‘张%’ 模糊查询</li>
+<li>IS NULL 判断为空</li>
+</ol>
+</li>
+<li>逻辑运算符<ol>
+<li>and 多个条件同时成立</li>
+<li>or 多个条件任一成立</li>
+<li>not 不成立</li>
+</ol>
+</li>
+</ol>
+<h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><ul>
+<li><code>SELECT... ORDER BY column ASC|DESC,...</code></li>
+</ul>
+<ol>
+<li><code>OEDER BY</code> 指定排序的列, 排序的列既可以是表中的列名, 也可以是 <code>SELECT</code> 后指定的别名</li>
+<li><code>ASC</code> 表示升序 <code>DESC</code> 表示降序</li>
+<li><code>ORDER BY</code> 子句必须位于 <code>SELECT</code> 语句的结尾</li>
+</ol>
+<h3 id="合计函数-Aggregate-function"><a href="#合计函数-Aggregate-function" class="headerlink" title="合计函数 Aggregate function"></a>合计函数 Aggregate function</h3><h4 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT"></a>COUNT</h4><ul>
+<li><code>SELECT COUNT(*)|COUNT(列) FROM...</code></li>
+</ul>
+<ol>
+<li>返回/合计/统计行的总数</li>
+<li><code>COUNT(*)</code> 返回满足条件的记录的行数 <code>COUNT(列)</code> 返回满足条件的某列有多个, 但是会排除为字段为null的行</li>
+</ol>
+<h4 id="SUM"><a href="#SUM" class="headerlink" title="SUM"></a>SUM</h4><ul>
+<li><code>SELECT SUM(列) FROM.. WHERE...</code></li>
+</ul>
+<ol>
+<li>返回满足 <code>WHERE</code> 条件的行的和(一般使用在数值列), 没有 <code>WHERE</code> 条件, 则返回所有行的和</li>
+<li>对非数值型统计没有意义</li>
+</ol>
+<h4 id="AVG"><a href="#AVG" class="headerlink" title="AVG"></a>AVG</h4><ul>
+<li><code>SELECT AVG(列) FROM...</code></li>
+<li><code>AVG(列)</code> 返回满足 <code>WHERE</code> 条件的一列的平均值</li>
+</ul>
+<h4 id="MAX-MIN"><a href="#MAX-MIN" class="headerlink" title="MAX/MIN"></a>MAX/MIN</h4><ul>
+<li><code>SELECT MAX(列)|MIN(列) FROM...</code></li>
+<li>MAX/MIN 返回满足 <code>WHERE</code> 条件的一列的最大/最下值</li>
+</ul>
+<h4 id="GROUP-BY-…HAVING-…"><a href="#GROUP-BY-…HAVING-…" class="headerlink" title="GROUP BY …HAVING …"></a>GROUP BY …HAVING …</h4><ul>
+<li><code>SELECT ... GROUP BY column HAVING condition.</code></li>
+</ul>
+<ol>
+<li><code>GROUP BY</code> 子句用于对查询的结果分组统计</li>
+<li><code>HAVING</code> 子句用于限制/过滤分组显示结果,一般后面接聚合的数据, 放入普通数据比WHERE效率低</li>
+</ol>
+<h3 id="字符串函数-String-function"><a href="#字符串函数-String-function" class="headerlink" title="字符串函数 String function"></a>字符串函数 String function</h3><ul>
+<li><code>charset(str)</code> 返回字串字符集<ul>
+<li><code>select charset(ename) from emp;</code></li>
+</ul>
+</li>
+<li><code>concat(str1, str2)</code> 连接字符串<ul>
+<li><code>select concat(ename, &#39;\&#39;s job is &#39;, job) from emp;</code></li>
+</ul>
+</li>
+<li><code>instr(substring, string)</code> 返回substring在string中出现的位置,没有返回0</li>
+<li>dual 亚元表, 可以做为测试表使用<ul>
+<li><code>select instr(&#39;hanshunping&#39;, &#39;ping&#39;) from dual;</code></li>
+<li><code>select instr(&#39;JONES&#39;, ename) from emp;</code></li>
+</ul>
+</li>
+<li>ucase 转大写 lcase 转小写<ul>
+<li><code>select ucase(empno) from emp;</code></li>
+<li><code>select lcase(ename) from emp;</code></li>
+</ul>
+</li>
+<li><code>left(string, length)</code>  从string中左边起取length个字符<ul>
+<li><code>select left(&#39;haha&#39;, 2) from dual;</code></li>
+<li><code>select left(ename , 2) from emp;</code></li>
+</ul>
+</li>
+<li><code>length(string)</code> string的长度(按照字节计算)<ul>
+<li><code>select length(ename) from emp;</code></li>
+</ul>
+</li>
+<li><code>replace(str, search_str, replace_str)</code> 在str中用replace_str替换search_str<ul>
+<li><code>select replace(ename,&#39;WA&#39;,&#39;null&#39;) from emp;</code></li>
+<li><code>select replace(job, &#39;MANAGER&#39;, &#39;经理&#39;) from emp;</code></li>
+</ul>
+</li>
+<li><code>substring(str, position, [,length])</code> 取str中 position到length的字符串, MySQL中, position = 1 表示第一个字符;<ul>
+<li><code>select substring(ename, 1, 2) from emp;</code></li>
+</ul>
+</li>
+<li><code>strcmp(string1, string2)</code> 逐个字符比较两字串大小<ul>
+<li><code>select strcmp(ename, job) from emp;</code></li>
+</ul>
+</li>
+<li><code>ltrim(string1) rtrim (string2) trim (string)</code> 去除前端空格或后段空格<ul>
+<li><code>select ltrim(&#39; chowyijiu&#39;) from dual;</code></li>
+<li><code>select rtrim(&#39;chowyijiu  &#39;) from dual;</code></li>
+<li><code>select trim(&#39; chowyijiu  &#39;) from dual;</code></li>
+</ul>
+</li>
+<li>练习: 以首字母小写的方式显示emp表的姓名<ul>
+<li><code>select concat(lcase(left(ename,1)) , right(ename, length(ename) - 1)) as new_name from emp;</code></li>
+<li><code>select replace(ename, left(ename,1), lcase(left(ename, 1))) as new_name from emp;</code></li>
+<li><code>select concat(lcase(substring(ename, 1, 1)), substring(ename,2)) as new_name from emp;</code></li>
+<li><code>select concat(lcase(left(ename,1)), substring(ename,2)) as new_name from emp;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><ul>
+<li>ABS(num) 绝对值<br><code>select abs(-10) from dual;</code></li>
+<li>BIN(num) 10进制 -&gt; 2进制<br><code>select bin(10) from dual;</code></li>
+<li>CEILING(num) 向上取整, 得到比num大的最大整数<br><code>select ceiling(1.1) from dual;</code></li>
+<li>conv(num, from_base,to_base) 进制转换<br><code>select conv(8, 10, 2) from dual;</code><br><code>select conv(16, 16, 10) from dual;</code></li>
+<li>floor(num) 向下取整, 返回比num小的最大整数<br><code>select floor(1.1) from dual;</code></li>
+<li>format(num, decimal_places) 保留小数位数(四舍五入)<br><code>select format(78.123434, 2) from dual;</code></li>
+<li>hex(decimalNumber) 转16进制<br><code>select hex(42314) from dual;</code></li>
+<li>least(num1, num2, …) 求最小值<br><code>select least(1, 2, 4, 3, 0.1, 7) from dual;</code></li>
+<li>mod(numerator, denominator) 求余数<br><code>select mod(10, 3) from dual;</code></li>
+<li>rand() 返回随机数<br><code>select rand() from dual;</code></li>
+</ul>
+<h3 id="时间日期相关函数"><a href="#时间日期相关函数" class="headerlink" title="时间日期相关函数"></a>时间日期相关函数</h3><ul>
+<li>current_date() 当前日期</li>
+<li>current_time() 当前时间</li>
+<li>current_timestamp() 当前时间戳</li>
+<li>unix_timestamp() 返回的是1970-01-01到现在的秒数</li>
+<li>date_add/date_sub(interval num year/month/day) date_sub() 日期的加减</li>
+<li>datediff(date1, date2) 返回两个日期的差(天数)</li>
+<li>timediff(time1, time2) 返回两个时间的差(秒数)</li>
+</ul>
+<h3 id="加密函数和系统函数"><a href="#加密函数和系统函数" class="headerlink" title="加密函数和系统函数"></a>加密函数和系统函数</h3><ul>
+<li>USER() 查询当前用户</li>
+<li>DATABASE() 查询当前数据库</li>
+<li>MD5(str) 把字符串加密成MD5 32位字符串</li>
+<li>PASSWORD(str) 从原文密码str计算并返回密码字符串, 通常用于对mysql数据库的用户密码加密(SELECT * FROM mysql.user查询用户的信息)</li>
+</ul>
+<h3 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h3><ul>
+<li><code>SELECT if(TRUE,0,1) FROM dual;</code> # 一真大师</li>
+<li><code>SELECT IFNULL(null,0) FROM dual;</code></li>
+<li><code>SELECT CASE WHEN TRUE THEN 1 WHEN TRUE THEN 2 ELSE 3 END FROM dual;</code> # 相当于java的if-else if-else</li>
+</ul>
+<h3 id="查询加强"><a href="#查询加强" class="headerlink" title="查询加强"></a>查询加强</h3><ul>
+<li>日期可以直接用来比较</li>
+<li>LIKE 的使用 <code>field LIKE &#39;__O%&#39;</code> , <strong><code>%</code> 表示0到多个任意字符</strong>, <strong><code>_</code> 表示单个任意字符</strong> <code>__O%</code>则表示第三位为O的字符串</li>
+<li>分页查询 <code>SELECT... limit start, rows</code> <strong>从start + 1开始,取出rows行, start 从0开始计算, 位于SELECT语句末尾</strong></li>
+<li>count() 等括号内可以使用IF等表达式</li>
+<li>如果SELECT语句中同时包含有多种子句, 那么的顺序应该是<ul>
+<li>where  </li>
+<li>group by having</li>
+<li>order by </li>
+<li>limit</li>
+</ul>
+</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -377,7 +556,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chowyijiu.social/cyjsocial/Docker/">https://chowyijiu.social/cyjsocial/Docker/</a>
+                    <a href="https://chowyijiu.social/cyjsocial/MySQL-Study/">https://chowyijiu.social/cyjsocial/MySQL-Study/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -414,11 +593,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Docker/">
-                                    <span class="chip bg-color">Docker</span>
-                                </a>
-                            
+                            <span class="chip bg-color">無標籤</span>
                         </div>
                     
                 </div>
@@ -459,9 +634,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/cyjsocial/MySQL-Study/">
                     <div class="card-image">
@@ -479,9 +655,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -490,6 +666,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -500,23 +677,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/cyjsocial/Java%20SE-Study/">
+                <a href="/cyjsocial/Docker/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java SE Study">
                         
-                        <span class="card-title">Java SE Study</span>
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker">
+                        
+                        <span class="card-title">Docker</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一份樸實無華的Java學習筆記
+                            容器技术
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-15
                             </span>
                         <span class="publish-author">
                             
@@ -529,16 +707,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/Java-SE/">
-                        <span class="chip bg-color">Java SE</span>
-                    </a>
-                    
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                 </div>
@@ -607,100 +777,6 @@
 
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目錄</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
 
     
 

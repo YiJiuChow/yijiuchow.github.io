@@ -2424,7 +2424,9 @@
 </tr>
 </tbody></table>
 <h5 id="TCP-和-UDP"><a href="#TCP-和-UDP" class="headerlink" title="TCP 和 UDP"></a>TCP 和 UDP</h5><ul>
-<li>TCP协议: <ol>
+<li>TCP协议: </li>
+</ul>
+<ol>
 <li>一般也叫传输控制协议(因为TCP协议是使用最多的协议)</li>
 <li>使用TCP协议前, 须先建立TCP连接, 形成传输数据通道</li>
 <li>传输前, 采用”三次握手”方式, 是<strong>可靠的</strong></li>
@@ -2432,15 +2434,15 @@
 <li>在连接中可进行大数据量的传输</li>
 <li>传输完毕, 需释放已建立的连接, <strong>效率低</strong></li>
 </ol>
-</li>
-<li>UDP协议: <ol>
+<ul>
+<li>UDP协议: </li>
+</ul>
+<ol>
 <li>将<strong>数据,源,目的</strong>封装成数据包, <strong>不需要建立连接</strong></li>
 <li>每个数据包的大小限制在<strong>64k</strong>内, 不适合传输大量数据</li>
 <li>因无需连接, 所以是<strong>不可靠的</strong>, 即不保证传输的数据一定被接收到</li>
 <li>发送数据结束时无需释放资源, 速度快</li>
 </ol>
-</li>
-</ul>
 <h4 id="InetAddress-类"><a href="#InetAddress-类" class="headerlink" title="InetAddress 类"></a>InetAddress 类</h4><ol>
 <li><code>InetAddress.getLocalHost() </code></li>
 <li><code>InetAddress.getName()</code></li>
@@ -2454,37 +2456,40 @@
 <li>一般主动发起通信的应用程序为客户端, 接受(等待)通信请求的为服务端</li>
 </ol>
 <h4 id="TCP-网络通信编程"><a href="#TCP-网络通信编程" class="headerlink" title="TCP 网络通信编程"></a>TCP 网络通信编程</h4><ul>
-<li><p>基本介绍</p>
+<li>基本介绍</li>
+</ul>
 <ol>
 <li>基于客户端 – 服务端的网络通信</li>
 <li>底层使用的是TCP/IP协议</li>
 <li>应用场景举例: 客户端发送数据, 服务端接受并显示控制台</li>
 <li>基于Socket的TCP编程</li>
 </ol>
-</li>
-<li><p>netstat</p>
+<ul>
+<li>netstat</li>
+</ul>
 <ol>
 <li><code>netstat -an</code> 可以查看当前主机网络情况,包括端口监听情况或网络连接情况</li>
 <li><code>netstat -an | more</code> 可以分页显示</li>
 </ol>
-</li>
-<li><p>细节</p>
+<ul>
+<li>细节</li>
+</ul>
 <ol>
 <li>当客户端连接到服务端后,实际上客户端也是通过一个端口和服务端进行通讯的, 这个端口是TCP/IP来分配的, 是不确定的, 是随机的</li>
 <li>可以使用netstat验证</li>
 </ol>
-</li>
-</ul>
 <h4 id="UDP网络通信编程-了解"><a href="#UDP网络通信编程-了解" class="headerlink" title="UDP网络通信编程(了解)"></a>UDP网络通信编程(了解)</h4><ul>
-<li><p>基本介绍</p>
+<li>基本介绍</li>
+</ul>
 <ol>
 <li>类 DatagramSocket 和 DatagramPacket(数据包/数据报)实现了基于UDP协议网络程序</li>
 <li>UDP数据报通过数据套接字 DatagramSocket 发送和接收, 系统不保证UDP数据包一定能够安全送到目的地, 也不能确定什么时候可以抵达</li>
 <li>DatagramPacket 对象封装了UDP数据包, 在数据包中包含了发送端的IP地址和端口号以及接收端的IP地址和端口号</li>
 <li>UDP协议中每个数据包都给出了完整的地址信息, 因此无须建立发送方和接收方的连接</li>
 </ol>
-</li>
-<li><p>说明</p>
+<ul>
+<li>说明</li>
+</ul>
 <ol>
 <li>没有明确的服务端和客户端,演变成数据的发送端和接收端</li>
 <li>接收数据和发送数据通过DatagramSocket对象完成</li>
@@ -2493,15 +2498,121 @@
 <li>DatagramSocket可以指定在哪个端口接收数据</li>
 <li>发送端和接收端如果在一台主机上,监听的端口不能相同</li>
 </ol>
-</li>
-<li><p>基本流程</p>
+<ul>
+<li>基本流程</li>
+</ul>
 <ol>
 <li>建立发送端,接收端</li>
 <li>发送数据前,建立数据包/报 DatagramPacket对象</li>
 <li>调用DatagramSocket的发送,接收方法</li>
 <li>关闭DatagramSocket</li>
 </ol>
+<h3 id="chapter22-山寨版QQ底层实现"><a href="#chapter22-山寨版QQ底层实现" class="headerlink" title="chapter22 山寨版QQ底层实现"></a>chapter22 山寨版QQ底层实现</h3><ol>
+<li>合理运用所学的知识,IO流,集合,面向对象编程,Socket编程, 多线程</li>
+<li>Socket和IO流的转换</li>
+<li>使用ConcurrentHashMap集合存储用户数据, 可以做并发处理, 线程安全, 后期将使用数据库代替集合</li>
+<li>在服务端, 每一个用户登陆后都会开启一个Socket线程, 循环监听收到的消息</li>
+<li>消息类应该有发送者, 接受者, 消息内容, 发送时间, 消息类型(可创建一个枚举类,或者接口,来存储消息类型常量)</li>
+<li>消息类, 用户类, 和消息用户类是客户端和服务端都必须共有的</li>
+<li>还是面向对象的思想, 可以给用户对象给一个消息集合属性, 用于存储离线时收到的消息(因为服务端是有用户集合的)</li>
+<li>发送接收消息, 客户端先发给服务端对应的线程, 服务端再根据消息类型, 转发给接受者用户对应的线程</li>
+</ol>
+<h3 id="chapter23-反射-Reflection"><a href="#chapter23-反射-Reflection" class="headerlink" title="chapter23 反射 Reflection"></a>chapter23 反射 Reflection</h3><h4 id="反射基本介绍"><a href="#反射基本介绍" class="headerlink" title="反射基本介绍"></a>反射基本介绍</h4><ul>
+<li>可通过外部文件配置, 在不修改源码的情况下, 来控制程序, 也符合设计模式的 ocp 原则(开闭原则: 不修改源码, 扩容功能)</li>
+</ul>
+<h4 id="Java-Reflection"><a href="#Java-Reflection" class="headerlink" title="Java Reflection"></a>Java Reflection</h4><ol>
+<li>反射机制允许程序在执行期借助于Reflection API 取得任何类的内部信息(比如成员变量, 构造器, 成员方法等等), 并能操作对象的属性及方法,反射在设计模式和框架底层都会用到</li>
+<li>加载完类之后, 在类中就产生了一个Class类型的对象(一个类只有一个Class对象), 这个对象包含了类的完整结构信息, 通过这个对象得到类的结构,这个对象就像一面镜子, 透过这个镜子看到类的结构,所以形象的称为反射</li>
+</ol>
+<h4 id="反射相关的主要类"><a href="#反射相关的主要类" class="headerlink" title="反射相关的主要类:"></a>反射相关的主要类:</h4><ol>
+<li>java.lang.Class: 代表一个类, Class对象表示某个类加载后在堆中的对象</li>
+<li>java.lang.reflect.Method: 代表类的方法,Method对象表示某个类的方法</li>
+<li>java.lang.reflect.Field: 代表类的成员变量, Field对象表示某个类的成员变量</li>
+<li>java.lang.reflect.Constructor: 代表类的构造方法, Constructor对象表示构造器</li>
+</ol>
+<ul>
+<li>具体信息及其他类可查看API文档</li>
+</ul>
+<h4 id="反射的优点和缺点"><a href="#反射的优点和缺点" class="headerlink" title="反射的优点和缺点"></a>反射的优点和缺点</h4><ul>
+<li>优点: 可以动态的创建和使用对象(也是框架的底层核型), 使用灵活, 没有反射机制, 框架技术就失去底层支持 </li>
+<li>缺点: 使用反射基本是解释执行, 对执行速度有影响</li>
+</ul>
+<h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><ol>
+<li>Class 也是类,因此也继承了Object类</li>
+<li>Class 类对象不是new出来的, 而是<strong>系统</strong>创建的</li>
+<li><strong>对于某个类的Class对象, 在(堆)内存中只有一份, 因为类只加载一次</strong></li>
+<li>每个类的实例都会记得自己是由哪个Class实例所生成</li>
+<li>通过<strong>Class对象</strong>可以<strong>完整地得到一个类的完整结构</strong></li>
+<li><strong>类的字节码二进制数据, 是放在方法区的</strong>, 有的地方称为<strong>类的元数据</strong>(包括 方法代码, 变量名, 方法名, 访问权限等等)</li>
+<li>所以类(包括基本数据类型,会自动装箱)都有对应的Class类对象</li>
+</ol>
+<h4 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h4><h5 id="基本说明-1"><a href="#基本说明-1" class="headerlink" title="基本说明"></a>基本说明</h5><ul>
+<li>反射机制是java实现动态语言的关键,也就是通过反射实现类动态加载</li>
+</ul>
+<ol>
+<li>静态加载: 编译时加载相关的类, 如果没有就会报错, 依赖性太强</li>
+<li>动态加载: 运行时加载需要的类, 如果运行时不用该类, 则不会报错, 降低了依赖性</li>
+</ol>
+<h5 id="类加载时机"><a href="#类加载时机" class="headerlink" title="类加载时机"></a>类加载时机</h5><ol>
+<li>创建对象时(new 静态加载)</li>
+<li>子类被加载时(静态加载)</li>
+<li>调用类中的静态成员时(静态加载)</li>
+<li>通过反射(动态加载)</li>
+</ol>
+<h5 id="类加载三个阶段"><a href="#类加载三个阶段" class="headerlink" title="类加载三个阶段"></a>类加载三个阶段</h5><ol>
+<li>加载 Loading: 将类的class文件读入内存, 并为之创建一个java.lang.Class对象, 此过程由类加载器完成</li>
+<li>连接 Linking (验证Verification 准备Preparation 解析 Resolution): 将类的二进制数据合并到JRE中</li>
+<li>初始化 initialization: JVM负责对类进行初始化(静态成员) </li>
+</ol>
+<h5 id="类加载后内存布局情况"><a href="#类加载后内存布局情况" class="headerlink" title="类加载后内存布局情况"></a>类加载后内存布局情况</h5><ul>
+<li>堆: 类的Class对象</li>
+<li>方法区: 类的字节码二进制数据(元数据) </li>
+</ul>
+<h5 id="类加载的加载阶段-Loading"><a href="#类加载的加载阶段-Loading" class="headerlink" title="类加载的加载阶段 Loading"></a>类加载的加载阶段 Loading</h5><ul>
+<li>JVM 在该阶段的主要目的是将字节码从不同的数据源(可能是 class 文件, 也可能是jar包, 甚至网络) 转化为二进制字节流加载到内存中, 并生成一个代表该类的java.lang.Class对象<h5 id="类加载的连接阶段-Linking"><a href="#类加载的连接阶段-Linking" class="headerlink" title="类加载的连接阶段 Linking"></a>类加载的连接阶段 Linking</h5></li>
+</ul>
+<ol>
+<li>验证 Verification: <ol>
+<li>目的是为了确保 Class文件的字节流文件中的字节流中包含的信息流符合当前虚拟机的要求, 并且不会危害虚拟机自身的安全</li>
+<li>包括文件格式验证(是否以魔数 0xcafebabe开头), 元数据验证, 字节码验证和符号引用验证</li>
+<li>可以考虑使用 - Xverify:none 参数来关闭大部分的类验证措施, 缩短虚拟机类加载的时间</li>
+</ol>
 </li>
+<li>准备 Preparation: <ol>
+<li>JVM 会在该阶段对静态变量, 分配内存并默认初始化(对应数据类型的默认初始值, 如0, 0L,null, false等)<ol>
+<li><code>public int n1 = 10;</code> n1是实例属性,在准备阶段不会分配内存</li>
+<li><code>public static int n2 = 20;</code> n2是非常量静态变量, 在准备阶段会分配内存,并默认初始化赋值为0,而不是直接赋值20</li>
+<li><code>public final static int n3 = 30;</code> n3是常量, 因为它一旦赋值就无法改变,所以直接初始化赋值为30</li>
+</ol>
+</li>
+<li>这些变量所使用的内存都将在<strong>方法区</strong>中进行分配</li>
+</ol>
+</li>
+<li>解析 Resolution: JVM将常量池中的符号引用替换为直接引用(内存地址)的过程</li>
+</ol>
+<h5 id="类加载的初始化阶段"><a href="#类加载的初始化阶段" class="headerlink" title="类加载的初始化阶段"></a>类加载的初始化阶段</h5><ol>
+<li>到初始化阶段, 才真正的开始执行类中定义的java程序代码, 此阶段执行&lt;clinit&gt;()方法的过程</li>
+<li>&lt;clinit&gt;() 方法是由编译器按语句在源文件中出现的顺序, 依次自动收集类中的所有静态变量的赋值动作和静态代码块中的语句,并进行合并</li>
+<li>JVM 会保证一个类的&lt;clinit&gt;方法中被正确地加锁, 同步, 如果多个线程同时去初始化一个类, 那么只会有一个线程去执行这个类的&lt;clinit&gt;()方法,其他线程都需要阻塞等待,直到活动线程执行<linit>()方法完毕</li>
+</ol>
+<h4 id="Class类方法"><a href="#Class类方法" class="headerlink" title="Class类方法"></a>Class类方法</h4><ol>
+<li>属性和方法的get方法都是获得其本类和父类的public成员, 构造器的get方法是获得其本类的public构造器</li>
+<li><code>getDeclared</code> 方法是获得本类的所有方法</li>
+<li><code>getModifiers</code> 方法以int形式返回修饰符(<strong>说明: 默认修饰符 0, public 1, private 2, protected 4, static 8, final 16</strong>)</li>
+</ol>
+<h4 id="通过反射创建对象"><a href="#通过反射创建对象" class="headerlink" title="通过反射创建对象"></a>通过反射创建对象</h4><ol>
+<li>方式一: 调用类中的public修饰的无参构造器</li>
+<li>方式二: 调用类中的指定构造器</li>
+</ol>
+<h4 id="通过反射调用类中的成员"><a href="#通过反射调用类中的成员" class="headerlink" title="通过反射调用类中的成员"></a>通过反射调用类中的成员</h4><ol>
+<li>先获取Class对象,再根据属性名/构造器名/方法名获取(Field, Constructor, Method)对象</li>
+<li>获取类的对象 <code>Object o = aClass.newInstance()</code></li>
+<li>若要使用<strong>私有成员,需要先进行爆破</strong>, <code>f,c,m.setAccessible(true)</code></li>
+<li>注意如果是静态的成员, 对象o ,可以写成null</li>
+<li>使用反射调用方法<code>m.invoke()</code>, <strong>如果方法有返回值, 统一返回Object类型</strong></li>
+</ol>
+<h3 id="chapter24-MySQL"><a href="#chapter24-MySQL" class="headerlink" title="chapter24 MySQL"></a>chapter24 MySQL</h3><ul>
+<li>跳转本站<a href="MySQL-Study.md">MySQL文章</a></li>
 </ul>
 
                 
