@@ -452,7 +452,7 @@
 </li>
 <li>位类型(不常用) bit(m) m指定位数, 默认为1, 范围1 ~ 64 按照位的方式显示</li>
 </ol>
-<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><ul>
+<h3 id="数据操作语句-DML"><a href="#数据操作语句-DML" class="headerlink" title="数据操作语句 DML"></a>数据操作语句 DML</h3><h4 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h4><ul>
 <li><code>INSERT TABLE tableName (column...) VALUES (&#39;&#39;...);</code></li>
 </ul>
 <ol>
@@ -464,7 +464,7 @@
 <li>如果是给表中的所有字段添加数据, 可以不写前面的字段名称</li>
 <li>如果某个列 没有指定 <code>NOT NULL</code> , 那么当添加数据时,没有给定值,则会默认给 null</li>
 </ol>
-<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><ul>
+<h4 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h4><ul>
 <li><code>UPDATE tableName SET fieldName = value,... WHERE fieldName = value;</code></li>
 </ul>
 <ol>
@@ -472,7 +472,7 @@
 <li><code>UPDATE</code> 语句可以用新值更新原有表行中的各列</li>
 <li><code>SET</code> 子句指示要修改哪些列要给予哪些值</li>
 </ol>
-<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><ul>
+<h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><ul>
 <li><code>DELETE FROM tablename WHERE fieldName = value;</code></li>
 </ul>
 <ol>
