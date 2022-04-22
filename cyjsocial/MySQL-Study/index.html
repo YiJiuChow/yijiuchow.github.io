@@ -355,7 +355,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="MySQL-语句书写规范"><a href="#MySQL-语句书写规范" class="headerlink" title="MySQL 语句书写规范"></a>MySQL 语句书写规范</h3><ul>
+                <h3 id="MySQL-语句书写规范"><a href="#MySQL-语句书写规范" class="headerlink" title="MySQL 语句书写规范"></a>MySQL 语句书写规范</h3><ul>
 <li>关键字大写，其他内容小写</li>
 <li>程序块应采用缩进风格书写，保证代码可读，风格一致，缩进格数统一为4格</li>
 <li>代码中需要空位时，统一采用英文空格键输入，不允许用TAB键产生空位</li>
@@ -369,18 +369,18 @@
 <li>不同类型的操作符混合使用时，应使用括号明确的表达运算的先后关系</li>
 <li>任何SQL书写单行不得超过120字符（含左边的缩进）</li>
 </ul>
-<h3 id="MySQL数据库三层结构"><a href="#MySQL数据库三层结构" class="headerlink" title="MySQL数据库三层结构"></a>MySQL数据库三层结构</h3><ol>
+<h3 id="MySQL-入门"><a href="#MySQL-入门" class="headerlink" title="MySQL 入门"></a>MySQL 入门</h3><h4 id="MySQL数据库三层结构"><a href="#MySQL数据库三层结构" class="headerlink" title="MySQL数据库三层结构"></a>MySQL数据库三层结构</h4><ol>
 <li>安装Mysql数据库, 就是在主机安装一个数据库管理系统 DBMS(database manage system), 这个管理系统可以管理多个数据库</li>
 <li>一个数据库中可以创建多个表, 以保存数据(信息)</li>
 <li>DBMS (以mysqld.exe为主的程序集) -&gt; 数据库(data中) -&gt; 表 (本质就是文件)</li>
 </ol>
-<h3 id="SQL语句分类"><a href="#SQL语句分类" class="headerlink" title="SQL语句分类"></a>SQL语句分类</h3><ol>
+<h4 id="SQL语句分类"><a href="#SQL语句分类" class="headerlink" title="SQL语句分类"></a>SQL语句分类</h4><ol>
 <li>DDL: 数据定义语句 (create 表, 库…)</li>
 <li>DML: 数据操作语句 (增加 insert, 修改 update, 删除 delete…)</li>
 <li>DQL: 数据查询语句 (select…)</li>
 <li>DCL: 数据控制语句 (管理数据库: 比如用户权限 grand revoke)</li>
 </ol>
-<h3 id="创建数据库-Create-database"><a href="#创建数据库-Create-database" class="headerlink" title="创建数据库 Create database"></a>创建数据库 Create database</h3><ul>
+<h3 id="MySQL-基操"><a href="#MySQL-基操" class="headerlink" title="MySQL 基操"></a>MySQL 基操</h3><h4 id="创建数据库-Create-database"><a href="#创建数据库-Create-database" class="headerlink" title="创建数据库 Create database"></a>创建数据库 Create database</h4><ul>
 <li><code>CREATE DATABASE (IF NOT EXISTS) databaseName (CHARSET | CHARACTER SET | CHAR SET utf8 ) (COLLATE utf8_bin/utf8_general_ci)</code></li>
 </ul>
 <ol>
@@ -390,7 +390,7 @@
 <li><code>SHOW CREATE DATABASE db_name</code> 显示数据库创建语句</li>
 <li><code>DROP DATABASE (IF EXISTS) db_name</code> 删除数据库</li>
 </ol>
-<h3 id="备份和恢复数据库-Backup-and-restore-databases"><a href="#备份和恢复数据库-Backup-and-restore-databases" class="headerlink" title="备份和恢复数据库 Backup and restore databases"></a>备份和恢复数据库 Backup and restore databases</h3><ul>
+<h4 id="备份和恢复数据库-Backup-and-restore-databases"><a href="#备份和恢复数据库-Backup-and-restore-databases" class="headerlink" title="备份和恢复数据库 Backup and restore databases"></a>备份和恢复数据库 Backup and restore databases</h4><ul>
 <li>备份数据库<ul>
 <li><code>mysqldump -u root -p -B database1 database2 ... &gt; fileName.sql</code></li>
 </ul>
@@ -404,7 +404,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="创建表-Create-table"><a href="#创建表-Create-table" class="headerlink" title="创建表 Create table"></a>创建表 Create table</h3><ul>
+<h4 id="创建表-Create-table"><a href="#创建表-Create-table" class="headerlink" title="创建表 Create table"></a>创建表 Create table</h4><ul>
 <li><code>CREATE TABLE (IF NOT EXISTS) tableName (field datatype, ...) CHARSET utf8 (CHARSET | CHARACTER SET | CHAR SET utf8 ) (COLLATE utf8_bin/utf8_general_ci)(ENGINE ...);</code></li>
 </ul>
 <ol>
@@ -412,17 +412,17 @@
 <li><code>ENGINE</code> 引擎 <code>field</code> 字段/列名 <code>datatype</code> 指定列类型(字段类型) </li>
 <li>() 里的都是非必须的</li>
 </ol>
-<h3 id="表的基本操作"><a href="#表的基本操作" class="headerlink" title="表的基本操作"></a>表的基本操作</h3><ul>
+<h4 id="表的基本操作"><a href="#表的基本操作" class="headerlink" title="表的基本操作"></a>表的基本操作</h4><ul>
 <li>删除表<code>DROP TABLE tableName;</code></li>
 <li>查看表的结构 <code>DESC tableName;</code></li>
 </ul>
-<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><ol>
+<h4 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h4><ol>
 <li>添加列 <code>AlTER TABLE tableName ADD (field datatype,...) after field;</code></li>
 <li>修改列 <code>ALTER TABLE tableName MODIFY (field datatype);</code></li>
 <li>删除列 <code>ALTER TABLE tableName DROP (field);</code></li>
 <li>修改表的字符集 <code>ALTER TABLE tableName CHARSET utf8;</code></li>
 </ol>
-<h3 id="常用数据-列-类型"><a href="#常用数据-列-类型" class="headerlink" title="常用数据(列)类型"></a>常用数据(列)类型</h3><ol>
+<h4 id="常用数据-列-类型"><a href="#常用数据-列-类型" class="headerlink" title="常用数据(列)类型"></a>常用数据(列)类型</h4><ol>
 <li>数值类型 (使用规范: 在能够满足需求的情况下,尽量选择占用空间小的类型)<ol>
 <li>整型 tinyint(1个字节) smallint(2个字节) mediumint(3个字节) <strong>int(4个字节)</strong> bigint(8个字节)</li>
 <li>浮点型 float(单精度 4个字节) <strong>double(双精度 8个字节)</strong></li>
@@ -452,7 +452,7 @@
 </li>
 <li>位类型(不常用) bit(m) m指定位数, 默认为1, 范围1 ~ 64 按照位的方式显示</li>
 </ol>
-<h3 id="数据操作语句-DML"><a href="#数据操作语句-DML" class="headerlink" title="数据操作语句 DML"></a>数据操作语句 DML</h3><h4 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h4><ul>
+<h4 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h4><ul>
 <li><code>INSERT TABLE tableName (column...) VALUES (&#39;&#39;...);</code></li>
 </ul>
 <ol>
@@ -480,7 +480,7 @@
 <li>DELETE 语句不能删除某一列的值</li>
 <li>使用 <code>DELETE</code> 语句仅删除记录, 不删除表本身, 如要删除表, 直接使用<code>DROP TABLE tableName;</code></li>
 </ol>
-<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><ul>
+<h4 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h4><ul>
 <li><code>SELECT (DISTINCT) * / fieldName (AS otherName),... FROM tableName;</code></li>
 </ul>
 <ol>
@@ -489,12 +489,12 @@
 <li>AS 用于取一个别名</li>
 <li>field可以进行运算</li>
 </ol>
-<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><ul>
+<h4 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h4><ul>
 <li>WHERE 子句中常用的运算符</li>
 </ul>
 <ol>
 <li>比较运算符<ol>
-<li>&gt; &lt; &lt;= &gt;= = !=</li>
+<li>&gt; &lt; &lt;= &gt;= = !=(&lt;&gt;也是不等)</li>
 <li>BETWEEN…AND… 显示某一<strong>闭区间</strong>的值</li>
 <li>IN (set) 显示在in列表中的值</li>
 <li>LIKE ‘张%’ 模糊查询</li>
@@ -508,7 +508,7 @@
 </ol>
 </li>
 </ol>
-<h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><ul>
+<h4 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h4><ul>
 <li><code>SELECT... ORDER BY column ASC|DESC,...</code></li>
 </ul>
 <ol>
@@ -516,36 +516,36 @@
 <li><code>ASC</code> 表示升序 <code>DESC</code> 表示降序</li>
 <li><code>ORDER BY</code> 子句必须位于 <code>SELECT</code> 语句的结尾</li>
 </ol>
-<h3 id="合计函数-Aggregate-function"><a href="#合计函数-Aggregate-function" class="headerlink" title="合计函数 Aggregate function"></a>合计函数 Aggregate function</h3><h4 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT"></a>COUNT</h4><ul>
+<h4 id="合计函数-Aggregate-function"><a href="#合计函数-Aggregate-function" class="headerlink" title="合计函数 Aggregate function"></a>合计函数 Aggregate function</h4><h5 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT"></a>COUNT</h5><ul>
 <li><code>SELECT COUNT(*)|COUNT(列) FROM...</code></li>
 </ul>
 <ol>
 <li>返回/合计/统计行的总数</li>
 <li><code>COUNT(*)</code> 返回满足条件的记录的行数 <code>COUNT(列)</code> 返回满足条件的某列有多个, 但是会排除为字段为null的行</li>
 </ol>
-<h4 id="SUM"><a href="#SUM" class="headerlink" title="SUM"></a>SUM</h4><ul>
+<h5 id="SUM"><a href="#SUM" class="headerlink" title="SUM"></a>SUM</h5><ul>
 <li><code>SELECT SUM(列) FROM.. WHERE...</code></li>
 </ul>
 <ol>
 <li>返回满足 <code>WHERE</code> 条件的行的和(一般使用在数值列), 没有 <code>WHERE</code> 条件, 则返回所有行的和</li>
 <li>对非数值型统计没有意义</li>
 </ol>
-<h4 id="AVG"><a href="#AVG" class="headerlink" title="AVG"></a>AVG</h4><ul>
+<h5 id="AVG"><a href="#AVG" class="headerlink" title="AVG"></a>AVG</h5><ul>
 <li><code>SELECT AVG(列) FROM...</code></li>
 <li><code>AVG(列)</code> 返回满足 <code>WHERE</code> 条件的一列的平均值</li>
 </ul>
-<h4 id="MAX-MIN"><a href="#MAX-MIN" class="headerlink" title="MAX/MIN"></a>MAX/MIN</h4><ul>
+<h5 id="MAX-MIN"><a href="#MAX-MIN" class="headerlink" title="MAX/MIN"></a>MAX/MIN</h5><ul>
 <li><code>SELECT MAX(列)|MIN(列) FROM...</code></li>
 <li>MAX/MIN 返回满足 <code>WHERE</code> 条件的一列的最大/最下值</li>
 </ul>
-<h4 id="GROUP-BY-…HAVING-…"><a href="#GROUP-BY-…HAVING-…" class="headerlink" title="GROUP BY …HAVING …"></a>GROUP BY …HAVING …</h4><ul>
+<h5 id="GROUP-BY-…HAVING-…"><a href="#GROUP-BY-…HAVING-…" class="headerlink" title="GROUP BY …HAVING …"></a>GROUP BY …HAVING …</h5><ul>
 <li><code>SELECT ... GROUP BY column HAVING condition.</code></li>
 </ul>
 <ol>
 <li><code>GROUP BY</code> 子句用于对查询的结果分组统计</li>
 <li><code>HAVING</code> 子句用于限制/过滤分组显示结果,一般后面接聚合的数据, 放入普通数据比WHERE效率低</li>
 </ol>
-<h3 id="字符串函数-String-function"><a href="#字符串函数-String-function" class="headerlink" title="字符串函数 String function"></a>字符串函数 String function</h3><ul>
+<h4 id="字符串函数-String-function"><a href="#字符串函数-String-function" class="headerlink" title="字符串函数 String function"></a>字符串函数 String function</h4><ul>
 <li><code>charset(str)</code> 返回字串字符集<ul>
 <li><code>select charset(ename) from emp;</code></li>
 </ul>
@@ -601,7 +601,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><ul>
+<h4 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h4><ul>
 <li>ABS(num) 绝对值<br><code>select abs(-10) from dual;</code></li>
 <li>BIN(num) 10进制 -&gt; 2进制<br><code>select bin(10) from dual;</code></li>
 <li>CEILING(num) 向上取整, 得到比num大的最大整数<br><code>select ceiling(1.1) from dual;</code></li>
@@ -613,31 +613,31 @@
 <li>mod(numerator, denominator) 求余数<br><code>select mod(10, 3) from dual;</code></li>
 <li>rand() 返回随机数<br><code>select rand() from dual;</code></li>
 </ul>
-<h3 id="时间日期相关函数"><a href="#时间日期相关函数" class="headerlink" title="时间日期相关函数"></a>时间日期相关函数</h3><ul>
+<h4 id="时间日期相关函数"><a href="#时间日期相关函数" class="headerlink" title="时间日期相关函数"></a>时间日期相关函数</h4><ul>
 <li>current_date() 当前日期</li>
 <li>current_time() 当前时间</li>
 <li>current_timestamp() 当前时间戳</li>
 <li>unix_timestamp() 返回的是1970-01-01到现在的秒数</li>
-<li>date_add/date_sub(interval num year/month/day) date_sub() 日期的加减</li>
+<li>date_add/date_sub(date, interval num year/month/day)  日期的加减</li>
 <li>datediff(date1, date2) 返回两个日期的差(天数)</li>
 <li>timediff(time1, time2) 返回两个时间的差(秒数)</li>
 <li>last_day(date), 可以返回日期所在月份的最后一天的日期</li>
 </ul>
-<h3 id="加密函数和系统函数"><a href="#加密函数和系统函数" class="headerlink" title="加密函数和系统函数"></a>加密函数和系统函数</h3><ul>
+<h4 id="加密函数和系统函数"><a href="#加密函数和系统函数" class="headerlink" title="加密函数和系统函数"></a>加密函数和系统函数</h4><ul>
 <li>USER() 查询当前用户</li>
 <li>DATABASE() 查询当前数据库</li>
 <li>MD5(str) 把字符串加密成MD5 32位字符串</li>
 <li>PASSWORD(str) 从原文密码str计算并返回密码字符串, 通常用于对mysql数据库的用户密码加密(SELECT * FROM mysql.user查询用户的信息)</li>
 </ul>
-<h3 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h3><ul>
+<h4 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h4><ul>
 <li><code>SELECT if(TRUE,0,1) FROM dual;</code> # 一真大师</li>
 <li><code>SELECT IFNULL(null,0) FROM dual;</code></li>
 <li><code>SELECT CASE WHEN TRUE THEN 1 WHEN TRUE THEN 2 ELSE 3 END FROM dual;</code> # 相当于java的if-else if-else</li>
 </ul>
-<h3 id="查询加强"><a href="#查询加强" class="headerlink" title="查询加强"></a>查询加强</h3><ul>
+<h3 id="MySQL-进阶"><a href="#MySQL-进阶" class="headerlink" title="MySQL 进阶"></a>MySQL 进阶</h3><h4 id="查询加强"><a href="#查询加强" class="headerlink" title="查询加强"></a>查询加强</h4><ul>
 <li>日期可以直接用来比较</li>
 <li>LIKE 的使用 <code>field LIKE &#39;__O%&#39;</code> , <strong><code>%</code> 表示0到多个任意字符</strong>, <strong><code>_</code> 表示单个任意字符</strong> <code>__O%</code>则表示第三位为O的字符串</li>
-<li>分页查询 <code>SELECT... limit start, rows</code> <strong>从start + 1开始,取出rows行, start 从0开始计算, 位于SELECT语句末尾</strong></li>
+<li>分页查询 <code>SELECT... limit start, rows;</code> <strong>从start + 1开始,取出rows行, start 从0开始计算, 位于SELECT语句末尾</strong></li>
 <li>count() 等括号内可以使用IF等表达式</li>
 <li>如果SELECT语句中同时包含有多种子句, 那么的顺序应该是<ul>
 <li>where  </li>
@@ -647,15 +647,15 @@
 </ul>
 </li>
 </ul>
-<h3 id="多表查询-Multi-table-query"><a href="#多表查询-Multi-table-query" class="headerlink" title="多表查询 Multi-table query"></a>多表查询 Multi-table query</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ol>
+<h4 id="多表查询-Multi-table-query"><a href="#多表查询-Multi-table-query" class="headerlink" title="多表查询 Multi-table query"></a>多表查询 Multi-table query</h4><h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><ol>
 <li>笛卡尔集: 查两个表时, 两张表的每一行都会进行组合, 返回记录数则是两张表行数的乘积</li>
 <li>所以需要写出正确的过滤条件 WHERE ,HAVING</li>
 </ol>
-<h4 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h4><ol>
+<h5 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h5><ol>
 <li>自连接指的是在同一张表的连接查询(即把一张表看成两张表)</li>
 <li>必须把相同的表取别名(as可省略)</li>
 </ol>
-<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><ol>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><ol>
 <li>子查询: 指嵌入在其他sql语句中的 <code>SELECT</code> 语句, 也叫嵌套查询</li>
 <li>单行子查询: 指只返回一行数据的子查询语句</li>
 <li>多行自查询: 指返回多行数据的子查询 使用关键字 <code>IN</code></li>
@@ -664,47 +664,47 @@
 <li><code>ALL()</code> :所有的 () 里可写子查询语句, 在子查询语句中使用 <code>MAX()</code> 有时候也能达到同样的效果</li>
 <li>多列子查询: 指查询返回多个列数据的子查询语句</li>
 </ol>
-<h3 id="表的复制"><a href="#表的复制" class="headerlink" title="表的复制"></a>表的复制</h3><ol>
+<h4 id="表的复制"><a href="#表的复制" class="headerlink" title="表的复制"></a>表的复制</h4><ol>
 <li>就是结合 <code>INSERT INTO</code> 和 <code>SELECT</code> 语句</li>
 <li>可以实现自我复制(蠕虫复制), 去重复制</li>
 </ol>
-<h3 id="合并查询"><a href="#合并查询" class="headerlink" title="合并查询"></a>合并查询</h3><ol>
+<h4 id="合并查询"><a href="#合并查询" class="headerlink" title="合并查询"></a>合并查询</h4><ol>
 <li>在实际开发中, 为了合并多个SELECT语句的结果</li>
 <li>UNION 去重合并</li>
 <li>UNION ALL 全部合并(不会去重)</li>
 </ol>
-<h3 id="MySQL表的外连接"><a href="#MySQL表的外连接" class="headerlink" title="MySQL表的外连接"></a>MySQL表的外连接</h3><ul>
-<li><code>... FROM tab1 LEFT/RIGHT JOIN tab2 ON condition</code></li>
+<h4 id="MySQL表的外连接"><a href="#MySQL表的外连接" class="headerlink" title="MySQL表的外连接"></a>MySQL表的外连接</h4><ul>
+<li><code>... FROM tab1 LEFT/RIGHT JOIN tab2 ON condition;</code></li>
 <li>左外连接: 左侧的表完全显示 </li>
 <li>右外连接: 右侧的表完全显示</li>
 </ul>
-<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><h4 id="主键-Primary-key"><a href="#主键-Primary-key" class="headerlink" title="主键 Primary key"></a>主键 Primary key</h4><ol>
+<h4 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h4><h5 id="主键-Primary-key"><a href="#主键-Primary-key" class="headerlink" title="主键 Primary key"></a>主键 Primary key</h5><ol>
 <li>约束为主键的列, <strong>列值不能重复, 而且不能为null</strong></li>
 <li><strong>一张表最多只能有一个主键</strong>, 可以为<strong>复合主键</strong></li>
 <li>主键的两种约束方式<ol>
-<li><code>fieldname datatype PRIMARY KEY</code></li>
-<li>在字段定义末尾定义<code>...PRIMARY KEY(fieldname)</code></li>
+<li><code>fieldname datatype PRIMARY KEY;</code></li>
+<li>在字段定义末尾定义<code>...PRIMARY KEY(fieldname);</code></li>
 </ol>
 </li>
-<li><code>DESC tablename</code> 查看表结构, 可以显示表的约束情况</li>
+<li><code>DESC tablename;</code> 查看表结构, 可以显示表的约束情况</li>
 <li>复合主键里的列, <strong>列值不能同时重复</strong>, 而且<strong>都不能为null</strong></li>
 <li>实际开发中, 每个表往往都会设计一个主键</li>
 </ol>
-<h4 id="非空和唯一-Not-null-and-Unique"><a href="#非空和唯一-Not-null-and-Unique" class="headerlink" title="非空和唯一 Not null and Unique"></a>非空和唯一 Not null and Unique</h4><ol>
+<h5 id="非空和唯一-Not-null-and-Unique"><a href="#非空和唯一-Not-null-and-Unique" class="headerlink" title="非空和唯一 Not null and Unique"></a>非空和唯一 Not null and Unique</h5><ol>
 <li>如果在列上定义了 not null, 那么当插入数据时, 必须为列提供数据<ul>
-<li><code>fieldName datatype not null</code></li>
+<li><code>fieldName datatype not null;</code></li>
 </ul>
 </li>
 <li>当定义唯一(`unique)约束后, <strong>该列值是不能重复的</strong> <ul>
-<li><code>fieldName datatype unique</code></li>
+<li><code>fieldName datatype unique;</code></li>
 </ul>
 </li>
 <li><strong>如果没有指定 not null, 则 unique 字段可以有多个 null</strong></li>
 <li>一张表可以有<strong>多个</strong> unique 字段</li>
-<li><code>unique not null</code> 使用效果类似于主键</li>
+<li><code>unique not null;</code> 使用效果类似于主键</li>
 </ol>
-<h4 id="外键-Foreign-key"><a href="#外键-Foreign-key" class="headerlink" title="外键 Foreign key"></a>外键 Foreign key</h4><ol>
-<li><code>FOREIGN KEY (从表的字段) REFERENCES 主表名(主表字段名)</code> ,字段名必须要用括号包起来</li>
+<h5 id="外键-Foreign-key"><a href="#外键-Foreign-key" class="headerlink" title="外键 Foreign key"></a>外键 Foreign key</h5><ol>
+<li><code>FOREIGN KEY (从表的字段) REFERENCES 主表名(主表字段名);</code> ,字段名必须要用括号包起来</li>
 <li>用于定义主表和从表之间的关系, 先有主表, 后有从表</li>
 <li>表的引擎或者说是类型<strong>必须是 innodb</strong> </li>
 <li><strong>外键</strong>约束要定义在<strong>从表</strong>上</li>
@@ -713,25 +713,25 @@
 <li>当定义外键约束后, <strong>要求外键列数据必须在主表的主键列存在,或者为null(前提是外键字段允许为空)</strong></li>
 <li>一旦建立主外键的关系, 主表的数据就不能随意修改了</li>
 </ol>
-<h4 id="check"><a href="#check" class="headerlink" title="check"></a>check</h4><ol>
-<li><code>fieldName datatype check condition</code></li>
+<h5 id="check"><a href="#check" class="headerlink" title="check"></a>check</h5><ol>
+<li><code>fieldName datatype check condition;</code></li>
 <li>用于强制行数据必须满足的条件</li>
 <li>mysql5.7 目前还不支持check约束, 只是语法通过, 但不会生效</li>
 <li>mysql8.0.16 已完全支持check约束</li>
 </ol>
-<h3 id="自增长"><a href="#自增长" class="headerlink" title="自增长"></a>自增长</h3><ol>
-<li>定义方式 <code>fieldName Integer PRIMARY KEY AUTO_INCREMENT (= StartValue)</code></li>
+<h4 id="自增长"><a href="#自增长" class="headerlink" title="自增长"></a>自增长</h4><ol>
+<li>定义方式 <code>fieldName Integer PRIMARY KEY AUTO_INCREMENT (= StartValue);</code></li>
 <li>一般来说自增长和主键 <code>PRIMARY KEY</code> 配合使用 </li>
 <li>自增长<strong>默认从 1 开始</strong></li>
 <li>可以<strong>单独使用, 但需要搭配 UNIQUE</strong></li>
 <li>自增长修饰的字段一般为整数(虽然小数也可以, 但是很少这样使用)</li>
 </ol>
-<h3 id="索引-Index"><a href="#索引-Index" class="headerlink" title="索引 Index"></a>索引 Index</h3><h4 id="引入索引"><a href="#引入索引" class="headerlink" title="引入索引"></a>引入索引</h4><ol>
+<h4 id="索引-Index"><a href="#索引-Index" class="headerlink" title="索引 Index"></a>索引 Index</h4><h5 id="引入索引"><a href="#引入索引" class="headerlink" title="引入索引"></a>引入索引</h5><ol>
 <li>说起提高数据库性能, 索引是最物美价廉的东西了, 不用加内存, 不用改程序, 不用调sql, 查询速度就可能提高百倍千倍</li>
 <li>索引是针对列创建的, 会占用不少磁盘空间</li>
 <li>基本语法 <code>CREATE INDEX indexName ON table (fieldName);</code></li>
 </ol>
-<h4 id="索引的原理"><a href="#索引的原理" class="headerlink" title="索引的原理"></a>索引的原理</h4><ol>
+<h5 id="索引的原理"><a href="#索引的原理" class="headerlink" title="索引的原理"></a>索引的原理</h5><ol>
 <li>加索引为什么查询速度会变快<ol>
 <li>不加索引查询会进行全表查询</li>
 <li>加索引之后, 底层就会形成一个索引的数据结构, 比如二叉树</li>
@@ -743,13 +743,13 @@
 </ol>
 </li>
 </ol>
-<h4 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h4><ol>
+<h5 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h5><ol>
 <li>主键索引: 主键 PRIMARY KEY 同时也是索引</li>
 <li>唯一索引: 唯一 UNIQUE 同时也是索引</li>
 <li>普通索引: INDEX</li>
 <li>全文索引: FULLTEXT (MySQL自带的, 一般不使用) Java开发, 使用全文搜索 Solr 和 ElasticSearch(ES) 框架</li>
 </ol>
-<h4 id="索引的使用"><a href="#索引的使用" class="headerlink" title="索引的使用"></a>索引的使用</h4><ol>
+<h5 id="索引的使用"><a href="#索引的使用" class="headerlink" title="索引的使用"></a>索引的使用</h5><ol>
 <li>创建/增加索引<ol>
 <li><code>CREATE (UNIQUE) INDEX indexName ON tableName (column_name);</code></li>
 <li><code>ALTER TABLE tableName ADD (PRIMARY KEY / UNIQUE (INDEX) / INDEX) (column_name);</code></li>
@@ -769,19 +769,19 @@
 </ol>
 </li>
 </ol>
-<h4 id="索引的选择-什么列适合使用索引"><a href="#索引的选择-什么列适合使用索引" class="headerlink" title="索引的选择, 什么列适合使用索引"></a>索引的选择, 什么列适合使用索引</h4><ol>
+<h5 id="索引的选择-什么列适合使用索引"><a href="#索引的选择-什么列适合使用索引" class="headerlink" title="索引的选择, 什么列适合使用索引"></a>索引的选择, 什么列适合使用索引</h5><ol>
 <li>如果某列的值不会重复, 就优先考虑UNIQUE 索引, 否则使用普通索引</li>
 <li>较频繁的作为查询条件字段应该创建索引</li>
 <li>唯一性太差的字段不适合单独创建索引, 即使频繁作为查询条件</li>
 <li>更新非常频繁的字段, 不适合创建索引</li>
 <li>不会出现在WHERE子句中的字段不该创建索引</li>
 </ol>
-<h3 id="事务-Transaction"><a href="#事务-Transaction" class="headerlink" title="事务 Transaction"></a>事务 Transaction</h3><h4 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h4><ul>
+<h4 id="事务-Transaction"><a href="#事务-Transaction" class="headerlink" title="事务 Transaction"></a>事务 Transaction</h4><h5 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h5><ul>
 <li>事务用于保证数据的一致性, 它由一组相关的DML(INSERT, UPDATE, DELETE)语句组成</li>
 <li>该组的DML语句要么全部成功, 要么全部失败 (如转账就要用事务来处理, 用以保证数据的一致性)</li>
 <li>当执行事务操作时, MySQL 会在表上加锁, 防止其它用户改表的数据, 这对用户来说是非常重要的</li>
 </ul>
-<h4 id="基本-重要-操作"><a href="#基本-重要-操作" class="headerlink" title="基本(重要)操作"></a>基本(重要)操作</h4><ol>
+<h5 id="基本-重要-操作"><a href="#基本-重要-操作" class="headerlink" title="基本(重要)操作"></a>基本(重要)操作</h5><ol>
 <li><code>start transaction;</code> or <code>set autocommit = off;</code> 开始一个事务</li>
 <li><code>savepoint save_point_name;</code> 设置保存点</li>
 <li><code>rollback (to save_point_name);</code> 回退事务, 不接to直接回到事务最初<ol>
@@ -796,13 +796,13 @@
 </ol>
 </li>
 </ol>
-<h4 id="事务的细节"><a href="#事务的细节" class="headerlink" title="事务的细节"></a>事务的细节</h4><ol>
+<h5 id="事务的细节"><a href="#事务的细节" class="headerlink" title="事务的细节"></a>事务的细节</h5><ol>
 <li>如果不开始事务, 默认情况下, DML 操作是自动提交的, 不能回滚</li>
 <li>如果开始一个事务, 没有创建保存点, 可以执行<code>rollback</code>, 默认就是回滚到你事务开始的状态</li>
 <li>可以在这个事务中(还没有提交时), 创建多个保存点, 然后在事务提交前, 选择回退到的保存点, 该保存点后面执行的DML语句或创建的保存点都将失效</li>
 <li>InnoDB 存储引擎支持事务, MyISAM 不支持</li>
 </ol>
-<h4 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h4><ol>
+<h5 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h5><ol>
 <li>多个连接开启各自事务操作数据库中数据时, 数据库系统要负责隔离操作, 以保证各个连接在获取连接时的准确性</li>
 <li>隔离级别是跟事务相关的, 没有事务就不要谈隔离级别</li>
 <li>如果不考虑隔离性, 可能引发如下问题:<ol>
@@ -852,7 +852,7 @@
 <td>会加锁</td>
 </tr>
 </tbody></table>
-<h4 id="隔离级别相关操作"><a href="#隔离级别相关操作" class="headerlink" title="隔离级别相关操作"></a>隔离级别相关操作</h4><ol>
+<h5 id="隔离级别相关操作"><a href="#隔离级别相关操作" class="headerlink" title="隔离级别相关操作"></a>隔离级别相关操作</h5><ol>
 <li>查看(系统)当前隔离级别, 默认隔离级别是可重复读(Repeatable read)<ol>
 <li>MySQL8之后 <code>SELECT @@(global.)transaction_isolation;</code></li>
 <li>MySQL8之前 <code>SELECT @@(global.)tx_isolation;</code></li>
@@ -861,17 +861,17 @@
 <li><code>SET GLOBAL / SESSION TRANSACTION ISOLATION LEVEL 隔离级别;</code> 修改 系统 / 当前 查询编辑器的隔离级别</li>
 <li>可以在配置文件my.ini 设置默认的隔离级别 <code>transaction_isolation = 隔离级别</code></li>
 </ol>
-<h4 id="事务的ACID特性"><a href="#事务的ACID特性" class="headerlink" title="事务的ACID特性"></a>事务的ACID特性</h4><ol>
+<h5 id="事务的ACID特性"><a href="#事务的ACID特性" class="headerlink" title="事务的ACID特性"></a>事务的ACID特性</h5><ol>
 <li>原子性 Atomicity 事务是一个整体, 事务中的DML操作要么全部发生, 要么都不发生</li>
 <li>一致性 Consistency 事务提交会整体改变, 即从一个一致性状态变换到另一个一致性状态</li>
 <li>隔离性 Isolation 多个用户的事务操作, 在一定隔离级别下, 不会互相干扰, 多个并发事件相互隔离</li>
 <li>持久性 Durability 一旦事务被提交, 它对数据库的改变就是永久性的</li>
 </ol>
-<h3 id="MySQL表类型和存储引擎-ENGINE"><a href="#MySQL表类型和存储引擎-ENGINE" class="headerlink" title="MySQL表类型和存储引擎 ENGINE"></a>MySQL表类型和存储引擎 ENGINE</h3><h4 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h4><ol>
+<h4 id="MySQL表类型和存储引擎-ENGINE"><a href="#MySQL表类型和存储引擎-ENGINE" class="headerlink" title="MySQL表类型和存储引擎 ENGINE"></a>MySQL表类型和存储引擎 ENGINE</h4><h5 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h5><ol>
 <li>MySQL的表类型由存储引擎(Storage Engines)决定, 主要包括MyISAM innoDB Memory等</li>
 <li>MySQL数据表主要支持六种类型, 分别是: CSV Memory ARCHIVE MRG MYISAM InnoBDB</li>
 </ol>
-<h4 id="重要特点"><a href="#重要特点" class="headerlink" title="重要特点"></a>重要特点</h4><table>
+<h5 id="重要特点"><a href="#重要特点" class="headerlink" title="重要特点"></a>重要特点</h5><table>
 <thead>
 <tr>
 <th align="center">特点</th>
@@ -912,23 +912,23 @@
 </tbody></table>
 <p>注意: Memory引擎的表数据<strong>存在内存中(关闭了MySQL服务, 数据丢失, 但是表结构还在), 执行速度快(没有IO读写)</strong></p>
 <p>修改存储引擎 <code>ALTER TABLE tableName ENGINE = engine_name;</code></p>
-<h3 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h3><h4 id="基本介绍-2"><a href="#基本介绍-2" class="headerlink" title="基本介绍"></a>基本介绍</h4><ol>
+<h4 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h4><h5 id="基本介绍-2"><a href="#基本介绍-2" class="headerlink" title="基本介绍"></a>基本介绍</h5><ol>
 <li>视图是一个<strong>虚拟表, 其内容由查询定义</strong>, 同真实的表一样, 视图包含列, 其<strong>数据来自对应的真实表(基表)</strong></li>
 <li>视图可根据<strong>多个</strong>基表或者视图来创建</li>
 <li><strong>通过视图可以修改基表的数据, 基表的改变也会影响视图的数据</strong></li>
 </ol>
-<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><ul>
+<h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><ul>
 <li><code>CREATE VIEW view_name as SELECT...;</code></li>
 <li><code>ALTER VIEW view_name as SELECT...;</code></li>
 <li><code>SHOW CREATE VIEW view_name;</code></li>
 <li><code>DROP VIEW view_name,...</code>;</li>
 </ul>
-<h4 id="视图的优点"><a href="#视图的优点" class="headerlink" title="视图的优点"></a>视图的优点</h4><ol>
+<h5 id="视图的优点"><a href="#视图的优点" class="headerlink" title="视图的优点"></a>视图的优点</h5><ol>
 <li>安全: 一些数据表有着重要的信息, 有些字段是保密的, 不能让用户直接看到, 这时就可以使用视图</li>
 <li>性能: 关系数据库的数据常常会分表存储， 使用外键建立这些表的连接关系, 这时, 数据库查询通常会用到连接(JOIN), 这样做不仅麻烦, 而且效率也相对比较低</li>
 <li>灵活: 如果系统中有一张旧表, 这张表由于设计问题, 即将废弃, 但很多应用都是基于这张表, 不易修改, 这时就可以使用视图减少改动, 也达到了升级数据库的目的</li>
 </ol>
-<h3 id="MySQL-用户"><a href="#MySQL-用户" class="headerlink" title="MySQL 用户"></a>MySQL 用户</h3><h4 id="操作语句"><a href="#操作语句" class="headerlink" title="操作语句"></a>操作语句</h4><ul>
+<h4 id="MySQL-用户"><a href="#MySQL-用户" class="headerlink" title="MySQL 用户"></a>MySQL 用户</h4><h5 id="操作语句"><a href="#操作语句" class="headerlink" title="操作语句"></a>操作语句</h5><ul>
 <li>创建用户 <code>CREATE USER &#39;用户名&#39; @ &#39;允许登陆位置&#39; identified by &#39;密码&#39;;</code> 不同用户, 能操作的库和表不相同</li>
 <li>删除用户 <code>DROP USER &#39;用户名&#39; @ &#39;允许登录位置&#39;;</code></li>
 <li>修改自己的密码 <code>SET PASSWORD = PASSWORD(&#39;密码&#39;);</code></li>
@@ -943,7 +943,7 @@
 <li>回收用户权限 <code>REVOKE 权限列表 on 库.对象名 FROM &#39;用户名&#39; @ &#39;登陆位置&#39;</code></li>
 <li>低版本MySQL有时候需要刷新权限 <code>FLUSH PRIVILEGES</code></li>
 </ul>
-<h4 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h4><ol>
+<h5 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h5><ol>
 <li>在创建用户的时候, <strong>如果不指定 Host, 则为%, %表示所有IP都有连接权限</strong></li>
 <li>也可以指定 Host 为 <code>@192.168.1.%</code></li>
 <li>在删除用户的时候, 如果host不是 %, 需要明确指定</li>
