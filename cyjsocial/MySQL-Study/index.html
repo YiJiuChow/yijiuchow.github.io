@@ -434,7 +434,7 @@
 <li><strong>char(0 ~ 255) 固定长度字符串</strong> ,最大255字符, 字节数不定, <strong>查询速度快于varchar</strong></li>
 <li><strong>varchar(0 ~ 21844) 可变长度字符串, 最大65535字节, 会预留1 ~ 3个字节来记录字符串长度, 所以utf8编码最大存(65535 - 3) / 3 = 21844个字符</strong></li>
 <li>text(0 ~ 65535) 和varchar差不多, 根据编码,可存的最大字符长度会变化</li>
-<li>longtxt(0 ~ 2^32 - 1) </li>
+<li>longtext(0 ~ 2^32 - 1) </li>
 </ol>
 </li>
 <li>二进制类型(不常用)<ol>
@@ -621,6 +621,7 @@
 <li>date_add/date_sub(interval num year/month/day) date_sub() 日期的加减</li>
 <li>datediff(date1, date2) 返回两个日期的差(天数)</li>
 <li>timediff(time1, time2) 返回两个时间的差(秒数)</li>
+<li>last_day(date), 可以返回日期所在月份的最后一天的日期</li>
 </ul>
 <h3 id="加密函数和系统函数"><a href="#加密函数和系统函数" class="headerlink" title="加密函数和系统函数"></a>加密函数和系统函数</h3><ul>
 <li>USER() 查询当前用户</li>
@@ -724,6 +725,228 @@
 <li>自增长<strong>默认从 1 开始</strong></li>
 <li>可以<strong>单独使用, 但需要搭配 UNIQUE</strong></li>
 <li>自增长修饰的字段一般为整数(虽然小数也可以, 但是很少这样使用)</li>
+</ol>
+<h3 id="索引-Index"><a href="#索引-Index" class="headerlink" title="索引 Index"></a>索引 Index</h3><h4 id="引入索引"><a href="#引入索引" class="headerlink" title="引入索引"></a>引入索引</h4><ol>
+<li>说起提高数据库性能, 索引是最物美价廉的东西了, 不用加内存, 不用改程序, 不用调sql, 查询速度就可能提高百倍千倍</li>
+<li>索引是针对列创建的, 会占用不少磁盘空间</li>
+<li>基本语法 <code>CREATE INDEX indexName ON table (fieldName);</code></li>
+</ol>
+<h4 id="索引的原理"><a href="#索引的原理" class="headerlink" title="索引的原理"></a>索引的原理</h4><ol>
+<li>加索引为什么查询速度会变快<ol>
+<li>不加索引查询会进行全表查询</li>
+<li>加索引之后, 底层就会形成一个索引的数据结构, 比如二叉树</li>
+</ol>
+</li>
+<li>索引的代价<ol>
+<li>磁盘占用</li>
+<li>对dml(update delete insert)语句的效率有影响</li>
+</ol>
+</li>
+</ol>
+<h4 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h4><ol>
+<li>主键索引: 主键 PRIMARY KEY 同时也是索引</li>
+<li>唯一索引: 唯一 UNIQUE 同时也是索引</li>
+<li>普通索引: INDEX</li>
+<li>全文索引: FULLTEXT (MySQL自带的, 一般不使用) Java开发, 使用全文搜索 Solr 和 ElasticSearch(ES) 框架</li>
+</ol>
+<h4 id="索引的使用"><a href="#索引的使用" class="headerlink" title="索引的使用"></a>索引的使用</h4><ol>
+<li>创建/增加索引<ol>
+<li><code>CREATE (UNIQUE) INDEX indexName ON tableName (column_name);</code></li>
+<li><code>ALTER TABLE tableName ADD (PRIMARY KEY / UNIQUE (INDEX) / INDEX) (column_name);</code></li>
+<li>PRIMARY KEY 和 UNIQUE 在创建表的时候声明的同时就创建了索引, 因为它们本身就是索引</li>
+</ol>
+</li>
+<li>删除索引<ol>
+<li>删除(唯一/普通)索引<code>DROP INDEX indexName ON tableName (column_name);</code></li>
+<li>删除主键索引: <code>ALTER TABLE tableName DROP PRIMARY KEY;</code></li>
+</ol>
+</li>
+<li>修改索引: 先删除索引, 再创建新的索引</li>
+<li>查询索引<ol>
+<li><code>SHOW INDEX/INDEXES FROM tableName;</code></li>
+<li><code>SHOW KEYS FROM tableName;</code></li>
+<li><code>DESC tableName;</code></li>
+</ol>
+</li>
+</ol>
+<h4 id="索引的选择-什么列适合使用索引"><a href="#索引的选择-什么列适合使用索引" class="headerlink" title="索引的选择, 什么列适合使用索引"></a>索引的选择, 什么列适合使用索引</h4><ol>
+<li>如果某列的值不会重复, 就优先考虑UNIQUE 索引, 否则使用普通索引</li>
+<li>较频繁的作为查询条件字段应该创建索引</li>
+<li>唯一性太差的字段不适合单独创建索引, 即使频繁作为查询条件</li>
+<li>更新非常频繁的字段, 不适合创建索引</li>
+<li>不会出现在WHERE子句中的字段不该创建索引</li>
+</ol>
+<h3 id="事务-Transaction"><a href="#事务-Transaction" class="headerlink" title="事务 Transaction"></a>事务 Transaction</h3><h4 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h4><ul>
+<li>事务用于保证数据的一致性, 它由一组相关的DML(INSERT, UPDATE, DELETE)语句组成</li>
+<li>该组的DML语句要么全部成功, 要么全部失败 (如转账就要用事务来处理, 用以保证数据的一致性)</li>
+<li>当执行事务操作时, MySQL 会在表上加锁, 防止其它用户改表的数据, 这对用户来说是非常重要的</li>
+</ul>
+<h4 id="基本-重要-操作"><a href="#基本-重要-操作" class="headerlink" title="基本(重要)操作"></a>基本(重要)操作</h4><ol>
+<li><code>start transaction;</code> or <code>set autocommit = off;</code> 开始一个事务</li>
+<li><code>savepoint save_point_name;</code> 设置保存点</li>
+<li><code>rollback (to save_point_name);</code> 回退事务, 不接to直接回到事务最初<ol>
+<li>保存点(savepoint)是事务中的点, 用于取消部分事务</li>
+<li>当结束事务(commit)时, 会自动删除该事务所定义的所有保存点</li>
+<li>当执行回退事务时, 通过指定保存点可以回退到指定的点</li>
+</ol>
+</li>
+<li><code>commit</code> 提交事务, 所有的操作生效, 不能回退<ol>
+<li>当执行了<code>commit</code>语句后, 会<strong>确认事务的变化, 结束事务, 删除保存点, 释放锁, 数据生效</strong></li>
+<li>其他连接将可以查看到变化后的新数据(所有数据正式生效)</li>
+</ol>
+</li>
+</ol>
+<h4 id="事务的细节"><a href="#事务的细节" class="headerlink" title="事务的细节"></a>事务的细节</h4><ol>
+<li>如果不开始事务, 默认情况下, DML 操作是自动提交的, 不能回滚</li>
+<li>如果开始一个事务, 没有创建保存点, 可以执行<code>rollback</code>, 默认就是回滚到你事务开始的状态</li>
+<li>可以在这个事务中(还没有提交时), 创建多个保存点, 然后在事务提交前, 选择回退到的保存点, 该保存点后面执行的DML语句或创建的保存点都将失效</li>
+<li>InnoDB 存储引擎支持事务, MyISAM 不支持</li>
+</ol>
+<h4 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h4><ol>
+<li>多个连接开启各自事务操作数据库中数据时, 数据库系统要负责隔离操作, 以保证各个连接在获取连接时的准确性</li>
+<li>隔离级别是跟事务相关的, 没有事务就不要谈隔离级别</li>
+<li>如果不考虑隔离性, 可能引发如下问题:<ol>
+<li>脏读(dirty read): 当一个事务读取另一个事务尚未提交的修改时, 产生脏读</li>
+<li>不可重复读(non-repeatable read): 同一个查询在同一事务中多次进行, 由于其他提交事务所做的<strong>修改(update)或删除(delete)</strong>, 每次返回不同的结果集, 此时发生不可重复读</li>
+<li>幻读(phantom read): 同一查询在同一事务中多次进行, 由于其他提交事务所做的<strong>插入(insert)操作</strong>, 每次返回不同的结果集, 此时发生幻读</li>
+</ol>
+</li>
+<li>MySQL隔离级别定义了事务与事务之间的隔离程度</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+<th>加锁读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读未提交(Read uncommitted</td>
+<td>可能出现</td>
+<td>可能出现</td>
+<td>可能出现</td>
+<td>不加锁</td>
+</tr>
+<tr>
+<td>读已提交(Read committed)</td>
+<td>不会出现</td>
+<td>可能出现</td>
+<td>可能出现</td>
+<td>不加锁</td>
+</tr>
+<tr>
+<td>可重复读(Repeatable read)</td>
+<td>不会出现</td>
+<td>不会出现</td>
+<td>不会出现</td>
+<td>不加锁</td>
+</tr>
+<tr>
+<td>可串行化(Serializable)</td>
+<td>不会出现</td>
+<td>不会出现</td>
+<td>不会出现</td>
+<td>会加锁</td>
+</tr>
+</tbody></table>
+<h4 id="隔离级别相关操作"><a href="#隔离级别相关操作" class="headerlink" title="隔离级别相关操作"></a>隔离级别相关操作</h4><ol>
+<li>查看(系统)当前隔离级别, 默认隔离级别是可重复读(Repeatable read)<ol>
+<li>MySQL8之后 <code>SELECT @@(global.)transaction_isolation;</code></li>
+<li>MySQL8之前 <code>SELECT @@(global.)tx_isolation;</code></li>
+</ol>
+</li>
+<li><code>SET GLOBAL / SESSION TRANSACTION ISOLATION LEVEL 隔离级别;</code> 修改 系统 / 当前 查询编辑器的隔离级别</li>
+<li>可以在配置文件my.ini 设置默认的隔离级别 <code>transaction_isolation = 隔离级别</code></li>
+</ol>
+<h4 id="事务的ACID特性"><a href="#事务的ACID特性" class="headerlink" title="事务的ACID特性"></a>事务的ACID特性</h4><ol>
+<li>原子性 Atomicity 事务是一个整体, 事务中的DML操作要么全部发生, 要么都不发生</li>
+<li>一致性 Consistency 事务提交会整体改变, 即从一个一致性状态变换到另一个一致性状态</li>
+<li>隔离性 Isolation 多个用户的事务操作, 在一定隔离级别下, 不会互相干扰, 多个并发事件相互隔离</li>
+<li>持久性 Durability 一旦事务被提交, 它对数据库的改变就是永久性的</li>
+</ol>
+<h3 id="MySQL表类型和存储引擎-ENGINE"><a href="#MySQL表类型和存储引擎-ENGINE" class="headerlink" title="MySQL表类型和存储引擎 ENGINE"></a>MySQL表类型和存储引擎 ENGINE</h3><h4 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h4><ol>
+<li>MySQL的表类型由存储引擎(Storage Engines)决定, 主要包括MyISAM innoDB Memory等</li>
+<li>MySQL数据表主要支持六种类型, 分别是: CSV Memory ARCHIVE MRG MYISAM InnoBDB</li>
+</ol>
+<h4 id="重要特点"><a href="#重要特点" class="headerlink" title="重要特点"></a>重要特点</h4><table>
+<thead>
+<tr>
+<th align="center">特点</th>
+<th align="center">MyISAM</th>
+<th align="center">innoDB</th>
+<th align="center">Memory</th>
+<th align="center">Archive</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">批量插入的速度</td>
+<td align="center">高</td>
+<td align="center">低</td>
+<td align="center">高</td>
+<td align="center">非常高</td>
+</tr>
+<tr>
+<td align="center">事务</td>
+<td align="center"></td>
+<td align="center">支持</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">锁机制</td>
+<td align="center">表锁</td>
+<td align="center">行锁</td>
+<td align="center">表锁</td>
+<td align="center">行锁</td>
+</tr>
+<tr>
+<td align="center">外键</td>
+<td align="center"></td>
+<td align="center">支持</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>注意: Memory引擎的表数据<strong>存在内存中(关闭了MySQL服务, 数据丢失, 但是表结构还在), 执行速度快(没有IO读写)</strong></p>
+<p>修改存储引擎 <code>ALTER TABLE tableName ENGINE = engine_name;</code></p>
+<h3 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h3><h4 id="基本介绍-2"><a href="#基本介绍-2" class="headerlink" title="基本介绍"></a>基本介绍</h4><ol>
+<li>视图是一个<strong>虚拟表, 其内容由查询定义</strong>, 同真实的表一样, 视图包含列, 其<strong>数据来自对应的真实表(基表)</strong></li>
+<li>视图可根据<strong>多个</strong>基表或者视图来创建</li>
+<li><strong>通过视图可以修改基表的数据, 基表的改变也会影响视图的数据</strong></li>
+</ol>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><ul>
+<li><code>CREATE VIEW view_name as SELECT...;</code></li>
+<li><code>ALTER VIEW view_name as SELECT...;</code></li>
+<li><code>SHOW CREATE VIEW view_name;</code></li>
+<li><code>DROP VIEW view_name,...</code>;</li>
+</ul>
+<h4 id="视图的优点"><a href="#视图的优点" class="headerlink" title="视图的优点"></a>视图的优点</h4><ol>
+<li>安全: 一些数据表有着重要的信息, 有些字段是保密的, 不能让用户直接看到, 这时就可以使用视图</li>
+<li>性能: 关系数据库的数据常常会分表存储， 使用外键建立这些表的连接关系, 这时, 数据库查询通常会用到连接(JOIN), 这样做不仅麻烦, 而且效率也相对比较低</li>
+<li>灵活: 如果系统中有一张旧表, 这张表由于设计问题, 即将废弃, 但很多应用都是基于这张表, 不易修改, 这时就可以使用视图减少改动, 也达到了升级数据库的目的</li>
+</ol>
+<h3 id="MySQL-用户"><a href="#MySQL-用户" class="headerlink" title="MySQL 用户"></a>MySQL 用户</h3><h4 id="操作语句"><a href="#操作语句" class="headerlink" title="操作语句"></a>操作语句</h4><ul>
+<li>创建用户 <code>CREATE USER &#39;用户名&#39; @ &#39;允许登陆位置&#39; identified by &#39;密码&#39;;</code> 不同用户, 能操作的库和表不相同</li>
+<li>删除用户 <code>DROP USER &#39;用户名&#39; @ &#39;允许登录位置&#39;;</code></li>
+<li>修改自己的密码 <code>SET PASSWORD = PASSWORD(&#39;密码&#39;);</code></li>
+<li>修改其他用户的密码, 需要对应权限 <code>SET PASSWORD FOR &#39;用户名&#39; @ &#39;登陆位置&#39; = PASSWARD(&#39;密码&#39;)</code></li>
+<li>给用户授权 <code>GRANT 权限列表 on 库.对象名 to &#39;用户名&#39; @ &#39;登陆位置&#39; (identified by &#39;密码&#39;)</code><ul>
+<li>权限列表, 用逗号隔开, <code>all</code> 代表所有权限</li>
+<li><code>*.*</code>  本系统中所有的数据库的所有对象(表, 视图, 存储过程)</li>
+<li><code>库.*</code> 某个数据库中的所有数据对象(表, 视图, 存储过程)</li>
+<li><code>identified by &#39;密码&#39;</code> 可以省略, 如果用户存在, 就会修改用户的密码, 如果不存在就会创建用户</li>
+</ul>
+</li>
+<li>回收用户权限 <code>REVOKE 权限列表 on 库.对象名 FROM &#39;用户名&#39; @ &#39;登陆位置&#39;</code></li>
+<li>低版本MySQL有时候需要刷新权限 <code>FLUSH PRIVILEGES</code></li>
+</ul>
+<h4 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h4><ol>
+<li>在创建用户的时候, <strong>如果不指定 Host, 则为%, %表示所有IP都有连接权限</strong></li>
+<li>也可以指定 Host 为 <code>@192.168.1.%</code></li>
+<li>在删除用户的时候, 如果host不是 %, 需要明确指定</li>
 </ol>
 
                 
