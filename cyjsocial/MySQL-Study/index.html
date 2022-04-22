@@ -601,7 +601,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h4><ul>
+<h4 id="数学函数-Mathematical-function"><a href="#数学函数-Mathematical-function" class="headerlink" title="数学函数 Mathematical function"></a>数学函数 Mathematical function</h4><ul>
 <li>ABS(num) 绝对值<br><code>select abs(-10) from dual;</code></li>
 <li>BIN(num) 10进制 -&gt; 2进制<br><code>select bin(10) from dual;</code></li>
 <li>CEILING(num) 向上取整, 得到比num大的最大整数<br><code>select ceiling(1.1) from dual;</code></li>
@@ -613,7 +613,7 @@
 <li>mod(numerator, denominator) 求余数<br><code>select mod(10, 3) from dual;</code></li>
 <li>rand() 返回随机数<br><code>select rand() from dual;</code></li>
 </ul>
-<h4 id="时间日期相关函数"><a href="#时间日期相关函数" class="headerlink" title="时间日期相关函数"></a>时间日期相关函数</h4><ul>
+<h4 id="时间日期相关函数-Date-function"><a href="#时间日期相关函数-Date-function" class="headerlink" title="时间日期相关函数 Date function"></a>时间日期相关函数 Date function</h4><ul>
 <li>current_date() 当前日期</li>
 <li>current_time() 当前时间</li>
 <li>current_timestamp() 当前时间戳</li>
@@ -623,13 +623,13 @@
 <li>timediff(time1, time2) 返回两个时间的差(秒数)</li>
 <li>last_day(date), 可以返回日期所在月份的最后一天的日期</li>
 </ul>
-<h4 id="加密函数和系统函数"><a href="#加密函数和系统函数" class="headerlink" title="加密函数和系统函数"></a>加密函数和系统函数</h4><ul>
+<h4 id="加密函数和系统函数-Encryption-function-and-system-function"><a href="#加密函数和系统函数-Encryption-function-and-system-function" class="headerlink" title="加密函数和系统函数 Encryption function and system function"></a>加密函数和系统函数 Encryption function and system function</h4><ul>
 <li>USER() 查询当前用户</li>
 <li>DATABASE() 查询当前数据库</li>
 <li>MD5(str) 把字符串加密成MD5 32位字符串</li>
 <li>PASSWORD(str) 从原文密码str计算并返回密码字符串, 通常用于对mysql数据库的用户密码加密(SELECT * FROM mysql.user查询用户的信息)</li>
 </ul>
-<h4 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h4><ul>
+<h4 id="流程控制函数-Process-control-function"><a href="#流程控制函数-Process-control-function" class="headerlink" title="流程控制函数 Process control function"></a>流程控制函数 Process control function</h4><ul>
 <li><code>SELECT if(TRUE,0,1) FROM dual;</code> # 一真大师</li>
 <li><code>SELECT IFNULL(null,0) FROM dual;</code></li>
 <li><code>SELECT CASE WHEN TRUE THEN 1 WHEN TRUE THEN 2 ELSE 3 END FROM dual;</code> # 相当于java的if-else if-else</li>
