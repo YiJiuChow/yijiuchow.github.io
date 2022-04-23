@@ -2569,9 +2569,9 @@
 <li>方法区: 类的字节码二进制数据(元数据) </li>
 </ul>
 <h5 id="类加载的加载阶段-Loading"><a href="#类加载的加载阶段-Loading" class="headerlink" title="类加载的加载阶段 Loading"></a>类加载的加载阶段 Loading</h5><ul>
-<li>JVM 在该阶段的主要目的是将字节码从不同的数据源(可能是 class 文件, 也可能是jar包, 甚至网络) 转化为二进制字节流加载到内存中, 并生成一个代表该类的java.lang.Class对象<h5 id="类加载的连接阶段-Linking"><a href="#类加载的连接阶段-Linking" class="headerlink" title="类加载的连接阶段 Linking"></a>类加载的连接阶段 Linking</h5></li>
+<li>JVM 在该阶段的主要目的是将字节码从不同的数据源(可能是 class 文件, 也可能是jar包, 甚至网络) 转化为二进制字节流加载到内存中, 并生成一个代表该类的java.lang.Class对象</li>
 </ul>
-<ol>
+<h5 id="类加载的连接阶段-Linking"><a href="#类加载的连接阶段-Linking" class="headerlink" title="类加载的连接阶段 Linking"></a>类加载的连接阶段 Linking</h5><ol>
 <li>验证 Verification: <ol>
 <li>目的是为了确保 Class文件的字节流文件中的字节流中包含的信息流符合当前虚拟机的要求, 并且不会危害虚拟机自身的安全</li>
 <li>包括文件格式验证(是否以魔数 0xcafebabe开头), 元数据验证, 字节码验证和符号引用验证</li>
