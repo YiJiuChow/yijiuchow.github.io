@@ -314,12 +314,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
                             <a href="/tags/MySQL/">
                                 <span class="chip bg-color">MySQL</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -355,7 +355,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="MySQL-语句书写规范"><a href="#MySQL-语句书写规范" class="headerlink" title="MySQL 语句书写规范"></a>MySQL 语句书写规范</h3><ul>
+                <h3 id="MySQL-规范"><a href="#MySQL-规范" class="headerlink" title="MySQL 规范"></a>MySQL 规范</h3><ul>
 <li>关键字大写，其他内容小写</li>
 <li>程序块应采用缩进风格书写，保证代码可读，风格一致，缩进格数统一为4格</li>
 <li>代码中需要空位时，统一采用英文空格键输入，不允许用TAB键产生空位</li>
@@ -870,7 +870,7 @@
 <li>隔离性 Isolation 多个用户的事务操作, 在一定隔离级别下, 不会互相干扰, 多个并发事件相互隔离</li>
 <li>持久性 Durability 一旦事务被提交, 它对数据库的改变就是永久性的</li>
 </ol>
-<h4 id="MySQL表类型和存储引擎-ENGINE"><a href="#MySQL表类型和存储引擎-ENGINE" class="headerlink" title="MySQL表类型和存储引擎 ENGINE"></a>MySQL表类型和存储引擎 ENGINE</h4><h5 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h5><ol>
+<h4 id="表类型和存储引擎-ENGINE"><a href="#表类型和存储引擎-ENGINE" class="headerlink" title="表类型和存储引擎 ENGINE"></a>表类型和存储引擎 ENGINE</h4><h5 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h5><ol>
 <li>MySQL的表类型由存储引擎(Storage Engines)决定, 主要包括MyISAM innoDB Memory等</li>
 <li>MySQL数据表主要支持六种类型, 分别是: CSV Memory ARCHIVE MRG MYISAM InnoBDB</li>
 </ol>
@@ -931,7 +931,7 @@
 <li>性能: 关系数据库的数据常常会分表存储， 使用外键建立这些表的连接关系, 这时, 数据库查询通常会用到连接(JOIN), 这样做不仅麻烦, 而且效率也相对比较低</li>
 <li>灵活: 如果系统中有一张旧表, 这张表由于设计问题, 即将废弃, 但很多应用都是基于这张表, 不易修改, 这时就可以使用视图减少改动, 也达到了升级数据库的目的</li>
 </ol>
-<h4 id="MySQL-用户"><a href="#MySQL-用户" class="headerlink" title="MySQL 用户"></a>MySQL 用户</h4><h5 id="操作语句"><a href="#操作语句" class="headerlink" title="操作语句"></a>操作语句</h5><ul>
+<h4 id="用户-User"><a href="#用户-User" class="headerlink" title="用户 User"></a>用户 User</h4><h5 id="操作语句"><a href="#操作语句" class="headerlink" title="操作语句"></a>操作语句</h5><ul>
 <li>创建用户 <code>CREATE USER &#39;用户名&#39; @ &#39;允许登陆位置&#39; identified by &#39;密码&#39;;</code> 不同用户, 能操作的库和表不相同</li>
 <li>删除用户 <code>DROP USER &#39;用户名&#39; @ &#39;允许登录位置&#39;;</code></li>
 <li>修改自己的密码 <code>SET PASSWORD = PASSWORD(&#39;密码&#39;);</code></li>
@@ -1015,12 +1015,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
                                 <a href="/tags/MySQL/">
                                     <span class="chip bg-color">MySQL</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
