@@ -355,9 +355,122 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="数据结构和算法的关系"><a href="#数据结构和算法的关系" class="headerlink" title="数据结构和算法的关系"></a>数据结构和算法的关系</h3><ol>
-<li>数据结构(data structrue)是一门研究组织数据方式的学科</li>
+                <h1 id="数据结构和算法的关系"><a href="#数据结构和算法的关系" class="headerlink" title="数据结构和算法的关系"></a>数据结构和算法的关系</h1><ol>
+<li>数据结构(Data Structure)是一门研究组织数据方式的学科, 有了编程语言也就有了数据结构</li>
+<li>数据结构是算法的基础, 算法(Algorithms)是程序的灵魂</li>
+<li>程序 = 数据结构 + 算法</li>
 </ol>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="线性结构-Linear-structure"><a href="#线性结构-Linear-structure" class="headerlink" title="线性结构 Linear structure"></a>线性结构 Linear structure</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><ol>
+<li>线性结构作为最常用的数据结构, 其特点是<strong>数据元素之间存在一对一的线性关系</strong></li>
+<li>线性结构有两种不同的存储结构, 即<strong>顺序存储结构</strong>和<strong>链式存储结构</strong> </li>
+<li>顺序存储的线性表称为<strong>顺序表</strong>, 存储元素是<strong>连续的</strong></li>
+<li>链式存储的线性表称为<strong>链表</strong>, 链表中的存储元素<strong>不一定是连续的</strong>, 元素节点中存放<strong>数据元素以及相邻元素的地址信息</strong></li>
+<li>线性结构常见的有: 数组 队列 链表 栈</li>
+</ol>
+<h3 id="稀疏数组-Sparse-array"><a href="#稀疏数组-Sparse-array" class="headerlink" title="稀疏数组 Sparse array"></a>稀疏数组 Sparse array</h3><ol>
+<li>当一个数组中大部门元素为0, 或者为同一个值的数组时, 可以使用稀疏数组来保存该数据</li>
+<li>一般处理方式为:<ol>
+<li>记录数组一共有几<strong>行</strong>几<strong>列</strong>, 有多个不同的<strong>值</strong></li>
+<li>把具有不同值的元素的行列及值记录在一个小规模的数组中, 从而缩小程序的规模</li>
+</ol>
+</li>
+</ol>
+<h3 id="队列-Queue"><a href="#队列-Queue" class="headerlink" title="队列 Queue"></a>队列 Queue</h3><ol>
+<li>队列是一个<strong>有序</strong>列表, 可以用<strong>数组或者是链表</strong>来实现</li>
+<li>遵循<strong>先入后出</strong>的原则, 即先存入队列的数据, 要先取出</li>
+</ol>
+<h3 id="链表-Linked-list"><a href="#链表-Linked-list" class="headerlink" title="链表 Linked list"></a>链表 Linked list</h3><ol>
+<li>链表是一个有序的列表, 以节点的方式来存储, 每个节点必须包含<strong>data域(存储数据)和next域(指向下一个节点)</strong></li>
+<li>链表的每个节点不一定是连续存放的</li>
+<li>链表分为带头节点的链表和没有头节点的链表, 根据实际的需求来确定</li>
+</ol>
+<h4 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h4><ol>
+<li>需要使用辅助节点来进行各种操作(遍历, 删除, 添加, 反转, 合并等) </li>
+<li>使用栈(递归也是栈的应用) 可以反向打印单向链表的数据, 不改变链表本身的结构</li>
+</ol>
+<h4 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h4><ol>
+<li>pre指向前一个节点, next指向后一个节点 </li>
+<li>遍历可以向前也可以向后查找</li>
+<li>添加(默认添加到双向链表最后)<ol>
+<li><code>last.next = newNode;</code></li>
+<li><code>newNode.pre = last;</code></li>
+</ol>
+</li>
+<li>修改(和单向链表差不多)</li>
+<li>删除 (自我删除)<ol>
+<li>找到要删除的节点temp </li>
+<li><code>temp.pre.next = temp.next;</code></li>
+<li><code>temp.next.pre = temp.pre;</code></li>
+</ol>
+</li>
+</ol>
+<h4 id="单向环形链表"><a href="#单向环形链表" class="headerlink" title="单向环形链表"></a>单向环形链表</h4><ol>
+<li>约瑟夫的小孩出圈问题一定要会<ol>
+<li>定义一个辅助指针helper指向, 环形链表的最后一个节点</li>
+<li>报数到m的小孩出圈, 就是first和helper同时移动m - 1位之后, first指向的小孩出圈</li>
+</ol>
+</li>
+<li>相当于实现了一个队列</li>
+</ol>
+<h3 id="栈-Stack"><a href="#栈-Stack" class="headerlink" title="栈 Stack"></a>栈 Stack</h3><h4 id="基本介绍和应用场景"><a href="#基本介绍和应用场景" class="headerlink" title="基本介绍和应用场景"></a>基本介绍和应用场景</h4><ol>
+<li>栈是一个先进后出的有序列表</li>
+<li>栈是限制线性表中元素的<strong>插入和删除****只能在线性表的同一端进行的一种特殊线性表</strong><ol>
+<li>允许插入和删除的一端, 为变化的一端, 称为栈顶(top)</li>
+<li>另一端为固定的一端, 称为栈底(Bottom)</li>
+</ol>
+</li>
+<li>根据栈的定义可知<ol>
+<li>最先放入栈中的元素在栈底, 最后放入栈中的元素在栈顶</li>
+<li>而删除元素刚好相反, 最后放入的元素最先删除, 最先放入的元素最后删除</li>
+</ol>
+</li>
+<li>栈的应用场景<ol>
+<li>子程序调用: 在跳往子程序前, 会先将下个指令的地址存到堆栈中, 直到子程序执行完后再将地址取出, 以回到原来的程序中</li>
+<li>处理递归调用: 和子程序调用类似, 只是除了存储下一个指令的地址外, 也将参数, 区域变量等数据存入堆栈中</li>
+<li>表达式的转换: 中缀表达式转后缀表达式与求值</li>
+<li>二叉树的遍历</li>
+<li>图形的深度优先(depth-first)搜索法</li>
+</ol>
+</li>
+<li>出栈(pop)和入栈(push)</li>
+</ol>
+<h4 id="用栈实现一个简单的计算器"><a href="#用栈实现一个简单的计算器" class="headerlink" title="用栈实现一个简单的计算器"></a>用栈实现一个简单的计算器</h4><ol>
+<li>new一个数字栈和符号栈</li>
+<li>while循环取出表达式, 做相应判断</li>
+<li>栈类可以封装一些方法做判断和运算</li>
+</ol>
+<h4 id="前缀表达式-中缀表达式-后缀表达式-逆波兰表达式"><a href="#前缀表达式-中缀表达式-后缀表达式-逆波兰表达式" class="headerlink" title="前缀表达式 中缀表达式 后缀表达式(逆波兰表达式)"></a>前缀表达式 中缀表达式 后缀表达式(逆波兰表达式)</h4><h4 id="中缀表达式转后缀表达式"><a href="#中缀表达式转后缀表达式" class="headerlink" title="中缀表达式转后缀表达式"></a>中缀表达式转后缀表达式</h4><ol>
+<li>初始化两个栈: 运算符栈s1和存储中间结果的栈s2</li>
+<li>从左至右扫描中缀表达式</li>
+<li>遇到数字时, 将其压入s2</li>
+<li>遇到运算符时, 计较其与s1栈顶运算符的优先级<ol>
+<li>如果s1为空, 或栈顶运算符为左括号, 则直接将次运算符入栈</li>
+<li>否则, 若优先级比栈顶运算符高, 也将运算符压入s1</li>
+<li>否则, 将s1栈顶运算符弹出并压入到s2中, 再次转到(4-1)与s1中新的栈顶运算符相比较</li>
+</ol>
+</li>
+<li>遇到括号时:<ol>
+<li>如果是左括号, 则直接压入s1</li>
+<li>如果是右括号, 则依次弹出s1栈顶的运算符, 并压入s2, 直到遇到左括号为止, 此时将这一对括号丢弃</li>
+</ol>
+</li>
+<li>重复步骤2至5, 直到表达式的最右边</li>
+<li>将s1中剩余的运算符依次弹出并压入s2</li>
+<li>依次弹出s2的元素并输出, 结果的逆序即为中缀表达式对应的后缀表达式</li>
+</ol>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><ol>
+<li>迷宫问题</li>
+<li>8皇后问题</li>
+</ol>
+<h2 id="非线性结构"><a href="#非线性结构" class="headerlink" title="非线性结构"></a>非线性结构</h2><ul>
+<li>非限性结构包括: 二(多)维数组 广义表 数 图 </li>
+</ul>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><h3 id="内部排序"><a href="#内部排序" class="headerlink" title="内部排序"></a>内部排序</h3><ul>
+<li>按将需要处理的所有数据都加载到内部存储器中进行排序</li>
+</ul>
+<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><h4 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h4><h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><h4 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h4><h3 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h3><ul>
+<li>数据量过大, 无法全部加载到内存中, 需要借助外部存储进行排序</li>
+</ul>
 
                 
             </div>
