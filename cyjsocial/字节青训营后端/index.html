@@ -208,10 +208,104 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -261,7 +355,73 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="Go语言系列"><a href="#Go语言系列" class="headerlink" title="Go语言系列"></a>Go语言系列</h2><h3 id="Go语言上手-基础语法"><a href="#Go语言上手-基础语法" class="headerlink" title="Go语言上手 - 基础语法"></a>Go语言上手 - 基础语法</h3><h4 id="语言特点"><a href="#语言特点" class="headerlink" title="语言特点"></a>语言特点</h4><ol>
+<li>高性能， 高并发</li>
+<li>语法简单， 学习曲线平缓</li>
+<li>丰富的标准库</li>
+<li>完善的工具链</li>
+<li>静态链接</li>
+<li>快速编译</li>
+<li>跨平台</li>
+<li>垃圾回收</li>
+</ol>
+<h4 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h4><p>开发环境 <a target="_blank" rel="noopener" href="https://go.dev/">官网</a></p>
+<p>基础语法</p>
+<ol>
+<li>变量 <code>var name = value</code> or <code>name := value</code>, string是Go语言内键类型</li>
+<li>常量 <code>const name = value</code></li>
+<li>if - else if - else</li>
+<li>只有for循环</li>
+<li>switch语句<ol>
+<li>不需要写break</li>
+<li>case后可以接任意类型，接 condition 可代替传统的 if-else 条件分支</li>
+</ol>
+</li>
+<li>数组 不常使用 <code>s : = [len]int</code></li>
+<li>切片(slice) 可变长度的数组<ol>
+<li>使用make创建切片 <code>s := make([]string, len)</code> </li>
+<li>使用append添加 <code>s = append(s, var)</code></li>
+<li><code>s[num1, num2]</code></li>
+</ol>
+</li>
+<li>map <code>m := make(map[string]int)</code> 无序</li>
+<li>range <code>for var1, var2 := range slice/map</code><ol>
+<li>遍历slice，第一个值返回索引， 第二个值返回值</li>
+<li>遍历map， 返回值对应 key-value  </li>
+</ol>
+</li>
+<li>函数 func <code>func funcName(parameter,...) (returnVal,...)&#123;&#125;</code></li>
+<li>指针 声明 *type  使用 &amp;name</li>
+<li>结构体(struct) 带类型字段的集合 <code>type name struct&#123;&#125;</code> <code>val := name&#123;&#125;</code></li>
+<li>结构体方法 <code>func (name (*)structName) funcName() &#123;&#125;</code> 结构体方法就是类成员方法，结构体有指针的区别</li>
+<li>错误处理 error <code>errors.New(&quot;not fount&quot;)</code></li>
+<li>字符串操作 strings</li>
+<li>字符串格式化 <code>%v</code>匹配任意类型 <code>%+v</code> 字段名和值 <code>%#v</code> 更详细的信息</li>
+<li>JSON 处理<ol>
+<li>结构体内变量名称首字母大写，就可使用 json.Marshal(structVal) 序列化成byte数组, 再使用string()强转成字符串</li>
+<li><code>`json:"nickname"`</code>写在结构体字段声明后, 可以使打印时, 显示nickname</li>
+<li>json.Unmarshal(parameter) 反序列化</li>
+</ol>
+</li>
+<li>时间处理 <ol>
+<li><code>t := time.now()</code> </li>
+<li><code>t := time.Date(2022, 5, 7, 10, 0, 0, 0, time.UTC)</code> or <code>t.Format(&quot;2022-05-07 10:00&quot;)</code></li>
+<li><code>t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute()</code></li>
+<li><code>t.Unix()</code> 获取时间戳</li>
+</ol>
+</li>
+<li>数字解析 <code>strconv.ParseInt(&quot;111&quot;, 10 , 64)</code> 10表示进制, 64表示进度</li>
+<li>进程信息 <ol>
+<li><code>os.Args</code>  获取命令行参数</li>
+<li><code>os.Getenv(&quot;PATH)</code> 获取环境变量 <code>os.Setenv(&quot;PATH&quot;,...)</code></li>
+<li><code>exec.Command(&quot;grep&quot;, &quot;127.0.0.1&quot;, &quot;/etc/hosts&quot;).CombinedOutput()</code> 启动子进程</li>
+</ol>
+</li>
+</ol>
+<h4 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h4><p>猜谜游戏</p>
+<p>命令行词典</p>
+<p>SOCKS5 代理</p>
+<h3 id="Go语言上手-工程实践"><a href="#Go语言上手-工程实践" class="headerlink" title="Go语言上手 - 工程实践"></a>Go语言上手 - 工程实践</h3><h3 id="高质量编程与性能调优实战"><a href="#高质量编程与性能调优实战" class="headerlink" title="高质量编程与性能调优实战"></a>高质量编程与性能调优实战</h3><h3 id="高性能-Go-语言发行版优化与落地实践"><a href="#高性能-Go-语言发行版优化与落地实践" class="headerlink" title="高性能 Go 语言发行版优化与落地实践"></a>高性能 Go 语言发行版优化与落地实践</h3>
                 
             </div>
             <hr/>
@@ -532,6 +692,100 @@
 
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目錄</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 
