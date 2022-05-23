@@ -362,7 +362,7 @@
 </ol>
 <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="线性结构-Linear-structure"><a href="#线性结构-Linear-structure" class="headerlink" title="线性结构 Linear structure"></a>线性结构 Linear structure</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><ol>
 <li>线性结构作为最常用的数据结构, 其特点是<strong>数据元素之间存在一对一的线性关系</strong></li>
-<li>线性结构有两种不同的存储结构, 即<strong>顺序存储结构</strong>和<strong>链式存储结构</strong> </li>
+<li>线性结构有两种不同的存储结构, 即<strong>顺序存储结构</strong>和<strong>链式存储结构</strong></li>
 <li>顺序存储的线性表称为<strong>顺序表</strong>, 存储元素是<strong>连续的</strong></li>
 <li>链式存储的线性表称为<strong>链表</strong>, 链表中的存储元素<strong>不一定是连续的</strong>, 元素节点中存放<strong>数据元素以及相邻元素的地址信息</strong></li>
 <li>线性结构常见的有: 数组 队列 链表 栈</li>
@@ -385,11 +385,11 @@
 <li>链表分为带头节点的链表和没有头节点的链表, 根据实际的需求来确定</li>
 </ol>
 <h4 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h4><ol>
-<li>需要使用辅助节点来进行各种操作(遍历, 删除, 添加, 反转, 合并等) </li>
+<li>需要使用辅助节点来进行各种操作(遍历, 删除, 添加, 反转, 合并等)</li>
 <li>使用栈(递归也是栈的应用) 可以反向打印单向链表的数据, 不改变链表本身的结构</li>
 </ol>
 <h4 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h4><ol>
-<li>pre指向前一个节点, next指向后一个节点 </li>
+<li>pre指向前一个节点, next指向后一个节点</li>
 <li>遍历可以向前也可以向后查找</li>
 <li>添加(默认添加到双向链表最后)<ol>
 <li><code>last.next = newNode;</code></li>
@@ -398,7 +398,7 @@
 </li>
 <li>修改(和单向链表差不多)</li>
 <li>删除 (自我删除)<ol>
-<li>找到要删除的节点temp </li>
+<li>找到要删除的节点temp</li>
 <li><code>temp.pre.next = temp.next;</code></li>
 <li><code>temp.next.pre = temp.pre;</code></li>
 </ol>
@@ -463,14 +463,422 @@
 <li>8皇后问题</li>
 </ol>
 <h2 id="非线性结构"><a href="#非线性结构" class="headerlink" title="非线性结构"></a>非线性结构</h2><ul>
-<li>非限性结构包括: 二(多)维数组 广义表 数 图 </li>
+<li>非限性结构包括: 二(多)维数组 广义表 数 图</li>
 </ul>
-<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><h3 id="内部排序"><a href="#内部排序" class="headerlink" title="内部排序"></a>内部排序</h3><ul>
+<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p>数组加链表</p>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><h4 id="为什么需要树这种数据结构"><a href="#为什么需要树这种数据结构" class="headerlink" title="为什么需要树这种数据结构"></a>为什么需要树这种数据结构</h4><ol>
+<li>数组存储, 访问元素速度快, 但做插入, 删除或整体移动时效率较低</li>
+<li>链式存储, 插入, 删除效率较高, 但检索效率低下</li>
+<li>树存储<ol>
+<li>能提高数据存储, 读取的效率, 比如二叉排序树</li>
+<li>既可以保证数据的检索速度, 同时也可以保证数据的 插入, 删除, 修改的速度</li>
+</ol>
+</li>
+</ol>
+<h4 id="树的常用术语"><a href="#树的常用术语" class="headerlink" title="树的常用术语"></a>树的常用术语</h4><ol>
+<li>节点<ol>
+<li>根节点 root</li>
+<li>父节点</li>
+<li>子节点</li>
+<li>叶子节点(没有子节点的节点)</li>
+</ol>
+</li>
+<li>节点的权(节点值)</li>
+<li>路径(从一个节点(一般是root)找到该节点的路线)</li>
+<li>层</li>
+<li>子树</li>
+<li>树的高度(最大层数)</li>
+<li>森林(多棵子树构成森林)</li>
+</ol>
+<h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h4><ol>
+<li>树有很多种, 每个节点<strong>最多只能有两个子节点</strong>的一种形式成为二叉树</li>
+<li>二叉树的子节点分为左节点和右节点</li>
+<li><strong>满二叉树</strong>: 如果二叉树的所有叶子节点都在最后一层, 并且节点总数是 2<sup>n</sup>-1 (n为层数)</li>
+<li><strong>完全二叉树</strong>: 如果二叉树的所有叶子节点都在最后一层或者倒数第二层, 而且最后一层的叶子节点在左边连续, 倒数第二层的叶子节点在右边连续</li>
+<li>遍历<ol>
+<li>前序遍历: 父节点 -&gt; 左子树 -&gt; 右子树</li>
+<li>中序遍历: 左子树 -&gt; 父节点 -&gt; 右子树</li>
+<li>后序遍历: 左子树 -&gt; 右子树 -&gt; 父节点</li>
+</ol>
+</li>
+<li>顺序存储二叉树<ol>
+<li>从数据存储来看, <strong>数组</strong>的存储方式和<strong>树</strong>的存储方式可以<strong>相互转换</strong></li>
+<li>顺序二叉树通常<strong>只考虑完全二叉树</strong></li>
+<li>第n个元素(从0开始编号)的左子节点为 2 * n + 1, 右子节点为 2 * n + 2, 父节点为 (n - 1) / 2</li>
+</ol>
+</li>
+<li>线索化二叉树<ol>
+<li>n个节点的二叉树中含有n + 1 (2n - (n - 1)) 个空指针域</li>
+<li>利用这些空指针域, 存放指向该节点在某种遍历次序下的<strong>前驱</strong>和<strong>后继</strong>节点的指针(这种附加的指针称为<strong>线索</strong>)</li>
+<li>因此可分为前序, 中序, 后序线索二叉树</li>
+</ol>
+</li>
+<li>堆<ol>
+<li>是特殊的<strong>完全二叉树</strong>, 分为<strong>大顶堆和小顶堆</strong></li>
+<li>每个节点的值都大于或等于其左右节点的值, 称为大顶堆</li>
+<li>每个节点的值都小于或等于其左右节点的值, 称为小顶堆</li>
+</ol>
+</li>
+<li>赫夫曼树<ol>
+<li>给定n个权值作为n个叶子节点, 构造一颗二叉树, 若该树的<strong>带权路径长度(wpl)达到最小</strong>, 就是最优二叉树, 也称赫夫曼树</li>
+<li>赫夫曼树是带权路径最短的树, 权值较大的节点离根较近</li>
+<li>节点的权: 若将树中节点赋给一个含有着某种含义的数值, 则这个数值称为该节点的权</li>
+<li><strong>带权路径长度(weighted path length)</strong>: 从root到该节点之间的<strong>路径长度</strong>与该<strong>节点的权</strong>的<strong>乘积</strong></li>
+</ol>
+</li>
+<li>二叉排序树 Binary Sort Tree(BST)<ol>
+<li>任何一个非叶子节点, 要求其<strong>左子节点的值比当前节点的值小, 右子节点的值比当前节点的值大</strong></li>
+<li>如果有相同的值, 可以将该节点放在左子节点或右子节点, 尽量避免放入相同的值</li>
+<li>如果给一个数列{1, 2, 3, 4, 5, 6}, 创建一颗二叉排序树, 就会变成一个链表, 其查询速度比单链表还慢, 所以引出平衡二叉树</li>
+</ol>
+</li>
+<li>平衡二叉树 AVL树<ol>
+<li>在二叉排序树的基础上实现的, 也叫平衡二叉搜索树, 以保证插叙效率较高</li>
+<li>它是一颗空树或它的左右两个子树的<strong>高度差的绝对值不超过1</strong>, 并且左右两个子树都是一颗平衡二叉树</li>
+<li>平衡二叉树的常用实现方法有<strong>红黑树, AVL, 替罪羊树, Treap, 伸展树</strong></li>
+<li>删除操作比较复杂, 其实是没有必要的, 给节点添加一个isDeleted属性, 判断是否被删除即可</li>
+</ol>
+</li>
+<li>二叉树的问题(引出多叉树)<ol>
+<li>需要多次进行IO操作(海量数据存在数据库或文件中)</li>
+<li>节点海量, 也会造成二叉树的高度很大, 会降低操作速度</li>
+</ol>
+</li>
+</ol>
+<h4 id="红黑树-red-black-tree"><a href="#红黑树-red-black-tree" class="headerlink" title="红黑树 red-black tree"></a>红黑树 red-black tree</h4><ol>
+<li>性质<ol>
+<li>每个节点要么是黑色, 要么是红色</li>
+<li>根节点必须是黑色</li>
+<li>每个叶子节点(包括NIL)都是黑色</li>
+<li>红色节点不能相连</li>
+<li><strong>任意节点到每个叶子节点的路径都包含数量相同的黑节点</strong>, 俗称黑高, <strong>黑色完美平衡</strong></li>
+<li>如果一个节点存在黑子节点, 那么该节点肯定有两个子节点</li>
+</ol>
+</li>
+<li>红黑树并不是完美平衡二叉查找树, 但它是趋近于平衡状态的</li>
+<li>红黑树的自平衡<ol>
+<li>变色</li>
+<li>左旋</li>
+<li>右旋</li>
+</ol>
+</li>
+<li>插入一定是<strong>红色插入</strong>, 因为黑色插入一定会破坏红黑树的平衡, 红色插入有可能不会破坏<ol>
+<li>红黑树为空树: 直接作为根节点, 并把节点设为黑色</li>
+<li>插入节点的key已存在: 更新当前节点的值, 为插入节点的值</li>
+<li>插入节点的父节点为黑节点: 直接插入即可, 无需做自平衡</li>
+<li>插入节点的父节点为红色: 因为根节点是黑色, 如果插入节点的父节点为红节点, 那么该父节点不可能为根节点, 所以这种情况插入节点总是存在<strong>祖父节点</strong></li>
+</ol>
+</li>
+<li>单独讨论插入节点的父节点为红色的情况<ol>
+<li>叔叔节点存在而且为红节点<ol>
+<li>把父亲和叔叔节点变为黑色</li>
+<li>把爷爷节点变为红色</li>
+<li>再将爷爷节点设置成当前节点做后续处理</li>
+</ol>
+</li>
+<li>叔叔节点不存在或者为黑节点, 并且插入节点的父亲节点是祖父节点的左子节点<ol>
+<li>LL双红: 把父亲节点设置成黑色, 爷爷节点设置成红色, 对爷爷节点进行右旋</li>
+<li>LR双红: 对父亲节点进行左旋, 变成LL双红的情况</li>
+</ol>
+</li>
+<li>叔叔节点不存在或者为黑节点, 并且插入节点的父亲节点是祖父节点的右子节点<ol>
+<li>RR双红: 把父亲节点设置成黑色, 爷爷节点设置成红色, 对爷爷节点进行左旋</li>
+<li>RL双红: 对父亲节点进行右旋, 变成RR双红的情况</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="多叉树-多路搜索树"><a href="#多叉树-多路搜索树" class="headerlink" title="多叉树 (多路搜索树)"></a>多叉树 (多路搜索树)</h4><ol>
+<li>允许每个节点可以有更多的数据项和子节点, 就是多叉树, 多叉树通过<strong>重新组织节点, 减少树的高度</strong></li>
+<li>2-3树<ol>
+<li>最简单的B树, 2-3树是由二节点和三节点构成的树</li>
+<li>有两个子节点的节点叫二节点, 3个就是三节点, 它们要么没有节点, 要么就有2, 3个节点</li>
+</ol>
+</li>
+<li>B树 (B-tree), B+树, B*树<ol>
+<li>Balanced, 平衡的意思, 即<strong>平衡树</strong> </li>
+<li><strong>所有叶子节点都在同一层</strong></li>
+<li>B树的阶: 节点的最多子节点个数</li>
+<li>B树的搜索: 从根节点开始, 二分查找, 所以搜索性能等价于<strong>在关键字全集做一个二分查找</strong></li>
+<li>关键字集合存放<strong>在整棵树中(非叶子节点和叶子节点)</strong></li>
+</ol>
+</li>
+<li>B+树<ol>
+<li>B树的变体</li>
+<li>和B树的搜索基本相同, 区别是<strong>B+树只有达到叶子节点才命中</strong>, 其<strong>搜索性能和B树一样</strong></li>
+<li>所有关键字都出现在<strong>叶子节点的链表</strong>中(即数据只能存在叶子节点中, 也叫稠密索引), 且链表中的关键字恰好是<strong>有序的</strong></li>
+<li>非叶子节点相当于叶子节点的索引(稀疏索引), 叶子节点相当于存储关键字数据的数据层</li>
+<li>更适合<strong>文件索引系统</strong></li>
+<li>B树和B+树各有各的应用场景</li>
+</ol>
+</li>
+<li>B*树<ol>
+<li>B+树的变体</li>
+<li>B*树定义了非叶子节点关键字个数至少为(2/3)M, 即块的最低使用率为2/3, 而B+树的块的最低使用率为B+树的1/2</li>
+<li>B*树分配新节点的概率要比B+树低, 空间使用率更高</li>
+</ol>
+</li>
+</ol>
+<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><h4 id="为什么要有图"><a href="#为什么要有图" class="headerlink" title="为什么要有图"></a>为什么要有图</h4><ol>
+<li>线性表局限于一个直接前驱和一个直接后继的关系</li>
+<li>树也只能有一个直接前驱也就是父节点</li>
+<li>当需要表示多对多的关系时, 我们这里就用到了图</li>
+</ol>
+<h4 id="图的常用概念"><a href="#图的常用概念" class="headerlink" title="图的常用概念"></a>图的常用概念</h4><ol>
+<li>顶点(vertex)</li>
+<li>边(edge)</li>
+<li>路径</li>
+<li>无向图 顶点之间的连接没有方向</li>
+<li>有向图 顶点之间的连接有方向</li>
+<li>带权图 边带权值的图, 这种图也叫网</li>
+</ol>
+<h4 id="图的表示方式"><a href="#图的表示方式" class="headerlink" title="图的表示方式"></a>图的表示方式</h4><ol>
+<li>二维数组表示 (邻接矩阵)<ol>
+<li>表示图形中顶点之间相邻关系的矩阵</li>
+<li>对于n个顶点的图而言, 矩阵的row和col表示的是1…n个点</li>
+<li>需要为每个顶点都分配n个边的空间, 其实有很多边都是不存在的, 会造成空间的一定损失</li>
+</ol>
+</li>
+<li>链表 + 数组 (邻接表): 只关心存在的边, 不关心不存在的边, 因此没有空间浪费</li>
+</ol>
+<h4 id="图的深度优先遍历-Depth-First-Search-dfs"><a href="#图的深度优先遍历-Depth-First-Search-dfs" class="headerlink" title="图的深度优先遍历 Depth First Search (dfs)"></a>图的深度优先遍历 Depth First Search (dfs)</h4><h5 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h5><ol>
+<li>从初始访问节点(可能有多个邻接节点)出发, 首先访问第一个邻接节点, 然后再以这个被访问的邻接节点作为初始节点, 继续访问它的第一个邻接节点</li>
+<li>简单来说, 就是每次访问完当前节点后首先访问当前节点的第一个邻接节点</li>
+<li>这样的访问策略是优先往纵向挖掘深入, 而不是对一个节点的所有邻接节点进行横向访问</li>
+<li>显然, 这是一个递归的过程</li>
+</ol>
+<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ol>
+<li>访问初始节点v, 并标记v为已访问</li>
+<li>查找节点v的第一个邻接节点w</li>
+<li>若w存在, 则继续往下执行, 若w不存在, 则回到第1步, 将从v的下一个节点继续</li>
+<li>若w未被访问, 对w进行深度优先遍历递归(即把w当做另一个v, 然后进行步骤123)</li>
+<li>查找节点v的邻接节点w的下一个邻接节点, 转到步骤3</li>
+</ol>
+<h4 id="图的广度优先遍历-Broad-First-Search-bfs"><a href="#图的广度优先遍历-Broad-First-Search-bfs" class="headerlink" title="图的广度优先遍历 Broad First Search (bfs)"></a>图的广度优先遍历 Broad First Search (bfs)</h4><h5 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h5><p>类似于一个分层搜索的过程, 广度优先遍历需要使用一个队列以保持访问过的节点的顺序, 以便按这个顺序来访问这些节点的邻接节点</p>
+<h5 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h5><ol>
+<li>访问出事节点v并标记为已访问</li>
+<li>节点v入队列</li>
+<li>当队列非空时, 继续执行, 否则算法结束</li>
+<li>出队列, 取得队头节点u</li>
+<li>查找节点u的第一个邻接节点w</li>
+<li>若节点u的邻接节点w不存在, 则转到步骤3, 否则循环执行以下三个步骤<ol>
+<li>若节点w尚为被访问, 则访问节点w并标记为已访问</li>
+<li>节点w入队列</li>
+<li>查找节点u的继w邻接节点后的下一个邻接节点w, 转到步骤6</li>
+</ol>
+</li>
+</ol>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><h3 id="度量一个程序-算法-执行的时间有两种方法"><a href="#度量一个程序-算法-执行的时间有两种方法" class="headerlink" title="度量一个程序(算法)执行的时间有两种方法"></a>度量一个程序(算法)执行的时间有两种方法</h3><ol>
+<li>事后统计法: 要在同一台计算机的相同状态下来运行, 才能比较哪个算法速度更快</li>
+<li>事前估算法: 通过分析某个算法的时间复杂度来判断哪个算法更优</li>
+</ol>
+<h3 id="时间频度"><a href="#时间频度" class="headerlink" title="时间频度"></a>时间频度</h3><ol>
+<li>概念: 一个算法中语句的执行次数, 也叫语句频度</li>
+<li>可以忽略常数项, 低次项, 系数</li>
+</ol>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ol>
+<li>算法中的基本操作语句的重复执行次数是问题规模n的某个函数, 即时间频度, 用T(n)表示</li>
+<li>算法的时间复杂度是一个函数，它定性描述该算法的运行时间, 用 O(f(n)) 表示</li>
+<li>T(n) 不同, 但时间复杂度可能相同, T(n) = O(f(n))</li>
+<li>计算时间复杂度的方法:<ol>
+<li>用常数1代替运行时间中的所有加法常数</li>
+<li>保留最高阶项</li>
+<li>去除最高阶项的系数</li>
+</ol>
+</li>
+</ol>
+<h3 id="常见的时间复杂度"><a href="#常见的时间复杂度" class="headerlink" title="常见的时间复杂度"></a>常见的时间复杂度</h3><ol>
+<li>常数阶 O(1)  没有循环等复杂结构</li>
+<li>对数阶 O(log<sub>a</sub>n) *a</li>
+<li>线性阶 O(n)  循环里的n++</li>
+<li>线性对数阶 O(nlog<sub>a</sub>n)  线性阶和对数阶级合在一起</li>
+<li>平方阶 O(n^2) 线性阶嵌套循环</li>
+<li>立方阶 O(n^3) 线性阶嵌套循环</li>
+<li>k次方阶 O(n^k) 线性阶嵌套循环</li>
+<li>指数阶 O(2^n)</li>
+<li>阶乘阶 O(n!)</li>
+<li>上面的时间复杂度是从小到大排的</li>
+</ol>
+<h3 id="平均时间复杂度和最坏时间复杂度"><a href="#平均时间复杂度和最坏时间复杂度" class="headerlink" title="平均时间复杂度和最坏时间复杂度"></a>平均时间复杂度和最坏时间复杂度</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">平均时间</th>
+<th align="center">最差情形</th>
+<th align="center">稳定度</th>
+<th align="center">额外空间</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">冒泡</td>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">稳定</td>
+<td align="center">O(1)</td>
+<td align="center">n小时较好</td>
+</tr>
+<tr>
+<td align="center">交换</td>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">不稳定</td>
+<td align="center">O(1)</td>
+<td align="center">n小时较好</td>
+</tr>
+<tr>
+<td align="center">选择</td>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">不稳定</td>
+<td align="center">O(1)</td>
+<td align="center">n小时较好</td>
+</tr>
+<tr>
+<td align="center">插入</td>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">稳定</td>
+<td align="center">O(1)</td>
+<td align="center">大部分已排序时较好</td>
+</tr>
+<tr>
+<td align="center">基数</td>
+<td align="center">O(log<sub>R</sub>B)</td>
+<td align="center">O(log<sub>R</sub>B)</td>
+<td align="center">稳定</td>
+<td align="center">O(n)</td>
+<td align="center">B是真数(0~9), R是基数(个十百)</td>
+</tr>
+<tr>
+<td align="center">希尔</td>
+<td align="center">O(nlog<sub>R</sub>B)</td>
+<td align="center">O(n<sup>s</sup>) 1&lt;s&lt;2</td>
+<td align="center">不稳定</td>
+<td align="center">O(1)</td>
+<td align="center">s是所选分组</td>
+</tr>
+<tr>
+<td align="center">快速</td>
+<td align="center">O(nlog<sub>a</sub>n)</td>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">不稳定</td>
+<td align="center">O(nlog<sub>a</sub>n)</td>
+<td align="center">n大时比较好</td>
+</tr>
+<tr>
+<td align="center">归并</td>
+<td align="center">O(nlog<sub>a</sub>n)</td>
+<td align="center">O(nlog<sub>a</sub>n)</td>
+<td align="center">稳定</td>
+<td align="center">O(1)</td>
+<td align="center">n大时比较好</td>
+</tr>
+<tr>
+<td align="center">堆</td>
+<td align="center">O(nlog<sub>a</sub>n)</td>
+<td align="center">O(nlog<sub>a</sub>n)</td>
+<td align="center">不稳定</td>
+<td align="center">O(1)</td>
+<td align="center">n大时较好</td>
+</tr>
+</tbody></table>
+<h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><ol>
+<li>定义为算法锁耗费的存储空间, 它也是问题规模n的函数</li>
+<li>做算法分析的时候, 主要讨论的时间复杂度</li>
+<li>一些缓存产品(redis, memcache)和算法(基数排序)本质就是用空间换时间</li>
+</ol>
+<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><h3 id="内部排序"><a href="#内部排序" class="headerlink" title="内部排序"></a>内部排序</h3><ul>
 <li>按将需要处理的所有数据都加载到内部存储器中进行排序</li>
 </ul>
-<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><h4 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h4><h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><h4 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h4><h3 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h3><ul>
+<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><h5 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h5><p>基本思想:</p>
+<ol>
+<li>把n个带排序的元素看成一个有序表和一个无序表</li>
+<li>开始时, 有序表包含一个元素, 无序表包含 n - 1 个元素</li>
+<li>排序过程中每次从无序表中取出一个元素, 把它的排序码依次与有序表元素的排序码进行比较, 将它插入到适当位置, 成为新的有序表</li>
+</ol>
+<p>问题: 当需要插入的数是较小的数时, 后移的次数明显增多, 对效率有影响, 由此引出希尔排序</p>
+<h5 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h5><p>基本思想: </p>
+<ol>
+<li>把简单的插入排序改进, 成为一个更高效的版本, 也成缩小增量排序</li>
+<li>把记录按下标的一定增量进行分组, 对每组使用直接插入排序(如果使用冒泡效率同样会很低)</li>
+<li>随着增量逐渐减少, 每组包含的关键词越来越多</li>
+<li>当增量减至1时, 整个文件被分成一组, 算法便终止</li>
+</ol>
+<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>基本思想: 从欲排序的数据中, 按指定的规则选出某一元素, 再依规定交换位置后达到排序的目的</p>
+<h5 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h5><h5 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h5><ol>
+<li>利用堆这种数据结构的性质进行排序</li>
+<li>最坏, 最好, 平均时间复杂度均为O(nlog<sub>a</sub>n), 它也是不稳定排序</li>
+<li>堆是具有以下性质的<strong>完全二叉树</strong><ol>
+<li>每个节点的值都大于或等于其左右节点的值, 称为大顶堆</li>
+<li>每个节点的值都小于或等于其左右节点的值, 称为小顶堆</li>
+</ol>
+</li>
+</ol>
+<h4 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h4><h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h5><p>基本思想:</p>
+<ol>
+<li>通过对待排序序列从前向后, 依次比较相邻元素的值, 若发现逆序则交换</li>
+<li>使值较大的元素逐渐从前移向后部，就像水底的气泡一样往上冒</li>
+</ol>
+<h5 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h5><p>基本思想:</p>
+<ol>
+<li>快速排序是对冒泡排序的一种改进</li>
+<li>通过一趟排序将要排序的数据分割成独立的两部分</li>
+<li>其中一部分的所有数据都比另外一部分的所有数据要小</li>
+<li>然后再按此方法对这两部分数据分别进行快速排序</li>
+<li>整个排序过程可以递归进行</li>
+</ol>
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><ol>
+<li>该算法采用经典的<strong>分治</strong>策略</li>
+<li>分治法将问题<strong>分</strong>成一些小的问题然后递归求解</li>
+<li>而<strong>治</strong>的阶段将分的阶段得到的各答案<strong>合并</strong>在一起, 即分而治之</li>
+</ol>
+<h4 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h4><p>又叫桶排序, 属于分配式排序, 又称”桶子法”或bin sort, 顾名思义,</p>
+<h3 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h3><ul>
 <li>数据量过大, 无法全部加载到内存中, 需要借助外部存储进行排序</li>
 </ul>
+<h2 id="查找算法"><a href="#查找算法" class="headerlink" title="查找算法"></a>查找算法</h2><h3 id="顺序-线性-查找"><a href="#顺序-线性-查找" class="headerlink" title="顺序(线性)查找"></a>顺序(线性)查找</h3><p>顾名思义, 不用多说</p>
+<h3 id="二分查找-折半查找"><a href="#二分查找-折半查找" class="headerlink" title="二分查找/折半查找"></a>二分查找/折半查找</h3><ol>
+<li>非递归法</li>
+<li>递归法</li>
+</ol>
+<h3 id="插值查找"><a href="#插值查找" class="headerlink" title="插值查找"></a>插值查找</h3><ol>
+<li>插值查找就是在二分查找的基础上, 对 mid 索引根据要查找的 value 做一个自适应的处理</li>
+<li>核心算法: <code>int mid = left + (right - left) * (value - arr[left]) / (arr[right] - arr[left]);</code></li>
+<li>分布均匀的有序数组可以近似的理解成数学中的等差数列, 所以插值查找一般使用在关键字<strong>分布均匀</strong>的情况</li>
+</ol>
+<h3 id="斐波那契查找"><a href="#斐波那契查找" class="headerlink" title="斐波那契查找"></a>斐波那契查找</h3><ol>
+<li>斐波那契(黄金分割法)查找原理与前两种相似, 仍然需要对有序数组进行查找, 仅仅改变 mid 的位置, mid不在是中间和插值得到</li>
+<li>由斐波那契数列F[k] = F[k-1] + F[k-2] 的性质,可以得到 F[k]-1 = (F[k-1]-1) + (F[k-2]-1) + 1</li>
+<li>该式说明只要顺序表的长度为F[k]-1, 则可以分成长度为 (F[k-1]-1) 和 (F[k-2]-1)的两端</li>
+<li>所以<code>mid = low + F(k - 1) - 1</code></li>
+</ol>
+<h2 id="十大算法"><a href="#十大算法" class="headerlink" title="十大算法"></a>十大算法</h2><h3 id="二分查找算法"><a href="#二分查找算法" class="headerlink" title="二分查找算法"></a>二分查找算法</h3><ol>
+<li>递归实现</li>
+<li>非递归实现</li>
+</ol>
+<h3 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h3><ol>
+<li>分而治之</li>
+<li>经典问题<ol>
+<li>二分搜索</li>
+<li>大整数乘法</li>
+<li>期盼覆盖</li>
+<li><strong>合并算法</strong></li>
+<li><strong>快速排序</strong></li>
+<li>线性时间选择</li>
+<li>最接近点对问题</li>
+<li>循环赛日程表</li>
+<li><strong>汉诺塔</strong></li>
+</ol>
+</li>
+<li>分治法在每一层递归上都有三个步骤<ol>
+<li>分解 将原问题分解成若干个相互对立小的问题, 与原问题形式相同</li>
+<li>解决 解决子问题</li>
+<li>合并 合并子问题的解</li>
+</ol>
+</li>
+</ol>
 
                 
             </div>

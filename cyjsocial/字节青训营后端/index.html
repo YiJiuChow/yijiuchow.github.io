@@ -421,7 +421,134 @@
 <h4 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h4><p>猜谜游戏</p>
 <p>命令行词典</p>
 <p>SOCKS5 代理</p>
-<h3 id="Go语言上手-工程实践"><a href="#Go语言上手-工程实践" class="headerlink" title="Go语言上手 - 工程实践"></a>Go语言上手 - 工程实践</h3><h3 id="高质量编程与性能调优实战"><a href="#高质量编程与性能调优实战" class="headerlink" title="高质量编程与性能调优实战"></a>高质量编程与性能调优实战</h3><h3 id="高性能-Go-语言发行版优化与落地实践"><a href="#高性能-Go-语言发行版优化与落地实践" class="headerlink" title="高性能 Go 语言发行版优化与落地实践"></a>高性能 Go 语言发行版优化与落地实践</h3>
+<h3 id="Go语言上手-工程实践"><a href="#Go语言上手-工程实践" class="headerlink" title="Go语言上手 - 工程实践"></a>Go语言上手 - 工程实践</h3><h4 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h4><ol>
+<li>Goroutine<ol>
+<li>协程: 用户态, 轻量级, 栈kb级别</li>
+<li>线程: 内核态, 线程跑多个协程, 栈mb级别</li>
+</ol>
+</li>
+<li>CSP(Communicating Sequential Processes)<ol>
+<li>通过通信共享内存实现通信: 多个goroutine之间通过通道进行通信</li>
+<li>通过共享内存实现通信: 多个goroutine之间在临界区里进行通信</li>
+<li>提倡通过通信共享内存实现通信</li>
+</ol>
+</li>
+<li>Channel <code>make(chan type,[缓冲大小])</code><ol>
+<li>无缓冲通道 <code>make(chan int)</code> 同步通道</li>
+<li>有缓冲通道 <code>make(chan int, 2)</code></li>
+</ol>
+</li>
+<li>sync<ol>
+<li>并发安全 Lock <code>lock sync.Mutex</code> <code>lock.Lock(), lock.Unlock()</code></li>
+<li>WaitGroup 计数器 <code>Add(delta int)</code>+delta <code>Done()</code>-1 <code>Wait()</code> 阻塞到计数器为0</li>
+</ol>
+</li>
+</ol>
+<h4 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h4><ol>
+<li>GOPATH<ol>
+<li>$GOPATH 环境变量 </li>
+<li>bin 项目编译二进制文件</li>
+<li>pkg 项目编译的中间产物, 加速编译</li>
+<li>src 项目源码(项目代码直接依赖src下的代码)</li>
+<li>go get下载最新版本的包到src目录下</li>
+</ol>
+</li>
+<li><del>Go Vendor</del><ol>
+<li>项目目录下增加vendor文件, 所有依赖包副本形式放在 $ProjectRoot/vendor</li>
+<li>vendor -&gt; $GOPATH</li>
+<li>弊端: 无法控制依赖的版本 更新项目又可能出现依赖冲突</li>
+</ol>
+</li>
+<li>Go Module<ol>
+<li>通过go.mod文件管理依赖包版本</li>
+<li>通过go get/go mod 指令工具管理依赖包</li>
+<li>可以定义版本规则和管理项目依赖关系</li>
+</ol>
+</li>
+<li>依赖管理三要素<ol>
+<li>配置文件, 描述依赖 go.mod</li>
+<li>中心仓库管理依赖库 Proxy</li>
+<li>本地工具 go get/mod</li>
+</ol>
+</li>
+<li>依赖配置 go.mod<ol>
+<li>module …    依赖管理基本单元</li>
+<li>go 版本号      原生库</li>
+<li>require ()    单元依赖</li>
+<li>version ${MAJOR}.${MINOR}.${PATCH} commit伪版本号 indirect 间接依赖 +incompatible</li>
+<li>依赖图</li>
+</ol>
+</li>
+<li>依赖分发 回源<ol>
+<li>Github/SVN -&gt; Developer 1.无法保证稳定性 2.无法保证依赖可用性 3.增加第三方压力</li>
+<li>Github/SVN -&gt; Proxy -&gt; Developer 稳定可靠</li>
+<li>变量 GOPROXY = “<a target="_blank" rel="noopener" href="https://proxy1.cn/">https://proxy1.cn</a>, <a target="_blank" rel="noopener" href="https://proxy2.cn/">https://proxy2.cn</a>, direct” direct表示源站</li>
+<li>工具 go mod {init 初始化 download 下载模块到本地缓存 tidy 增加需要的依赖删除不需要的依赖}</li>
+</ol>
+</li>
+</ol>
+<h4 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4><ol>
+<li>规则<ol>
+<li>所有测试文件以 _test.go 结尾</li>
+<li>func TestXxx(*testing.T)</li>
+<li>初始化逻辑放到 TestMain 中</li>
+</ol>
+</li>
+<li>运行 go test [flags][packages]</li>
+<li>assert 测试包</li>
+<li>覆盖率</li>
+<li>Tips<ol>
+<li>一般覆盖率 : 50-60 较高覆盖率 80+</li>
+<li>测试分支相互独立, 全面覆盖</li>
+<li>测试单元粒度足够小, 函数单一职责</li>
+</ol>
+</li>
+<li>文件处理</li>
+<li>Mock</li>
+</ol>
+<h4 id="基准测试"><a href="#基准测试" class="headerlink" title="基准测试"></a>基准测试</h4><h4 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h4><h3 id="高质量编程与性能调优实战"><a href="#高质量编程与性能调优实战" class="headerlink" title="高质量编程与性能调优实战"></a>高质量编程与性能调优实战</h3><h4 id="高质量编程"><a href="#高质量编程" class="headerlink" title="高质量编程"></a>高质量编程</h4><h5 id="高质量编程简介"><a href="#高质量编程简介" class="headerlink" title="高质量编程简介"></a>高质量编程简介</h5><ol>
+<li>编写的代码能够达到正确可靠, 简洁清晰的目标可称之为高质量代码</li>
+<li>要点:<ol>
+<li>边界条件是否考虑完备</li>
+<li>异常处理, 稳定性</li>
+<li>稳定易维护</li>
+</ol>
+</li>
+</ol>
+<h5 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h5><ol>
+<li>编程原则<ol>
+<li>简单性   </li>
+<li>可读性 代码是写给别人看的, 不是写给机器看的</li>
+<li>生产力 团队整体工作效率非常重要</li>
+</ol>
+</li>
+<li>规范<ol>
+<li>代码格式</li>
+<li>注释</li>
+<li>命名规范</li>
+<li>控制流程</li>
+<li>错误和异常处理</li>
+</ol>
+</li>
+</ol>
+<h5 id="性能优化建议"><a href="#性能优化建议" class="headerlink" title="性能优化建议"></a>性能优化建议</h5><ol>
+<li>slice <ol>
+<li>预分配内存</li>
+<li>冗余内存释放</li>
+</ol>
+</li>
+<li>map 预分配内存</li>
+<li>字符串的处理 strings.Builder 和 bytes.Buffer</li>
+<li>多线程的线程安全 使用atomic包</li>
+<li>不要一味地追求程序的性能, 越高级的性能优化手段越容易出现问题</li>
+</ol>
+<h4 id="性能调优实战"><a href="#性能调优实战" class="headerlink" title="性能调优实战"></a>性能调优实战</h4><h5 id="性能调优简介"><a href="#性能调优简介" class="headerlink" title="性能调优简介"></a>性能调优简介</h5><p>性能调优原则</p>
+<ol>
+<li>要依靠数据不是猜测</li>
+<li>要定位最大瓶颈而不是细枝末节</li>
+<li>不要过早, 过度优化</li>
+</ol>
+<h5 id="性能分析工具-pprof"><a href="#性能分析工具-pprof" class="headerlink" title="性能分析工具 pprof"></a>性能分析工具 pprof</h5><h5 id="性能调优案例"><a href="#性能调优案例" class="headerlink" title="性能调优案例"></a>性能调优案例</h5><h3 id="高性能-Go-语言发行版优化与落地实践"><a href="#高性能-Go-语言发行版优化与落地实践" class="headerlink" title="高性能 Go 语言发行版优化与落地实践"></a>高性能 Go 语言发行版优化与落地实践</h3>
                 
             </div>
             <hr/>
